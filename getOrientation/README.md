@@ -4,14 +4,14 @@ We created a new addon called ofxOrientation in order to get the angle given fro
 
 #How to add getOrientation addon:
 1. copy the source codes into the proper folder
-	addons/ofxAndroid/src/cc/openframeworks/OFAndroid.java
-	addons/ofxAndroid/src/cc/openframeworks/OFAndroidOrientation.java
+	addons/ofxAndroid/ofAndroidLib/src/cc/openframeworks/OFAndroid.java
+	addons/ofxAndroid/ofAndroidLib/src/cc/openframeworks/OFAndroidOrientation.java
 
-2. add ofxOrientation folder:
-	pathtoyouraddonsfolder/ofxOrientation
-	then add it to your Xcode project
+2. add ofxOrientation folder to:
+	openFrameworks/addons/
 
-3. copy ofxAndroidOrientation.ccp into your openframeworks ofxAndroid folder
+3. copy ofxAndroidOrientation.ccp into your openframeworks ofxAndroid folder:
+	openFrameworks/addons/ofxAndroid/src/
 	and make sure you have it in your Xcode project
 
 4. copy src/ folder into your openframeworks project
@@ -22,6 +22,9 @@ We created a new addon called ofxOrientation in order to get the angle given fro
 	(you might have some issue regarding jni.h file)
 
 7. run the xcode project
-8. run the ./gradlew assembleDebug
+
+8. you might need to run make AndroidDebug
+
+9. run the ./gradlew assembleDebug
 
 	
