@@ -1,0 +1,10 @@
+ofxOrientation changelog
+
+v0.2
+--------------------
+-
+
+v0.1 07/11/2015
+--------------------
+- initial version
+- 
