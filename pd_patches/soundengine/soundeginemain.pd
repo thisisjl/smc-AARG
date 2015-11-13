@@ -1,0 +1,52 @@
+#N canvas 72 73 1151 615 10;
+#X obj 3 273 cnv 15 550 250 empty empty Sound_item_1 20 12 0 14 -233017
+-66577 0;
+#X text 215 440 theta (radians): azimuth angle between user and sound
+;
+#X obj 90 501 dac~;
+#X obj 73 361 r gpsuser;
+#X obj 9 460 sounditem sexy.wav 3 4;
+#X text 136 357 Here we receive the GPS coordinates of the mobile device.
+The sound master volume will be computer according to them and also
+to the GPS coordinates given to the sound \, which are the second and
+third arguments to [sounditem] (yes \, that is the distance).;
+#X obj 9 312 r onOff1;
+#X text 68 308 Turn or off the sound item (but maybe we can do this
+inside [sounditem] depending on the distance...);
+#X obj 138 439 r user_theta;
+#X obj 563 273 cnv 15 550 250 empty empty Sound_item_2 20 12 0 14 -233017
+-66577 0;
+#X text 781 439 theta (radians): azimuth angle between user and sound
+;
+#X obj 650 501 dac~;
+#X obj 636 361 r gpsuser;
+#X text 699 357 Here we receive the GPS coordinates of the mobile device.
+The sound master volume will be computer according to them and also
+to the GPS coordinates given to the sound \, which are the second and
+third arguments to [sounditem] (yes \, that is the distance).;
+#X obj 569 312 r onOff1;
+#X text 628 308 Turn or off the sound item (but maybe we can do this
+inside [sounditem] depending on the distance...);
+#X obj 704 438 r user_theta;
+#X obj 569 460 sounditem other.wav 3 4;
+#X obj 3 30 cnv 15 400 230 empty empty empty 20 12 0 14 -237165 -66577
+0;
+#X text 17 60 [soundengineMAIN] will be the main patch dealing with
+sound playback \; It will receive the user coordinates and its orientation
+\; It will contain several [sounditem]s \, which are objects containing
+and processing each different sound file.;
+#X text 17 140 [sounditem] has as arguments \; - the name of the file
+to load \; - latitude of the sound \; - longitude of the sound \; And
+receives as inlets \; - onoff: turn on or off the dsp \; - usergps:
+user gps coordinates - user_theta: azimuth angle between user and sound
+(radians);
+#X connect 3 0 4 1;
+#X connect 4 0 2 0;
+#X connect 4 1 2 1;
+#X connect 6 0 4 0;
+#X connect 8 0 4 2;
+#X connect 12 0 17 1;
+#X connect 14 0 17 0;
+#X connect 16 0 17 2;
+#X connect 17 0 11 0;
+#X connect 17 1 11 1;
