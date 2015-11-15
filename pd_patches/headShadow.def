@@ -1,0 +1,2 @@
+LIBRARY headShadow
+EXPORTS headShadow_setup
