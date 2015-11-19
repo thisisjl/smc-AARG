@@ -1,6 +1,7 @@
 #Description
-This code is part of the application that gathers the information from the orientation.
-We created a new addon called ofxOrientation in order to get the angle given from the Android sensor (TYPE.ORIENTATION).
+This code is part of the android application which gathers data from sensors such as compass and GPS location. Data is then used in a HRFT model.
+We created a new addon called ofxOrientation in order to get the angle related to North Magnetic Pole, which is 
+given from android sensor (TYPE.ORIENTATION).
 
 #How to add getOrientation addon:
 1. copy the source codes into the proper folder
