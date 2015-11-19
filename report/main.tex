@@ -1,6 +1,6 @@
 
 
-\documentclass[conference]{IEEEtran}
+\documentclass[journal]{IEEEtran}
 % Some Computer Society conferences also require the compsoc mode option,
 % but others use the standard conference format.
 %
@@ -41,7 +41,7 @@
 
 % *** CITATION PACKAGES ***
 %
-%\usepackage{cite}
+\usepackage{cite}
 % cite.sty was written by Donald Arseneau
 % V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
 % \cite{} output to follow that of the IEEE. Loading the cite package will
@@ -108,7 +108,7 @@
 
 % *** MATH PACKAGES ***
 %
-%\usepackage{amsmath}
+\usepackage{amsmath}
 % A popular package from the American Mathematical Society that provides
 % many useful and powerful commands for dealing with mathematics.
 %
@@ -264,7 +264,7 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{Super awesome project\\ Audio augmented reality}
+\title{An efficient 3-D sound experience for mobile applications}
 
 
 % author names and affiliations
@@ -275,13 +275,6 @@
 Aalborg University\\
 Copenhagen, Denmark\\
 }}
-%
-%\and
-%\IEEEauthorblockN{James Kirk\\ and Montgomery Scott}
-%\IEEEauthorblockA{Starfleet Academy\\
-%San Francisco, California 96678--2391\\
-%Telephone: (800) 555--1212\\
-%Fax: (888) 555--1212}}
 
 
 % conference papers do not typically use \thanks and this command
@@ -311,6 +304,31 @@ Copenhagen, Denmark\\
 
 % use for special paper notices
 %\IEEEspecialpapernotice{(Invited Paper)}
+% The paper headers
+
+\markboth{Journal of \LaTeX\ Class Files,~Vol.~11, No.~4, December~2012}%
+{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Journals}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+% 
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2012 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
 
 
 
@@ -321,34 +339,33 @@ Copenhagen, Denmark\\
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-(To be changed)We are developing an application for mobile devices that uses an efficient HRTF model to create 3D soundscapes. The HRTF model is based on a combination of filters and delays provided on theoretical basis by Brown et. al. [1]. The device orientation is used to set the angle between the sound and the user. This model has many possibilities on the limited hardware capabilities of the mobile devices in comparison to HRTF database based models. The prototype will present the user several sounds scattered in a limited area where the user can interact with
+We developed an application for mobile devices that uses an efficient HRTF model based on to create 3D soundscapes. The HRTF model is based on a combination of filters and delays provided on theoretical basis by Brown et. al. [1]. The device orientation is used to set the angle between the sound and the user. This model has many possibilities on the limited hardware capabilities of the mobile devices in comparison to HRTF database based models. The prototype will present the user several sounds scattered in a limited area where the user can interact with
 \end{abstract}
 
-% no keywords
+
+% Note that keywords are not normally used for peerreview papers.
+\begin{IEEEkeywords}
+IEEEtran, journal, \LaTeX, paper, template.
+\end{IEEEkeywords}
 
 
 
-
-% For peer review papers, you can put extra information on the cover
-% page as needed:
-% \ifCLASSOPTIONpeerreview
-% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
-% \fi
-%
-% For peerreview papers, this IEEEtran command inserts a page break and
-% creates the second title. It will be ignored for other modes.
-\IEEEpeerreviewmaketitle
 
 
 
 \section{Introduction}
-Something stunning
+A lot of research on modelling 3-D sound has been done with fairly good solutions (references). The best results can be obtained by those models implementing 3-D sound using personalized HRTF functions which needs tedious measuring of impulseresponses etc (reference). Since mobile applications as well as multimedia productions are usually aimed at a big number of users, implementing personalized HRTF functions would require measurements of the individual user which is almost impossible. Additionally, using huge databases with HRTF's for subjects having similar head diameters and pinnae structures (dunno, how those HRTF's work) are not feasible for mobile applications as memory space is limited. Therefore, the aim of this project was to develop an computationally efficient and general HRTF model, yet, keeping the quality of the 3-D sound as good as possible. We therefore used the model provided on a theoretical basis in \cite{Brown1998} by implementing a combination of filters and delays in pure data and C. This audio engine was then embedded in a mobile application. Sensor data provided by the phone or tablet was used to compute from which direction the sound should appear to be coming from. With the application users should be able to discover a virtual sound space situated in Copenhagen. This means that our HRTF model should satisfy two major requirements. 1. It should provide direction cues that are good enough to guide the user to the position where a specific sound is situated. 
+2. It should give the user a feeling of how far the sound is away from the users current location. 
 
+The first aim of course is bound to accuracy of the GPS signal and orientation data provided by the individual mobile phone. We hypothized that using a general HRTF model should be of sufficient quality to satisfy the first requirement since sensory data can be rather noisy anyways which would be overfitted by a very precise HRTF model.
+
+The second hypothesis was that providing some interaction (button press on sound, then distance cues slides from farthest to current location etc.) could habituate the user to be able after some training to approximate the distance of the sound from the users current location.
+
+Taken both hypothesises together the user should experience a soundscape in at least 2-dimensions, azimuth and distance.
+
+First, some state of the art research on 3-D sound will be provided. That section will be followed by the presentation of our implementation of the audio engine as well as the main application. In the last part we will present the results obtained by testing our application and discuss those in light of the two hypothesises stated above.
  
 \hfill December, 2015
-
-\subsection{To be discussed}
-
 
 
 % An example of a floating figure using the graphicx package.
@@ -430,14 +447,64 @@ Something stunning
 % Note that, LaTeX2e, unlike IEEE journals/conferences, places
 % footnotes above bottom floats. This can be corrected via the
 % \fnbelowfloat command of the stfloats package.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{State of the art in 3-D sound}
+Here it would be nice to put some state of the art research about HRTF's etc.
+
+also some argumentation why we used a HRTF model based on filtering rather than using a database (citations why database not efficient and why quality better with databases but good enough with filtering)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The application}
+We decided to develop our application for android. Nevertheless, we did not use the API provided by Android Studio but instead used openFrameworks which is a ...... (reference). The reasons why we decided to develop using this programming environment was the need of a fast communication between the mobile device and our programm code. Since programming in C can be directly translated into machine code and does not need to be interpreted by a virtual machine as it is the case for java (reference) we hoped to increase the speed of our application to fulfill the needs of a realtime application. Additionally openFrameworks as open source project provides a multitude of addons enabling us to benefit from already solved problems. (include a list of addons we used maybe). As last but rather minor point as far as our motivation for this application was concerned it should be mentioned that programming independent from a specific API such as those provided for Android or iOS makes modifying our application to run on a different operating system easier as the main code is written platform independent.
+
+\subsection{Sensory data extraction}
+Our application required two main sensory information. We needed the GPS location of the user to calculate the distance to the sounds that were placed on fixed GPS locations in addition to the angle the user is heading relative to the sound sources. To access the GPS data we used an already existing addon called ?ofxMaps and ofxGeo? (reference to webpage/gitrepository). (Something about smoothing if we used it, and maybe we have to look into the code how they used smoothing). To calculate the angle between the heading of the user and the sound source we had to extract the bearing between our location and the location of the sound (reference and some explanation about bearing maybe?) as well as the heading of our mobile phone relative to the magnetic south (geographic north pole). The bearing could be accessed via the ofxGeo addon. In order to access the compass orientation we built our own addon accessing the 'SENSOR TYPE ORIENTATION' provided by the android API. Having this information we now had to differentiate between four cases: (some images and explenation about how we calculatet the angle between our heading orientation and the sound). In order to smooth the sensory data (especially for the orientation) we filtered the sensory information by computing the median of a chunk of mediansize instances of the sensor output. 
+
+\subsection{Audio engine}
+The audio engine was the most crucial part of our applications. As shortly mentioned in the introduction (and/or state of the art in 3-D sound) we decided to use a filter based HRTF model which claimed to be both 'efficient' and of reasonable 'quality' \cite{Brown1997} in order to achieve a satisfying user experience and an efficient real time application. We basicly followed the workflow (order of filter and delay lines) given in \cite{Brown1997} and depicted in figure ... . 
+
+First the sound had to be split up in ....
+Second .....
+Third IID and ITD
+ We therefore used the analog filter models provided in \cite{Brown1997} and further specified in \cite{Brown1998}. The head shadow filter, implementing the ILD, was given by the following analog transfer function:
+\begin{equation}\label{eq:analog}
+H\left( s,\theta\right) = \frac{\alpha (\theta)s+\beta}{s+\beta},\: where\:\beta = \frac{2c}{a}
+\end{equation}
+Since this is an analog transfer function we had to derive the digital version by applying a bilinear transform applying the following substitution:
+\begin{equation}\label{eq:bilin}
+s = \frac{2}{T} \frac{z-1}{z+1},\: where\:T\:is\:???
+\end{equation}
+Applying the substitutin in Equation~\ref{eq:bilin} to Equation~\ref{eq:analog} we get the following filter function in the digital domain:
+\begin{equation}\label{eq:filter}
+H\left( z,\theta\right) = \frac{\alpha (\theta)(\frac{2}{T} \frac{z-1}{z+1})+\beta}{(\frac{2}{T} \frac{z-1}{z+1})+\beta}
+\end{equation}
+To identify the filter coefficients we transformed Equation ~\ref{eq:filter} and obtained the following frequency response\footnote{For the derivation of Equation~\ref{eq:filterparam} see appendix A}:
+\begin{equation}\label{eq:filterparam}
+H\left( z,\theta\right) = \frac{2\alpha (\theta)+T\beta+z^{-1}(-2\alpha(\theta)+T\beta)}{2+T\beta+z^{-1}(-2+T\beta)} = \frac{Y(z)}{X(z)}
+\end{equation} 
+This gives us the filter coefficients $a_0 = 2\alpha (\theta)+T\beta$ and $a_1 = -2\alpha(\theta)+T\beta$ as well as $b_0 = 2+T\beta$ and $b_1 = -2+T\beta$. Since we could not use the filter function in Matlab which has as input values the filter coefficientes we had to isolate the output $Y(z)$ in Equation~\ref{eq:filterparam} as well as going from the frequency to the time domain. The result is given in Equation~\ref{eq:out}\footnote{For the derivation of Equation~\ref{eq:out} see appendix B}:
+\begin{equation}\label{eq:out}
+Y[n] =\frac{a_0X[n]+a_1X[n-1]-b_1Y[n-1]}{b_0}
+\end{equation} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+\subsection{User interface}
+include pictures of user interface etc.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Discussion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \section{Conclusion}
-
-
-
 
 
 % conference papers do not normally have an appendix
@@ -451,7 +518,10 @@ The authors would like to thank...Smilen and Stefania :)
 
 
 
-
+\pagebreak
+% Style and bibliography.
+% The bibtex filename
+\bibliography{}
 
 % trigger a \newpage just before the given reference
 % number - used to balance the columns on the last page
@@ -483,6 +553,35 @@ The authors would like to thank...Smilen and Stefania :)
 %
 %\end{thebibliography}
 
+\pagebreak
+\listoffigures
+\pagebreak
+\begin{appendices}
+\section{Derivations}
+\begin{equation*}\label{eq:DerivationFilterCoeff}
+\begin{split}
+H\left( z,\theta\right) &=\frac{\alpha (\theta)(\frac{2}{T} \frac{z-1}{z+1})+\beta}{(\frac{2}{T} \frac{z-1}{z+1})+\beta}\\
+                                   &= \frac{\frac{2\alpha (\theta)(z-1)}{T(z+1)}+\frac{T\beta(z+1)}{T(z+1)}}{\frac{2(z-1)}{T(z+1)}+\frac{T\beta(z+1)}{T(z+1)}}\\  
+			   &=\frac{\frac{2\alpha (\theta)(z-1)+T\beta(z+1)}{T(z+1)}}{\frac{2(z-1)+T\beta(z+1)}{T(z+1)}}\\
+			  &=\frac{2\alpha (\theta)(z-1)+T\beta(z+1)}{2(z-1)+T\beta(z+1)}\\
+			 &=\frac{z2\alpha (\theta)(1-z^{-1})+zT\beta(1+z^{-1})}{z2(1-z^{-1})+zT\beta(1+z^{-1})}\\
+			&=\frac{2\alpha (\theta)(1-z^{-1})+T\beta(1+z^{-1})}{2(1-z^{-1})+T\beta(1+z^{-1})}\\
+			&=\frac{2\alpha (\theta)-2\alpha (\theta)z^{-1}+T\beta+T\beta z^{-1}}{2-2z^{-1}+T\beta+T\beta z^{-1}}\\
+			&=\frac{(2\alpha (\theta)+T\beta)-(2\alpha (\theta)+T\beta)z^{-1}}{(2+T\beta)-(2+T\beta)z^{-1}}\\
+			&=\frac{(2\alpha (\theta)+T\beta)+(-2\alpha (\theta)+T\beta)z^{-1}}{(2+T\beta)+(-2+T\beta)z^{-1}}\\
+\end{split}
+\end{equation*} 
+\section{Derivations}
+\begin{equation*}\label{eq:DerivationC++}
+\begin{split}
+H(z, \theta) &= \frac{Y(z)}{X(z)} = \frac{a_0+a_1z^{-1}}{b_0+b_1z^{-1}}\\
+&\iff Y(z)(b_0+b_1z^{-1}) = X(z)(a_0+a_1z^{-1})\\
+&\iff Y(z)b_0+b_1Y(z)z^{-1} = a_0X(z)+a_1X(z)z^{-1}\\
+&\iff Y(z) = \frac{a_0X(z)+a_1X(z)z^{-1}-b_1Y(z)z^{-1}}{b_0}\\
+&\rightarrow Y[n] = \frac{a_0X[n]+a_1X[n-1]-b_1Y[n-1]}{b_0}
+\end{split}
+\end{equation*} 
+\end{appendices}
 
 
 
