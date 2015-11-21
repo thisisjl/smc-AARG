@@ -1,53 +1,69 @@
 #N canvas 72 73 1151 615 10;
-#X obj 3 273 cnv 15 550 250 empty empty Sound_item_1 20 12 0 14 -233017
--66577 0;
-#X text 215 440 theta (radians): azimuth angle between user and sound
-;
-#X obj 90 501 dac~;
-#X obj 73 361 r gpsuser;
-#X obj 9 460 sounditem sexy.wav 3 4;
-#X text 136 357 Here we receive the GPS coordinates of the mobile device.
-The sound master volume will be computer according to them and also
-to the GPS coordinates given to the sound \, which are the second and
-third arguments to [sounditem] (yes \, that is the distance).;
-#X obj 9 312 r onOff1;
-#X text 68 308 Turn or off the sound item (but maybe we can do this
-inside [sounditem] depending on the distance...);
-#X obj 138 439 r user_theta;
-#X obj 563 273 cnv 15 550 250 empty empty Sound_item_2 20 12 0 14 -233017
--66577 0;
-#X text 781 439 theta (radians): azimuth angle between user and sound
-;
-#X obj 650 501 dac~;
-#X obj 636 361 r gpsuser;
-#X text 699 357 Here we receive the GPS coordinates of the mobile device.
-The sound master volume will be computer according to them and also
-to the GPS coordinates given to the sound \, which are the second and
-third arguments to [sounditem] (yes \, that is the distance).;
-#X text 628 308 Turn or off the sound item (but maybe we can do this
-inside [sounditem] depending on the distance...);
-#X obj 704 438 r user_theta;
-#X obj 3 30 cnv 15 400 230 empty empty empty 20 12 0 14 -237165 -66577
+#X obj 3 14 cnv 15 400 230 empty empty empty 20 12 0 14 -237165 -66577
 0;
-#X text 17 47 [soundengineMAIN] will be the main patch dealing with
-sound playback \; It will receive the user coordinates and its orientation
-\; It will contain several [sounditem]s \, which are objects containing
-and processing each different sound file.;
-#X text 17 140 [sounditem] has as arguments \; - the name of the file
-to load \; - latitude of the sound \; - longitude of the sound \; And
-receives as inlets \; - onoff: turn on or off the dsp \; - usergps:
-user gps coordinates - user_theta: azimuth angle between user and sound
-(radians);
-#X obj 569 460 sounditem other.wav 3 4;
-#X obj 179 177 sounditem filename coord1 coord2;
-#X obj 569 312 r onOff2;
-#X connect 3 0 4 1;
-#X connect 4 0 2 0;
-#X connect 4 1 2 1;
-#X connect 6 0 4 0;
-#X connect 8 0 4 2;
-#X connect 12 0 19 1;
-#X connect 15 0 19 2;
-#X connect 19 0 11 0;
-#X connect 19 1 11 1;
-#X connect 21 0 19 0;
+#X obj 414 14 cnv 15 500 230 empty empty Sound_item_1 20 12 0 14 -233017
+-66577 0;
+#X obj 461 192 dac~;
+#X obj 420 43 r onOff1;
+#X obj 472 69 r distance1;
+#X obj 525 130 r azimuth1;
+#X text 547 65 Distance of the sound. The sound master volume will
+be computer according to them and also to the GPS coordinates given
+to the sound \, which are the second and third arguments to [sounditem]
+(yes \, that is the distance).;
+#X text 595 131 Azimuth angle between user and sound (radians);
+#X text 479 43 Turn or off the sound item;
+#X text 17 154 [sounditem] has as arguments \; - the name of the file
+to load \; And receives as inlets \; - onoff: turn on or off the dsp
+\; - distance: user gps coordinates \; - azimuth: angle between user
+and sound (radians);
+#X obj 19 131 sounditem filename;
+#X text 17 21 [soundengineMAIN] will be the main patch dealing with
+sound playback \; It will receive for each sound \, if it is on or
+off \, the distance and the azimuth angle between the user \; It will
+contain several [sounditem]s \, which are objects containing and processing
+each different sound file.;
+#X obj 420 151 sounditem sexy.wav;
+#X obj 4 254 cnv 15 180 200 empty empty Sound_item_2 20 12 0 14 -233017
+-66577 0;
+#X obj 41 422 dac~;
+#X obj 10 391 sounditem sexy.wav;
+#X obj 10 283 r onOff2;
+#X obj 62 309 r distance2;
+#X obj 115 370 r azimuth2;
+#X obj 194 254 cnv 15 180 200 empty empty Sound_item_3 20 12 0 14 -233017
+-66577 0;
+#X obj 231 422 dac~;
+#X obj 200 391 sounditem sexy.wav;
+#X obj 200 283 r onOff3;
+#X obj 252 309 r distance3;
+#X obj 305 370 r azimuth3;
+#X obj 384 254 cnv 15 180 200 empty empty Sound_item_4 20 12 0 14 -233017
+-66577 0;
+#X obj 421 422 dac~;
+#X obj 390 391 sounditem sexy.wav;
+#X obj 390 283 r onOff4;
+#X obj 442 309 r distance4;
+#X obj 495 370 r azimuth4;
+#X obj 574 254 cnv 15 180 200 empty empty Sound_item_5 20 12 0 14 -233017
+-66577 0;
+#X obj 611 422 dac~;
+#X obj 580 391 sounditem sexy.wav;
+#X obj 580 283 r onOff5;
+#X obj 632 309 r distance5;
+#X obj 685 370 r azimuth5;
+#X connect 3 0 12 0;
+#X connect 4 0 12 1;
+#X connect 5 0 12 2;
+#X connect 16 0 15 0;
+#X connect 17 0 15 1;
+#X connect 18 0 15 2;
+#X connect 22 0 21 0;
+#X connect 23 0 21 1;
+#X connect 24 0 21 2;
+#X connect 28 0 27 0;
+#X connect 29 0 27 1;
+#X connect 30 0 27 2;
+#X connect 34 0 33 0;
+#X connect 35 0 33 1;
+#X connect 36 0 33 2;
