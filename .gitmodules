@@ -1,0 +1,3 @@
+[submodule "app_versions/exampleTweenPd"]
+	path = app_versions/exampleTweenPd
+	url = https://github.com/thisisjl/exampleTweenPd
