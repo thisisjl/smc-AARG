@@ -23,6 +23,9 @@ typedef struct headShadow				// Struct with all variables that we're going to us
 	t_float x_b0r;
 	t_float x_b1l;
 	t_float x_b1r;
+	t_float inm1;
+	t_float lastL;
+	t_float lastR;
 } t_headShadow;
 // it creates the class
 t_class *headShadow_class;			
@@ -44,6 +47,9 @@ static void *headShadow_new(t_floatarg theta)
 	x->x_cspace.c_x = 0;
 	headShadow_ft1(x, theta);							// call the method for getting the coefficients
 	x->x_f = 0;
+	x->inm1 = 0;
+	x->lastL = 0;
+	x->lastR = 0;
 	return (x);
 }
 
@@ -96,15 +102,6 @@ static t_int *headShadow_perform(t_int *w)
 	t_float a1 = x->x_a1;
 
 
-	t_sample lastLm1 = 0;
-	t_sample lastRm1 = 0;
-    t_sample inm1 = 0;
-
-
-	lastL = 0;
-	lastR = 0;
-
-
 
 
 
@@ -112,22 +109,21 @@ static t_int *headShadow_perform(t_int *w)
 		// lastL  = (1/a0) *((b0l * *in++) + (b1l * *in) - (a1 * lastLm1));
 		// lastR  = (1/a0) *((b0r * *in++) + (b1r * *in) - (a1 * lastRm1));
 
-        lastL  = (1/a0) * ((b0l * in[i]) + (b1l * inm1) - (a1 * lastLm1));
-		lastR  = (1/a0) * ((b0r * in[i]) + (b1r * inm1) - (a1 * lastRm1));
+        x->lastL  = (1/a0) * ((b0l * in[i]) + (b1l * x->inm1) - (a1 * x->lastL));
+		x->lastR  = (1/a0) * ((b0r * in[i]) + (b1r * x->inm1) - (a1 * x->lastR));
 
 		// update
-		lastLm1 = lastL;
-		lastRm1 = lastR;
-		inm1 = in[i];
+		//lastLm1 = lastL;
+		//lastRm1 = lastR;
+		x->inm1 = in[i];
 
-		outL[i] = lastL;
-		outR[i] = lastR;
+		outL[i] = x->lastL;
+		outR[i] = x->lastR;
+	}
 
-		}
+		// post("LastL:%f y lastLm1: %f. LastR: %f", lastL, lastLm1, lastR);
+	// post("outL:%f y lastLm1: %f. LastR: %f", outL, lastLm1, lastR);
 
-
-		post("LastL:%f y lastLm1: %f. LastR: %f", lastL, lastLm1, lastR);
-	
 	if (PD_BIGORSMALL(lastL)) lastL = 0; c->c_x = lastL;
 	if (PD_BIGORSMALL(lastR)) lastR = 0; c->c_x = lastR;
 	return (w+7);
