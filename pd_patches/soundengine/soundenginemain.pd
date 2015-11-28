@@ -80,7 +80,7 @@ azimuth = 1.57 radians \; onoff = 1 (so play it);
 #X connect 16 0 14 0;
 #X connect 16 1 14 1;
 #X connect 17 0 14 0;
-#X connect 17 1 14 0;
+#X connect 17 1 14 1;
 #X connect 18 0 14 0;
 #X connect 18 1 14 1;
 #X connect 20 0 21 0;
