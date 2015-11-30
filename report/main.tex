@@ -42,6 +42,7 @@
 % *** CITATION PACKAGES ***
 %
 \usepackage{cite}
+
 % cite.sty was written by Donald Arseneau
 % V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
 % \cite{} output to follow that of the IEEE. Loading the cite package will
@@ -65,6 +66,7 @@
 % *** GRAPHICS RELATED PACKAGES ***
 %
 \ifCLASSINFOpdf
+\usepackage{graphicx}
   % \usepackage[pdftex]{graphicx}
   % declare the path(s) where your graphic files are
   % \graphicspath{{../pdf/}{../jpeg/}}
@@ -354,13 +356,16 @@ HTRF, mobile devices, soundscape, Pure Data, OpenFrameworks
 
 
 \section{Introduction}
-A lot of research on modelling 3-D sound has been done with fairly good solutions (references). The best results can be obtained by those models implementing 3-D sound using personalized HRTF functions which needs tedious measuring of impulseresponses etc (reference). Since mobile applications as well as multimedia productions are usually aimed at a big number of users, implementing personalized HRTF functions would require measurements of the individual user which is almost impossible. Additionally, using huge databases with HRTF's for subjects having similar head diameters and pinnae structures (dunno, how those HRTF's work) are not feasible for mobile applications as memory space is limited. Therefore, the aim of this project was to develop an computationally efficient and general HRTF model, yet, keeping the quality of the 3-D sound as good as possible. We therefore used the model provided on a theoretical basis in \cite{Brown1998} by implementing a combination of filters and delays in pure data and C. This audio engine was then embedded in a mobile application. Sensor data provided by the phone or tablet was used to compute from which direction the sound should appear to be coming from. With the application users should be able to discover a virtual sound space situated in Copenhagen. This means that our HRTF model should satisfy two major requirements. 
-\\1. It should provide direction cues that are good enough to guide the user to the position where a specific sound is situated. 
-\\2. It should give the user a feeling of how far the sound is away from the users current location. 
 
-\\The first aim of course is bound to accuracy of the GPS signal and orientation data provided by the individual mobile phone. We hypothized that using a general HRTF model should be of sufficient quality to satisfy the first requirement since sensory data can be rather noisy anyways which would be overfitted by a very precise HRTF model.
+The auditory system is used by the humans for several purposes in the daily life. One of this purposes is to provide the necessary information to localize sound sources in various dimensions, (width, height, depth) and it is even possible to guess the size of the source.\\
 
-\\The second hypothesis was that providing some interaction (button press on sound, then distance cues slides from farthest to current location etc.) could habituate the user to be able after some training to approximate the distance of the sound from the users current location.
+When a sound event   occurs,   the   waves   travel   in   all directions and ,  when  they  reach  us,  our  brain  compares  the signals  received  by  the  left  and  right  ears  to  localize  it in the horizontal plane.  The spectrum of the signal reaching each ear is different, since the amplitude and phase information differs. These binaural cues are  called  interaural  intensity  difference  (IID)  and  interaural time  difference  (ITD). However, these cues are not enough to localize accurately the source since with this information the listener can not determine if the sound is in front, above or behind. This region of positions where all sounds yield the same ITD and IID is called cone of confusion.
+This ambiguity can be solved with the information provided by the filter effect caused by the pinnae, head, shoulders and torso, which modify the spectrum of the sound that reach the listener's ears. The sum of all these features are characterized by the Head Related Transfer Functions (HTRF) which are not only frequency and direction-dependent but also differ from person to person. It is therefore hard to generalize the spectral features among individuals. It is well known that using a HTRF from one person in another can significantly impair the  perception due to the individual differences in the anatomy, but it has also been shown that some people localize better the sounds than others, and their HTRFs are suitable for a large group of listeners. \\
+
+Thus, having a database with own measured HRTF for each user would be the ideal case. However, because of the large amount of data that the customized HTRFs required to generate externalized virtual sources would entail, and the expensive real-time computation of them every time the sound source moves, it is desirable to find a more efficient HTRF model.\\
+
+A lot of research on modeling 3-D sound has been done with fairly good solutions (references). The best results can be obtained by those models implementing 3-D sound using personalized HRTF functions which needs tedious measuring of impulse responses etc (reference). Since mobile applications as well as multimedia productions are usually aimed at a big number of users, implementing personalized HRTF functions would require measurements of the individual user which is almost impossible. Additionally, using huge databases with HRTF's for subjects having similar head diameters and pinnae structures (dunno, how those HRTF's work) are not feasible for mobile applications as memory space is limited. Therefore, the aim of this project was to develop an computationally efficient and general HRTF model, yet, keeping the quality of the 3-D sound as good as possible. We therefore used the model provided on a theoretical basis in \cite{Brown1998} by implementing a combination of filters and delays in pure data and C. This audio engine was then embedded in a mobile application. Sensor data provided by the phone or tablet was used to compute from which direction the sound should appear to be coming from. With the application users should be able to discover a virtual sound space situated in Copenhagen. This means that our HRTF model should satisfy two major requirements. 
+\\1. It should provide direction cues that are good enough to guide the user to the position where a specific sound is situated.\\2. It should give the user a feeling of how far the sound is away from the users current location.\\The first aim of course is bound to accuracy of the GPS signal and orientation data provided by the individual mobile phone. We hypothized that using a general HRTF model should be of sufficient quality to satisfy the first requirement since sensory data can be rather noisy anyways which would be overfitted by a very precise HRTF model.\\The second hypothesis was that providing some interaction (button press on sound, then distance cues slides from farthest to current location etc.) could habituate the user to be able after some training to approximate the distance of the sound from the users current location.
 
 Taken both hypothesises together the user should experience a soundscape in at least 2-dimensions, azimuth and distance.
 
@@ -497,9 +502,15 @@ Our application required two main sensory information. We needed the GPS locatio
 \subsection{Audio engine}
 The audio engine was the most crucial part of our applications. As shortly mentioned in the introduction (and/or state of the art in 3-D sound) we decided to use a filter based HRTF model which claimed to be both 'efficient' and of reasonable 'quality' \cite{Brown1997} in order to achieve a satisfying user experience and an efficient real time application. We basicly followed the workflow (order of filter and delay lines) given in \cite{Brown1997} and depicted in figure ... . 
 
+\textit{Andrea}
+
 First the sound had to be split up in ....
 Second .....
 Third IID and ITD
+
+\includegraphics[scale=0.75]{graphics/graphic.png} 
+
+
  We therefore used the analog filter models provided in \cite{Brown1997} and further specified in \cite{Brown1998}. The head shadow filter, implementing the ILD, was given by the following analog transfer function:
 \begin{equation}\label{eq:analog}
 H\left( s,\theta\right) = \frac{\alpha (\theta)s+\beta}{s+\beta},\: where\:\beta = \frac{2c}{a}
