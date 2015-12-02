@@ -111,6 +111,7 @@
 % *** MATH PACKAGES ***
 %
 \usepackage{amsmath}
+\usepackage{breqn}
 % A popular package from the American Mathematical Society that provides
 % many useful and powerful commands for dealing with mathematics.
 %
@@ -352,9 +353,6 @@ HTRF, mobile devices, soundscape, Pure Data, OpenFrameworks
 
 
 
-
-
-
 \section{Introduction}
 
 The auditory system is used by the humans for several purposes in the daily life. One of this purposes is to provide the necessary information to localize sound sources in various dimensions, (width, height, depth) and it is even possible to guess the size of the source.\\
@@ -369,9 +367,12 @@ A lot of research on modeling 3-D sound has been done with fairly good solutions
 
 Taken both hypothesises together the user should experience a soundscape in at least 2-dimensions, azimuth and distance.
 
-First, some state of the art research on 3-D sound will be provided. That section will be followed by the presentation of our implementation of the audio engine as well as the main application. In the last part we will present the results obtained by testing our application and discuss those in light of the two hypothesises stated above.
- 
-\hfill December, 2015
+The purpose of this paper is...\textit{(it should be short, specific and immediate)}
+
+First, some state of the art research on audio augmented reality will be provided. That section will be followed by the presentation of our implementation of the audio engine as well as the main application. In the last part we will present the results obtained by testing our application and discuss those in light of the two hypotheses stated above.
+
+\hfill 
+December, 2015
 
 
 % An example of a floating figure using the graphicx package.
@@ -494,13 +495,63 @@ Finally, with the advent of portable systems such as sensors-equipped smartphone
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The application}
-We decided to develop our application for android. Nevertheless, we did not use the API provided by Android Studio but instead used openFrameworks which is a ...... (reference). The reasons why we decided to develop using this programming environment was the need of a fast communication between the mobile device and our programm code. Since programming in C can be directly translated into machine code and does not need to be interpreted by a virtual machine as it is the case for java (reference) we hoped to increase the speed of our application to fulfill the needs of a realtime application. Additionally openFrameworks as open source project provides a multitude of addons enabling us to benefit from already solved problems. (include a list of addons we used maybe). As last but rather minor point as far as our motivation for this application was concerned it should be mentioned that programming independent from a specific API such as those provided for Android or iOS makes modifying our application to run on a different operating system easier as the main code is written platform independent.
+\subsection{openFrameworks}
+We decided to develop our application for Android platform. Nevertheless, we did not use the facilities and the built-in code provided by Android Studio, but instead we decided to use openFrameworks. 
 
-\subsection{Sensory data extraction}
-Our application required two main sensory information. We needed the GPS location of the user to calculate the distance to the sounds that were placed on fixed GPS locations in addition to the angle the user is heading relative to the sound sources. To access the GPS data we used an already existing addon called ?ofxMaps and ofxGeo? (reference to webpage/gitrepository). (Something about smoothing if we used it, and maybe we have to look into the code how they used smoothing). To calculate the angle between the heading of the user and the sound source we had to extract the bearing between our location and the location of the sound (reference and some explanation about bearing maybe?) as well as the heading of our mobile phone relative to the magnetic south (geographic north pole). The bearing could be accessed via the ofxGeo addon. In order to access the compass orientation we built our own addon accessing the 'SENSOR TYPE ORIENTATION' provided by the android API. Having this information we now had to differentiate between four cases: (some images and explenation about how we calculatet the angle between our heading orientation and the sound). In order to smooth the sensory data (especially for the orientation) we filtered the sensory information by computing the median of a chunk of mediansize instances of the sensor output. 
+The reasons why we decided to develop using this programming environment was the need of a fast communication between the mobile platform and our program code. It works using C++ language, which implies that the code is compiled directly into assembly language and hence works very fast \cite{} and does not need to be interpreted by a virtual machine as it is the case for a java-built environment such as Android Studio \cite{}. \\
+Discussing all the steps involved in the building process is beyond the scope of this paper (and more information can be found in \cite{} and \cite{}), but a short explanation of what is openFrameworks and the main operations used to achieve our application will be given. \\
+\subsubsection{Description}
+OpenFrameworks, by definition given on its website, is:
+\begin{center}
+{\footnotesize{\textit{an open source C++ toolkit for creative coding}}\cite{}}
+\end{center}
+Since it is entirely written in C++, distributed under MIT license and actually runs on five operative systems and four IDEs, it undoubtedly presents some kind of advantages. It gives the opportunity to several users to deal with code designed to be minimal and easy to grasp and use it on the favourite IDE. In that case, we use both OS X and Windows platform, and Xcode and Visual Studio as integrated development environment. That \textit{simple and intuitive framework for experimentation} \cite{} is designed to work as a general purpose glue and wraps together several commonly used libraries, such as \emph{OpenGl, OpenCv, PortAudio} and many more. Nowadays, this is a popular platform for experiments in generative and sound art and creating interactive installations and audiovisual performances \cite{}. The current operative version is \emph{0.9.0}.
+
+\subsubsection{Addons}
+its design philosophy claims for a collaborative environment. It thrives on the contributions of many people, and collaborate mainly on \emph{addons} and projects. An \emph{addons} is made of several snippets of code put together in order to extend openFrameworks functionality, bring some external framework and allow it to be integrated into openFrameworks project or make specific and complicated tasks easier and reusable in other contexts \cite{}. It also generally contains the library itself in a form that is ready to be linked to project binaries. In our case, as depicted in the next section, we used several \textit{third-party} addons and built our own library called \emph{ofxOrientation} to access sensors information about localization and orientation and provide the HTRF model with right values. 
+
+\subsubsection{Main issues}
+openFrameworks requires such lots efforts to be mastered and its learning rate is quite steep. Its weakness is in fact due to the lack of documentation and people who don't have at least some programming background could feel quite uncomfortable. Hopefully, its community is continuously providing discussion and projects, while addons are released with some example to compile and have to be created using a bunch of accurate rules.
+
+\subsubsection{The openFrameworks project}
+all openFrameworks project have a similar structure of folders and files. The most important folder among then is for sure the \emph{src} folder. It contains all the source codes and consists at least of \texttt{main.cpp} (containing the \texttt{main( )} function to let the operating system start the application), \texttt{ofApp.h} (containing declaration of the specific class) and \texttt{ofApp.cpp}, which contains definition of all functions declared in the previous file. All the methods in that class are \emph{event-handling} methods, that is they are triggered in response to events that happens inside the application such as mouse scrolling and program quitting \note{}. 
+
+To create a new project, we used the Project Generator wizard located in the same directory and directly provided by the environment. Such a way is simple and it is especially useful when dealing with several addons, which are automatically linked. Once we got the structure, we could access every source file in the \emph{src} folder. At its simplest, working with an openFrameworks project is adding new code to the appropriate method, or just create a new one and declare it in the \texttt{ofApp.cpp}. In \cite{} a further explanation of the main methods and their workflow is provided.
+
+\subsubsection{Compiling}
+\textit{soon...}
+
+ 
+
+\subsection{Sensor data retrieving}
+Our application required two kind of sensors data: \emph{GPS} and \emph{orientation}. 
+\begin{itemize}  
+\item GPS is a way of determining location that has become amazingly common with the increasing of portable technologies. Any device that receives a GPS signal is 	called a GPS \emph{receiver}. As explained in \cite{} the receiver calculates its position by precisely timing the signals sent by the GPS satellites.
+We needed the GPS user position to calculate the distance to the sounds that were placed on fixed locations in the real environment. 
+\item orientation usually is derived using a combination of field sensors, such as accelerometer and magnetometer. 
+In this case, we needed orientation to define the angle the user is heading relative to the sound sources.
+\end{itemize}
+
+To access the GPS data we used \emph{ofxMaps} and \emph{ofxGeo} addons (reference to webpage/gitrepository). Reading the GPS position on an Android platform requires a listening mechanism and we implemented it in openFrameworks by calling the \texttt{ofRegisterGPSEvent()} in the \texttt{setup()} method of our main code. We also added a method to our application, in the \texttt{ofApp.h} precisely, to handle the updates from the Android OS system calls. It is named \texttt{locationChanged()} and adds an event handler for the dispatched event \cite{}. Moreover, the \texttt{startGPS()} method is called at the beginning and \texttt{stopPGS()} should call when quitting the application to avoid an overconsumption of phone battery.
+
+{\footnotesize \textit{(Something about smoothing if we used it, and maybe we have to look into the code how they used smoothing).}}
+
+Since we are dealing with some kind of filtering depending on the sound sources position (e.g. the sound could appear in front of the user as well as behind), it is necessary to take into consideration the user's orientation. That is basically the angle created between the heading of the user and the geographic north pole. Initially, we assumed the user always faced to the north, i.e. the angle between the user and the geographic north pole\footnote{There is a difference between \emph{geographic} and \emph{magnetic} north pole.} is equal to 0. If we can discard the deviation of the user's orientation, it is possible to define the angle between the user and the sound source as the \emph{true bearing \footnote{It is possible refer to it simply as \emph{bearing}.}}. This is, by definition
+\begin{quote}
+{\footnotesize{\textit{the angle measured in degrees in a clockwise direction \footnote{All bearings are measured in a horizontal plane.} from the north line \cite{}.}}}
+\end{quote}
+
+If we also assume a sound source as a point that radiates in every directions, we could easily calculate the bearing of the user from the sound source, as shown in (add figure). The bearing could be accessed via the \emph{ofxGeo} addon, which contains a specific method called \emph{GeoUtils::bearingHaversine} that uses the \textbf{`haversine`} formula:
+\begin{dmath}
+\theta = atan2(sin (\delta \gamma)cos(\varphi_2), cos(\phi_1)sin(\varphi_2)-sin(\varphi_1)cos(\varphi_2)cos(\delta \gamma)) 
+\end{dmath} 
+
+where \varphi is the \emph{latitude}, \delta is the \emph{longitude}.
+
+Once we got the bearing, we can start supposing that the angle between the heading of the user and the sound source should be the sum of the bearing and the direction the user is facing. Doing so, we can retrieve it using a compass. In order to access the compass orientation we built our own addon accessing the 'SENSOR TYPE ORIENTATION' provided by the android API. Having this information we now had to differentiate between four cases: (some images and explanation about how we calculated the angle between our heading orientation and the sound). In order to smooth the sensor data (especially for the orientation) we filtered the sensory information by computing the median of a chunk of mediansize instances of the sensor output. 
 
 \subsection{Audio engine}
-The audio engine was the most crucial part of our applications. As shortly mentioned in the introduction (and/or state of the art in 3-D sound) we decided to use a filter based HRTF model which claimed to be both 'efficient' and of reasonable 'quality' \cite{Brown1997} in order to achieve a satisfying user experience and an efficient real time application. We basicly followed the workflow (order of filter and delay lines) given in \cite{Brown1997} and depicted in figure ... . 
+The audio engine was the most crucial part of our applications. As shortly mentioned in the introduction we decided to use a filter based HRTF model which claimed to be both 'efficient' and of reasonable 'quality' \cite{Brown1997} in order to achieve a satisfying user experience and an efficient real time application. We basicly followed the workflow (order of filter and delay lines) given in \cite{Brown1997} and depicted in figure ... . 
 
 \textit{Andrea}
 
@@ -508,10 +559,11 @@ First the sound had to be split up in ....
 Second .....
 Third IID and ITD
 
+\hfill
 \includegraphics[scale=0.75]{graphics/graphic.png} 
 
 
- We therefore used the analog filter models provided in \cite{Brown1997} and further specified in \cite{Brown1998}. The head shadow filter, implementing the ILD, was given by the following analog transfer function:
+We therefore used the analog filter models provided in \cite{Brown1997} and further specified in \cite{Brown1998}. The head shadow filter, implementing the ILD, was given by the following analog transfer function:
 \begin{equation}\label{eq:analog}
 H\left( s,\theta\right) = \frac{\alpha (\theta)s+\beta}{s+\beta},\: where\:\beta = \frac{2c}{a}
 \end{equation}
