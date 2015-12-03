@@ -1,0 +1,117 @@
+#N canvas -44 103 1157 568 10;
+#X obj 3 14 cnv 15 400 230 empty empty empty 20 12 0 14 -237165 -66577
+0;
+#X obj 624 14 cnv 15 500 230 empty empty Sound_item_1 20 12 0 14 -233017
+-66577 0;
+#X obj 671 222 dac~;
+#X text 700 98 Distance of the sound. The sound master volume will
+be computer according to them and also to the GPS coordinates given
+to the sound \, which are the second and third arguments to [sounditem]
+(yes \, that is the distance).;
+#X text 740 161 Azimuth angle between user and sound (radians);
+#X text 669 73 Turn or off the sound item;
+#X text 17 154 [sounditem] has as arguments \; - the name of the file
+to load \; And receives as inlets \; - onoff: turn on or off the dsp
+\; - distance: user gps coordinates \; - azimuth: angle between user
+and sound (radians);
+#X text 17 21 [soundengineMAIN] will be the main patch dealing with
+sound playback \; It will receive for each sound \, if it is on or
+off \, the distance and the azimuth angle between the user \; It will
+contain several [sounditem]s \, which are objects containing and processing
+each different sound file.;
+#X obj 4 254 cnv 15 180 200 empty empty Sound_item_2 20 12 0 14 -233017
+-66577 0;
+#X obj 194 254 cnv 15 180 200 empty empty Sound_item_3 20 12 0 14 -233017
+-66577 0;
+#X obj 384 254 cnv 15 180 200 empty empty Sound_item_4 20 12 0 14 -233017
+-66577 0;
+#X obj 574 254 cnv 15 180 200 empty empty Sound_item_5 20 12 0 14 -233017
+-66577 0;
+#X obj 319 490 dac~;
+#X obj 580 391 sounditem heidi.wav;
+#X obj 412 14 cnv 15 200 230 empty empty OF_Receiver 20 12 0 14 -204786
+-66577 0;
+#X obj 437 60 r play;
+#X obj 437 81 route 1 2 3 4 5;
+#X floatatom 665 104 5 0 0 0 - - -, f 5;
+#X floatatom 700 164 5 0 0 0 - - -, f 5;
+#X floatatom 630 74 5 0 0 0 - - -, f 5;
+#X obj 769 36 unpack f f f;
+#X obj 769 17 r tosounditem1;
+#X obj 437 184 s tosounditem1;
+#X obj 454 164 s tosounditem2;
+#X obj 471 144 s tosounditem3;
+#X obj 489 124 s tosounditem4;
+#X obj 506 104 s tosounditem5;
+#N canvas 0 50 450 300 doc 0;
+#X text 28 23 The receiver expects a compound message from the openframeworks
+application. The message contains the sound index \, the distance \,
+and the azimuth angle to the user.;
+#X text 38 70 message example:;
+#X msg 46 91 2 30 1.57 1;
+#X text 127 92 send to the sound number 2 \; distance = 30 meters \;
+azimuth = 1.57 radians \; onoff = 1 (so play it);
+#X restore 545 18 pd doc;
+#X obj 786 339 hsl 128 15 -3.14 3.14 0 0 empty empty empty -2 -8 0
+10 -262144 -1 -1 3100 1;
+#X text 797 321 azimuth;
+#X obj 786 299 hsl 128 15 0 20 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 800 1;
+#X text 797 281 distance;
+#X msg 783 255 1;
+#X obj 390 326 unpack f f f;
+#X obj 390 307 r tosounditem4;
+#X obj 200 326 unpack f f f;
+#X obj 200 307 r tosounditem3;
+#X obj 10 326 unpack f f f;
+#X obj 10 307 r tosounditem2;
+#X obj 580 326 unpack f f f;
+#X obj 580 307 r tosounditem5;
+#X text 814 258 on off;
+#X obj 19 131 sounditem filename;
+#X obj 630 181 sounditem sexy.wav;
+#X obj 200 391 sounditem a.wav;
+#X obj 390 391 sounditem piano-a.wav;
+#X obj 10 391 sounditem Elvis.wav;
+#X connect 13 0 12 0;
+#X connect 13 1 12 1;
+#X connect 15 0 16 0;
+#X connect 16 0 22 0;
+#X connect 16 1 23 0;
+#X connect 16 2 24 0;
+#X connect 16 3 25 0;
+#X connect 16 4 26 0;
+#X connect 17 0 43 1;
+#X connect 18 0 43 2;
+#X connect 19 0 43 0;
+#X connect 20 0 19 0;
+#X connect 20 1 17 0;
+#X connect 20 2 18 0;
+#X connect 21 0 20 0;
+#X connect 28 0 13 2;
+#X connect 30 0 13 1;
+#X connect 32 0 13 0;
+#X connect 33 0 45 0;
+#X connect 33 1 45 1;
+#X connect 33 2 45 2;
+#X connect 34 0 33 0;
+#X connect 35 0 44 0;
+#X connect 35 1 44 1;
+#X connect 35 2 44 2;
+#X connect 36 0 35 0;
+#X connect 37 0 46 0;
+#X connect 37 1 46 1;
+#X connect 37 2 46 2;
+#X connect 38 0 37 0;
+#X connect 39 0 13 0;
+#X connect 39 1 13 1;
+#X connect 39 2 13 2;
+#X connect 40 0 39 0;
+#X connect 43 0 2 0;
+#X connect 43 1 2 1;
+#X connect 44 0 12 0;
+#X connect 44 1 12 1;
+#X connect 45 0 12 0;
+#X connect 45 1 12 1;
+#X connect 46 0 12 0;
+#X connect 46 1 12 1;
