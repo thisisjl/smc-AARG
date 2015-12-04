@@ -316,7 +316,7 @@ HTRF, mobile devices, soundscape, Pure Data, OpenFrameworks
 
 
 A lot of research on modeling 3-D sound has been done with fairly good solutions (references). The best results can be obtained by those models implementing 3-D sound using personalized HRTF functions which needs tedious measuring of impulse responses etc (reference). Since mobile applications as well as multimedia productions are usually aimed at a big number of users, implementing personalized HRTF functions would require measurements of the individual user which is almost impossible. Additionally, using huge databases with HRTF's for subjects having similar head diameters and pinnae structures (dunno, how those HRTF's work) are not feasible for mobile applications as memory space is limited. Therefore, the aim of this project was to develop an computationally efficient and general HRTF model, yet, keeping the quality of the 3-D sound as good as possible. We therefore used the model provided on a theoretical basis in \cite{Brown1998} by implementing a combination of filters and delays in pure data and C. This audio engine was then embedded in a mobile application. Sensor data provided by the phone or tablet was used to compute from which direction the sound should appear to be coming from. With the application users should be able to discover a virtual sound space situated in Copenhagen. This means that our HRTF model should satisfy two major requirements. 
-\\1. It should provide direction cues that are good enough to guide the user to the position where a specific sound is situated.\\2. It should give the user a feeling of how far the sound is away from the users current location.\\The first aim of course is bound to accuracy of the GPS signal and orientation data provided by the individual mobile phone. We hypothized that using a general HRTF model should be of sufficient quality to satisfy the first requirement since sensory data can be rather noisy anyways which would be overfitted by a very precise HRTF model.\\The second hypothesis was that providing some interaction (button press on sound, then distance cues slides from farthest to current location etc.) could habituate the user to be able after some training to approximate the distance of the sound from the users current location.
+\\1. It should provide direction cues that are good enough to guide the user to the position where a specific sound is situated.\\2. The implemented HRTF model should provide and intuitive way of locating a sound source from an qualitative aspect. \\The first aim of course is bound to accuracy of the GPS signal and orientation data provided by the individual mobile phone. We hypothized that using a general HRTF model should be of sufficient quality to satisfy the first requirement since sensory data can be rather noisy anyways which would be overfitted by a very precise HRTF model.\\ ===Something about the second hypothesis===
 
 Taken both hypothesises together the user should experience a soundscape in at least 2-dimensions, azimuth and distance.
 
@@ -520,21 +520,56 @@ include pictures of user interface etc.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Experimental design}
+\section{The experimental design}
 
-\subsection{Test group}
+The aim of our experiment was to investigate how fast users were able to locate and navigate to a single sound source using our 3-D audio engine compared to a simple panning and 2/d distance calculation which served as a baseline performance. 
 
-\subsection{Methodology and procedure}
-As outlined in \cite{}, there is a lack of formal methodology on how to analyse and interpret user data that is not just qualitative, especially in an outdoor mobile audio-augmented reality environment. To supply it, we set out to design an initial pilot study by focusing on the user's performance and experience both qualitatively and quantitatively. 
+Additionally we assessed a qualitative analysis of how intuitive it was for subjects to locate the sound as well as investigating whether the sound seemed to be embedded in the real scenery. (look at the questionaire again)
 
-(nr) users participate in the study. \textit{we could add something like this: they all reported normal hearing and were right-handed. (nr) of these users had used GPS-based systems before. None were paid for their participation. (nr) different participants tested each of the (n) auditory display conditions described in the previous section while (n) tested only conditions no. (set conditions). The experiment lasted no more than (set time)}.
+(Here we can write a one paragraph preview of our results.)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Materials and methods}
+\subsubsection{Participants}
+Data were collected from ... participants (... women and ... men; mean age: ..., ranging from ... to ... years) coming from different backgrounds.\footnote{However, ... were master students in Sound and Music Computing at Aalborg University Copenhagen.} ... students were already familiar with 3-D audio sound and/or audio navigation before conduction of the experiment. All other participants were naive. All participants reported normal or corrected to normal vision and no hearing deficits. Participants received no form of compensation other than gratitude. 
 
-First, user were asked to familiarize themselves with the system by [\ldots]. This procedure served to check the presence of the GPS signal inside the system prior to starting the test and also provide participants with the chance to ask question about the correct usage. They were then asked to [\ldots]. Participants were instructed to [\ldots]. At the end of each trial, participants were asked to fill a questionnaire and provide informal feedback about their experience. 
+\subsubsection{Apparatus and stimuli}
+The experiment took place in ... . The mobile device used was a ... connected to ... headphones. The experiment was conducted with one person at a time. Sufficient breaks between trials were ensured 
+
+To create the auditory stimulus, digital vocal recordings of a male voice (age: ...) were collected using a ... . Recordings were done with ... bits of resolution for amplitude at a sampling rate of ...  kHz. Auditory stimuli were normalized in peak amplitude so that at the minimal distance to the soundsource (1.5m) using the maximal level of volume on the mobile device, the soundlevel of each soundsource was at ... dB. 
+
+\subsubsection{Design}
+The experiment comprised one condition which comprised two within subject factors at 2 levels (sound engine).
+
+The sound engine was either our 3-D audio engine (3-D) or a simple panning and distance amplitude modulation (panning).
+
+The starting point was fixed and the distance of the soundsource from that point was always 50 meters. However, the sound could appear at any angle from the fixed starting point. (maybe a figure of that?)
+
+For all trials the same soundfile was played. Each participant performed a total of ... trials meaning ... trials in each of the 4 conditions. Participants were encouraged to take a short break whenever they felt fatigued.
+
+\subsubsection{Procedure}
+The position of the sound sources in the different trials were completely randomized (apart from the distance of the sound source to the starting point) within and between subjects independently from the sound engine. This ensured that participants could not predict the location of the sound in the next trial. The order of trials with the one or the other sound engine was not randomized within subjects. Nevertheless, half of the participants started the experiment with the 3-D audio engine while the other half started with the audio panning sound engine to counterbalance for effects related to training.
+
+Each trial was initiated by the subjects with a button press after which the sound source was played and a timer was initiated. No visual feedback about the location of the sound source or the already passed time to locate it was given. For localization, subjects had to rely solely on the auditory cues given via the headphones. /footnote{Admittedly participants could have used the position of the starting point as some kind of referenced fixpoint. However, questions after the experiment about applied strategies did not reveal that participants used visual cues for localizing the sound source.} As soon as the participants reached a radius of 1.5m around the sound file, an earcon was played indicating the success of the localization and the internal timer was stopped. The participants went back to the initial starting point and could start the next trial.
+
+Before the experiment, participants were familiarized with the target sound as well as the earcons that were played when having reached the location of the virtual sound source. Additionally all participants performed at least 2 practice trials with each sound engine before the actual measurements with that sound engine began. The practice trials were completely identical to the real trials. 
+
+Participants were informed about... (how much do we want to tell them? possible distances?) but knew nothing about... . They were instructed to find the sound source as fast as possible. After 5 minutes of searching for a sound the trial was aborted and labeled as "not found". 
+
+\subsubsection{Analyses}
+... trials were excluded because the analyses of GPS data for those trials revealed very poor accuracy. The other trials which could be analysed for each factor combination summed up to ... trials for each of the two conditions in total.
+
+The threshold chosen to correctly reject the null-hypothesis was always 5\% ($\alpha$ = .05). Reported p-values were computed using the Greenhouse-Geisser correction because Mauchly's test for sphericity was significant for several main and interaction effects (We have to check if that is the case in our experiment). Also the number of participants was relatively low reducing the power of Mauchly's test for sphericity \citep[p. 72]{Rasch2014}. Therefore, sphericity could not always be assumed even when Mauchly's test for sphericity was not significant \citep[p. 72]{Rasch2014}. (Nevertheless, differences in significances (one test was significant the other was not) between sphericity assumed and Greenhouse-Geisser corrected values were rare.) 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Results}
-We measured objective and subjective data on user performance. The objective measure we investigated were [\ldots], while for subjective analysis we present feedback from the participant questionnaire. 
 \subsubsection{Quantitative analysis}
-\subsubsection{User feedback}
+We mesured objective and subjective data on user performance. 
+For the objective measure we computed a two-way repeated measures analysis of variance (ANOVA) on time needed to find the sound source comprising two within-subject factors, namely 'audio engine' at two levels (3-D vs. panning) and 'distance' at two levels (25 vs. 50 meter), There were signicant main eects of ...(F(... ...) = ..., p = ...).
+
+\subsubsection{Qualitative analysis}
+ Subjective analysis of the quality of the soundscape was investigated with a questionnaire participants had to fill out after each sound engine condition. The questions were aimed at examining ... of the soundscape. Therefore participants used a 5 point lickertscale 
 
 
 
