@@ -112,37 +112,11 @@
 %
 \usepackage{amsmath}
 \usepackage{breqn}
-% A popular package from the American Mathematical Society that provides
-% many useful and powerful commands for dealing with mathematics.
-%
-% Note that the amsmath package sets \interdisplaylinepenalty to 10000
-% thus preventing page breaks from occurring within multiline equations. Use:
-%\interdisplaylinepenalty=2500
-% after loading amsmath to restore such page breaks as IEEEtran.cls normally
-% does. amsmath.sty is already installed on most LaTeX systems. The latest
-% version and documentation can be obtained at:
-% http://www.ctan.org/pkg/amsmath
-
-
-
 
 
 % *** SPECIALIZED LIST PACKAGES ***
 %
 %\usepackage{algorithmic}
-% algorithmic.sty was written by Peter Williams and Rogerio Brito.
-% This package provides an algorithmic environment fo describing algorithms.
-% You can use the algorithmic environment in-text or within a figure
-% environment to provide for a floating algorithm. Do NOT use the algorithm
-% floating environment provided by algorithm.sty (by the same authors) or
-% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
-% algorithm float types and packages that provide these will not provide
-% correct IEEE style captions. The latest version and documentation of
-% algorithmic.sty can be obtained at:
-% http://www.ctan.org/pkg/algorithms
-% Also of interest may be the (relatively newer and more customizable)
-% algorithmicx.sty package by Szasz Janos:
-% http://www.ctan.org/pkg/algorithmicx
 
 
 
@@ -150,22 +124,6 @@
 % *** ALIGNMENT PACKAGES ***
 %
 %\usepackage{array}
-% Frank Mittelbach's and David Carlisle's array.sty patches and improves
-% the standard LaTeX2e array and tabular environments to provide better
-% appearance and additional user controls. As the default LaTeX2e table
-% generation code is lacking to the point of almost being broken with
-% respect to the quality of the end results, all users are strongly
-% advised to use an enhanced (at the very least that provided by array.sty)
-% set of table tools. array.sty is already installed on most systems. The
-% latest version and documentation can be obtained at:
-% http://www.ctan.org/pkg/array
-
-
-% IEEEtran contains the IEEEeqnarray family of commands that can be used to
-% generate multiline equations as well as matrices, tables, etc., of high
-% quality.
-
-
 
 
 % *** SUBFIGURE PACKAGES ***
@@ -355,12 +313,7 @@ HTRF, mobile devices, soundscape, Pure Data, OpenFrameworks
 
 \section{Introduction}
 
-The auditory system is used by the humans for several purposes in the daily life. One of this purposes is to provide the necessary information to localize sound sources in various dimensions, (width, height, depth) and it is even possible to guess the size of the source.\\
 
-When a sound event   occurs,   the   waves   travel   in   all directions and ,  when  they  reach  us,  our  brain  compares  the signals  received  by  the  left  and  right  ears  to  localize  it in the horizontal plane.  The spectrum of the signal reaching each ear is different, since the amplitude and phase information differs. These binaural cues are  called  interaural  intensity  difference  (IID)  and  interaural time  difference  (ITD). However, these cues are not enough to localize accurately the source since with this information the listener can not determine if the sound is in front, above or behind. This region of positions where all sounds yield the same ITD and IID is called cone of confusion.
-This ambiguity can be solved with the information provided by the filter effect caused by the pinnae, head, shoulders and torso, which modify the spectrum of the sound that reach the listener's ears. The sum of all these features are characterized by the Head Related Transfer Functions (HTRF) which are not only frequency and direction-dependent but also differ from person to person. It is therefore hard to generalize the spectral features among individuals. It is well known that using a HTRF from one person in another can significantly impair the  perception due to the individual differences in the anatomy, but it has also been shown that some people localize better the sounds than others, and their HTRFs are suitable for a large group of listeners. \\
-
-Thus, having a database with own measured HRTF for each user would be the ideal case. However, because of the large amount of data that the customized HTRFs required to generate externalized virtual sources would entail, and the expensive real-time computation of them every time the sound source moves, it is desirable to find a more efficient HTRF model.\\
 
 A lot of research on modeling 3-D sound has been done with fairly good solutions (references). The best results can be obtained by those models implementing 3-D sound using personalized HRTF functions which needs tedious measuring of impulse responses etc (reference). Since mobile applications as well as multimedia productions are usually aimed at a big number of users, implementing personalized HRTF functions would require measurements of the individual user which is almost impossible. Additionally, using huge databases with HRTF's for subjects having similar head diameters and pinnae structures (dunno, how those HRTF's work) are not feasible for mobile applications as memory space is limited. Therefore, the aim of this project was to develop an computationally efficient and general HRTF model, yet, keeping the quality of the 3-D sound as good as possible. We therefore used the model provided on a theoretical basis in \cite{Brown1998} by implementing a combination of filters and delays in pure data and C. This audio engine was then embedded in a mobile application. Sensor data provided by the phone or tablet was used to compute from which direction the sound should appear to be coming from. With the application users should be able to discover a virtual sound space situated in Copenhagen. This means that our HRTF model should satisfy two major requirements. 
 \\1. It should provide direction cues that are good enough to guide the user to the position where a specific sound is situated.\\2. It should give the user a feeling of how far the sound is away from the users current location.\\The first aim of course is bound to accuracy of the GPS signal and orientation data provided by the individual mobile phone. We hypothized that using a general HRTF model should be of sufficient quality to satisfy the first requirement since sensory data can be rather noisy anyways which would be overfitted by a very precise HRTF model.\\The second hypothesis was that providing some interaction (button press on sound, then distance cues slides from farthest to current location etc.) could habituate the user to be able after some training to approximate the distance of the sound from the users current location.
@@ -371,120 +324,44 @@ The purpose of this paper is...\textit{(it should be short, specific and immedia
 
 First, some state of the art research on audio augmented reality will be provided. That section will be followed by the presentation of our implementation of the audio engine as well as the main application. In the last part we will present the results obtained by testing our application and discuss those in light of the two hypotheses stated above.
 
-\hfill 
-December, 2015
 
 
-% An example of a floating figure using the graphicx package.
-% Note that \label must occur AFTER (or within) \caption.
-% For figures, \caption should occur after the \includegraphics.
-% Note that IEEEtran v1.7 and later has special internal code that
-% is designed to preserve the operation of \label within \caption
-% even when the captionsoff option is in effect. However, because
-% of issues like this, it may be the safest practice to put all your
-% \label just after \caption rather than within \caption{}.
-%
-
-%
-%\begin{figure}[!t]
-%\centering
-%\includegraphics[width=2.5in]{myfigure}
-% where an .eps filename suffix will be assumed under latex, 
-% and a .pdf suffix will be assumed for pdflatex; or what has been declared
-% via \DeclareGraphicsExtensions.
-%\caption{Simulation results for the network.}
-%\label{fig_sim}
-%\end{figure}
-
-%\begin{figure*}[!t]
-%\centering
-%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
-%\label{fig_first_case}}
-%\hfil
-%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
-%\label{fig_second_case}}
-%\caption{Simulation results for the network.}
-%\label{fig_sim}
-%\end{figure*}
-%
-% Note that often IEEE papers with subfigures do not employ subfigure
-% captions (using the optional argument to \subfloat[]), but instead will
-% reference/describe all of them (a), (b), etc., within the main caption.
-% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
-% labels, the optional argument to \subfloat must be present. If a
-% subcaption is not desired, just leave its contents blank,
-% e.g., \subfloat[].
-
-
-% An example of a floating table. Note that, for IEEE style tables, the
-% \caption command should come BEFORE the table and, given that table
-% captions serve much like titles, are usually capitalized except for words
-% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
-% and up, which are usually not capitalized unless they are the first or
-% last word of the caption. Table text will default to \footnotesize as
-% the IEEE normally uses this smaller font for tables.
-% The \label must come after \caption as always.
-%
-%\begin{table}[!t]
-%% increase table row spacing, adjust to taste
-%\renewcommand{\arraystretch}{1.3}
-% if using array.sty, it might be a good idea to tweak the value of
-% \extrarowheight as needed to properly center the text within the cells
-%\caption{An Example of a Table}
-%\label{table_example}
-%\centering
-%% Some packages, such as MDW tools, offer better commands for making tables
-%% than the plain LaTeX2e tabular which is used here.
-%\begin{tabular}{|c||c|}
-%\hline
-%One & Two\\
-%\hline
-%Three & Four\\
-%\hline
-%\end{tabular}
-%\end{table}
-
-
-% Note that the IEEE does not put floats in the very first column
-% - or typically anywhere on the first page for that matter. Also,
-% in-text middle ("here") positioning is typically not used, but it
-% is allowed and encouraged for Computer Society conferences (but
-% not Computer Society journals). Most IEEE journals/conferences use
-% top floats exclusively. 
-% Note that, LaTeX2e, unlike IEEE journals/conferences, places
-% footnotes above bottom floats. This can be corrected via the
-% \fnbelowfloat command of the stfloats package.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{State of the art}
+\subsection{State of the art}
 The concept of augmented audio reality (AAR) deals with techniques where a real sound environment is extended with virtual auditory environments. Nowadays, the progress in audio technology and computing predicts the introduction of completely new type of interactive audio applications \cite{}. Advances in mobile technologies have made it possible to create audio augmented spaces almost anywhere. For instance, spatial auditory displays that can provide the user with landmarks and are capable to attract the user's attention have been tested and introduced \cite{}. Many experiments, qualitative and quantitative researches have been designed so far to better understand the way in which people usually perceive multiple simultaneous sources differently placed and to increase the level of immersion in the experience.
 
-\subsection{Audio reality vs Virtual reality}
+\subsubsection{Audio reality vs Virtual reality}
 First of all, the possibility to hear the natural acoustic environment around a user differentiates the concept of augmented reality audio from the traditional concept of a virtual reality audio environment \cite{}. In virtual reality, generally participants are abstracted from the natural environment and are surrounded only by a completely synthetic one (acoustic and/or visual). On the opposite, in augmented reality a virtual environment is \emph{superimposed} on a real one. To be more specific, in a mobile audio augmented environment participants are able to interact with the virtual audio mixed with real vision and soundscape.
 
-\subsection{Augmented audio reality}
+\subsubsection{Augmented audio reality}
 The aim of AAR is to combine both real and virtual sound scenes so that virtual sounds are perceived as an extension to the natural ones. Virtual sound, as expressed in \cite{}, could be originated from another environment or artificially created. Two extreme possible augmentations are possible. The former is a perfect augmentation of the listener's auditory environment and is achieved when the listener is unable to predict whether a sound source is part of the real or the virtual audio environment. The latter is a high-quality virtual auditory scene with some characteristic that are not possible in acoustic environments.
 
-\subsection{Previous works}
+\subsubsection{Previous work}
 Several work has been done in this field although this area is relatively new. \emph{Audio Aura} (Mynatt 1995) was one of the first project to deal exclusively with audio in augmented reality system. It basically consisted in providing information to users as they travelled through their workspace. These information was triggered by particular locations in the workspace. The use of audio in \emph{Audio Aura} is particularly interesting because most of its cues were associated to sounds from nature rather then recorded vocal, speech or synthetic sounds. Similar in approach to \emph{Audio Aura} was the \emph{Automated Tour Guide} (Bederson 1995). In both cases, triggers are readily identifiable, still and rarely changing. Those augmented sounds were associated to pre-determined locations in space and there was no need to determine the precise location of an individual. \\
 A successive work, \emph{Hear\&There}, was able to determine the location and head position of the user using the information from GPS and a digital compass \cite{}. A user could listen to these `audio imprints` by walking into the area that a specific imprint occupied, which was triggered by proximity. The essential premise of  \emph{Hear\&There} was that a physical environment has been augmented with audio. All the sounds and the data were gathered inside that system. Since a `Field Use` has been developed, in which the user wear a hardware portable system, \emph{Hear\&There} has undoubtedly contributed to an improved definition of mobile augmented reality environment.
 
-\subsection{Localization/Lateralization}
+\subsubsection{Human sound localization}
+The auditory system is used by the humans for several purposes in the daily life. One of this purposes is to provide the necessary information to localize sound sources in various dimensions, (width, height, depth) and it is even possible to guess the size of the source.\\
+
+When a sound event   occurs,   the   waves   travel   in   all directions and ,  when  they  reach  us,  our  brain  compares  the signals  received  by  the  left  and  right  ears  to  localize  it in the horizontal plane.  The spectrum of the signal reaching each ear is different, since the amplitude and phase information differs. These binaural cues are  called  \emph{interaural  intensity  difference}  (IID)  and  \emph{interaural time  difference}  (ITD). However, these cues are not enough to localize accurately the source since with this information the listener can not determine if the sound is in front, above or behind. This region of positions where all sounds yield the same ITD and IID is called \textit{cone of confusion}.
+This ambiguity can be solved with the information provided by the filter effect caused by the pinnae, head, shoulders and torso, which modify the spectrum of the sound that reach the listener's ears. The sum of all these features are characterized by the Head Related Transfer Functions (HTRF) which are not only frequency and direction-dependent but also differ from person to person. That dependency makes therefore hard to generalize the spectral features among individuals. It is well known that using a HTRF from one person in another can significantly impair the  perception due to the individual differences in the anatomy, but it has also been shown that some people localize better the sounds than others, and their HTRFs are suitable for a large group of listeners.
+
+%Thus, having a database with own measured HRTF for each user would be the ideal case. However, because of the large amount of data that the customized HTRFs required to generate externalized virtual sources would entail, and the expensive real-time computation of them every time the sound source moves, this is almost impossible. In addition, due to the limited memory space of the mobile devices, having a database with standard HTRFs would not be the best choice and it is desirable to find a more efficient HTRF model.\\
+
+\subsubsection{Localization/Lateralization}
 Headphones are much related to the concept of mobile and wearable application and have been used successfully in many virtual reality applications. Headphones, and earphones as well, make the ear receive the sound separately. That is advantageous because the whole scale of differences between the signals coming to ears, i.e. \emph{interaural time differences} (ITD) and \emph{interaural intensity differences} (IID), can be manipulated separately and individually \cite{}.\\
 Generally speaking, when listening to sounds coming from headphones, the sound sources seem to be located inside the subject's head \cite{}. This is usually called \emph{lateralization}, or intracranial, or `inside-head-localization` (IHL). On the opposite, there is the effect of having the sound outside the heed, according to specific direction and distance, i.e. \emph{localization} or `outside-head-localization` (OHL).
 It has been necessary distinguish localization inside and outside the head. This difference in terminology has reinforced the assumption that there is a basic difference between perception of sound conveyed by headphones and sound that reaches the ear from an external and real source \cite{}. It has also demonstrated that a listener can make a clear distinction in headphones listening between localized (that is, sound inside the head) and lateralized sounds sources and that both these type can coexist in the listener's experience \cite{}.  
 
-\subsection{Issues in headphones-conveyed sound}
+\subsubsection{Issues in headphones-conveyed sound}
 Headphones auralization often produces an incorrect localization of virtual sound sources \cite{} and many issues could be experienced.\\
-\subsubsection{Externalization errors}
+\paragraph{Externalization errors}
 externalization is related to the perception of auditory distance such that there is a continuum in perceived locations of sources from inside the listener's head to any external position. One of the most severe problem in AAR is a perceived effect of \emph{lateralization} even in sounds that should be located in a real environment. To avoid such effect several techniques can be used. For instance, as expressed in \cite{}, the effect of a lateralized sound in headphone listening can be produced using amplitude and delay differences in two headphone channels corresponding to each source. The main goal of virtual acoustic synthesis should be to produce sounds that seem \emph{externalized}, that is, outside the listener's body \cite{}. In order to make a sound source externalized and let the user be capable of a correct judgement of the distance of the sound more sophisticated binaural techniques are needed. In particular, spectrum differences in the two ear signal due to \emph{head-related transfer functions}, HRTF's, play an important role. Moreover, acoustic cues such as the amount of reverberation and control of signal level are necessary for a successful auralization of a virtual sound source. These are explained into details in further sections.
-\subsubsection{Localization errors}
+\paragraph{Localization errors}
 \emph{localization} error refers to the deviation of the reported position of a sound source from a measured `target` location, i.e. the listener fails in matching the correct location of the sound. Localization errors can be divided in \emph{azimuth} (deviations along the horizontal plane) and \emph{elevation} errors (deviation from eye-level elevation) \cite{}. Dynamic cues related to head turning and other movements of either a listener or a sound source should be taken into consideration \cite{}. These errors might come from some location accuracy. Determining the accurate position of the user of one of the most important task in an AR system owing to that system always produces output to the used based on his or her location in space \cite{}. That said, any location inaccuracy should be avoided using GPS receiver with high sensitivity and reliability. Here, the implementation design takes a crucial role as noted in \cite{}.
-\subsubsection{Reversal errors}
+\paragraph{Reversal errors}
 sometimes called front-back or back-front `confusion`, that error refers to the judgement of a sound source as located on the opposite side of the interaural axis than the target position \cite{}. An informal proposal has been made, which tries to help the user in front-back discrimination on the basis of the familiarity of the effects on timbre cues, e.g. unique patterns in \emph{early reflections} depending on the virtual sound location. Indeed, this has not yet been verified experimentally.
 
-\subsection{Conclusion}
+\subsubsection{Conclusion}
 Although it is a recent field of research, several works and experiments in the context of audio augmented reality has been made so far. Most of research has been done mainly on the use of visual information with very little attention paid to the audio aspects.\\ 
 The use of audio and its refinement in an augmented reality environment is a big deal. There are many issues and challenges that an audio environment presents \cite{}. For instance, providing a way for the user to orient himself or herself in an only-audio virtual space is even more difficult than providing visual cues. Another interesting aspects of audio, as also explained in \cite{}, is the fact that audio does not persist and it starts disappearing as soon as it has heard. That deals with a more attention due to the audio to capture every detail that may help the user retrieve a specific sound in a specific location.\\
 Finally, with the advent of portable systems such as sensors-equipped smartphone and laptop a further development of \emph{geolocated AR} has been made possible. That systems use locational sensing and user tracking technologies (e.g. Global Positioning System, or GPS) to let the user navigate through a audio-augmented space and to get a more defined listener's position, which is essential for a correct externalizaton. More information will be given in further sections.
@@ -551,41 +428,91 @@ where \varphi is the \emph{latitude}, \delta is the \emph{longitude}.
 Once we got the bearing, we can start supposing that the angle between the heading of the user and the sound source should be the sum of the bearing and the direction the user is facing. Doing so, we can retrieve it using a compass. In order to access the compass orientation we built our own addon accessing the 'SENSOR TYPE ORIENTATION' provided by the android API. Having this information we now had to differentiate between four cases: (some images and explanation about how we calculated the angle between our heading orientation and the sound). In order to smooth the sensor data (especially for the orientation) we filtered the sensory information by computing the median of a chunk of mediansize instances of the sensor output. 
 
 \subsection{Audio engine}
-The audio engine was the most crucial part of our applications. As shortly mentioned in the introduction we decided to use a filter based HRTF model which claimed to be both 'efficient' and of reasonable 'quality' \cite{Brown1997} in order to achieve a satisfying user experience and an efficient real time application. We basicly followed the workflow (order of filter and delay lines) given in \cite{Brown1997} and depicted in figure ... . 
+The audio engine was the most crucial part of our applications. As shortly mentioned in the introduction we decided to use a filter based HRTF model which claimed to be both 'efficient' and of reasonable 'quality' \cite{Brown1997} in order to achieve a satisfying user experience and an efficient real time application. We basically followed the workflow (order of filter and delay lines) given in \cite{Brown1997} and depicted in figure \ref{fig:workflow}. 
 
-\textit{Andrea}
-
-First the sound had to be split up in ....
-Second .....
-Third IID and ITD
-
-\hfill
-\includegraphics[scale=0.75]{graphics/graphic.png} 
+\begin{figure}
+	\centering
+		\includegraphics[scale=0.75]{graphics/graphic.png}
+	\caption{Components of the model provided on a theoretical basis in \citep{Brown1997}}
+	\label{fig:workflow}
+\end{figure}
 
 
-We therefore used the analog filter models provided in \cite{Brown1997} and further specified in \cite{Brown1998}. The head shadow filter, implementing the ILD, was given by the following analog transfer function:
+First, the monoaural sound which has been processed to add a range effect, goes to a head model and a room model. The binaural output of the former is then processed by the pinna model, and finally each one is added to the output of the room model to provide an externalization effect.
+
+In the following formulas, the angles are measured in radians in the interaural-polar system, where $\theta$ is the azimuth angle and $\phi$ is the elevation angle. However, in our application the latter is no considered since all the sound sources are placed in the horizontal plane without elevation.
+
+
+\subsubsection{The head model}
+
+The path length difference from the sound source to the two ears and the shadowing effect produced by the head at the far ear, lead to a delay and a intensity difference in the sound arriving at the left and right ears. In order to estimate the time delay, the Woodworth's formulas are used \citep{Woodworth} :
+
+\begin{equation}\label{eq:ITDfront}
+ITD = (a/c)[\theta + sin(\theta)]   \; [0 \leq \theta \leq \pi/2]
+\end{equation}
+
+\begin{equation}\label{eq:ITDback}
+ITD = (a/c)[\pi - \theta + sin(\theta)]  \; [\pi/2 \leq \theta \leq \pi]
+\end{equation}
+
+
+where \textit{a} is the approximated head radius, $\theta$ is the azimuth angle in radians and \textit{c} is the head radius. The time differences between the audio signal reaches the head and the ears are therefore
+
+\begin{equation}\label{eq:ITDL}
+T_{L} (\theta) = \frac{a+a\theta}{c}
+\end{equation}
+
+\begin{equation}\label{eq:ITDR}
+T_{R} (\theta) = \frac{a-a sin(\theta)}{c}
+\end{equation}
+
+These formulas refers to a source in front of the head and on the right, with azimuths $0 \leq \theta \leq \pi/2$. If the source is placed on the right ($- \pi/2 \leq \theta \leq 0$), the expressions are reversed.
+
+
+% We therefore used the analog filter models provided in \cite{Brown1997} and further specified in \cite{Brown1998}.
+
+ % The head shadow filter, implementing the ILD, was given by the following analog transfer function:
+ The head shadow effect is characterized in the following analog transfer function:
 \begin{equation}\label{eq:analog}
 H\left( s,\theta\right) = \frac{\alpha (\theta)s+\beta}{s+\beta},\: where\:\beta = \frac{2c}{a}
 \end{equation}
+
+
+\emph{====Maybe this part in the appendix...?====}
+
 Since this is an analog transfer function we had to derive the digital version by applying a bilinear transform applying the following substitution:
+
 \begin{equation}\label{eq:bilin}
-s = \frac{2}{T} \frac{z-1}{z+1},\: where\:T\:is\:???
+s = \frac{2}{T} \frac{z-1}{z+1},\: where\:T\:is\:the\:sampling\:interval\:in\:seconds
 \end{equation}
-Applying the substitutin in Equation~\ref{eq:bilin} to Equation~\ref{eq:analog} we get the following filter function in the digital domain:
+
+Applying the substitution in equation~\ref{eq:bilin} to equation~\ref{eq:analog}, we get the following filter function in the digital domain:
 \begin{equation}\label{eq:filter}
 H\left( z,\theta\right) = \frac{\alpha (\theta)(\frac{2}{T} \frac{z-1}{z+1})+\beta}{(\frac{2}{T} \frac{z-1}{z+1})+\beta}
 \end{equation}
+
 To identify the filter coefficients we transformed Equation ~\ref{eq:filter} and obtained the following frequency response\footnote{For the derivation of Equation~\ref{eq:filterparam} see appendix A}:
 \begin{equation}\label{eq:filterparam}
 H\left( z,\theta\right) = \frac{2\alpha (\theta)+T\beta+z^{-1}(-2\alpha(\theta)+T\beta)}{2+T\beta+z^{-1}(-2+T\beta)} = \frac{Y(z)}{X(z)}
 \end{equation} 
+
+\emph{======================================}
+
 This gives us the filter coefficients $a_0 = 2\alpha (\theta)+T\beta$ and $a_1 = -2\alpha(\theta)+T\beta$ as well as $b_0 = 2+T\beta$ and $b_1 = -2+T\beta$. Since we could not use the filter function in Matlab which has as input values the filter coefficientes we had to isolate the output $Y(z)$ in Equation~\ref{eq:filterparam} as well as going from the frequency to the time domain. The result is given in Equation~\ref{eq:out}\footnote{For the derivation of Equation~\ref{eq:out} see appendix B}:
 \begin{equation}\label{eq:out}
 Y[n] =\frac{a_0X[n]+a_1X[n-1]-b_1Y[n-1]}{b_0}
 \end{equation} 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{The pinna model}
+
+
+
+\subsubsection{The room model}
+
+Finally, a room model is added to the two outputs of the pinna model...
+
+
+
 
 
 \subsection{User interface}
