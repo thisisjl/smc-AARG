@@ -391,7 +391,7 @@ its design philosophy claims for a collaborative environment. It thrives on the 
 openFrameworks requires such lots efforts to be mastered and its learning rate is quite steep. Its weakness is in fact due to the lack of documentation and people who don't have at least some programming background could feel quite uncomfortable. Hopefully, its community is continuously providing discussion and projects, while addons are released with some example to compile and have to be created using a bunch of accurate rules.
 
 \subsubsection{The openFrameworks project}
-all openFrameworks project have a similar structure of folders and files. The most important folder among then is for sure the \emph{src} folder. It contains all the source codes and consists at least of \texttt{main.cpp} (containing the \texttt{main( )} function to let the operating system start the application), \texttt{ofApp.h} (containing declaration of the specific class) and \texttt{ofApp.cpp}, which contains definition of all functions declared in the previous file. All the methods in that class are \emph{event-handling} methods, that is they are triggered in response to events that happens inside the application such as mouse scrolling and program quitting \note{}. 
+all openFrameworks project have a similar structure of folders and files. The most important folder among then is for sure the \emph{src} folder. It contains all the source codes and consists at least of \texttt{main.cpp} (containing the \texttt{main( )} function to let the operating system start the application), \texttt{ofApp.h} (containing declaration of the specific class) and \texttt{ofApp.cpp}, which contains definition of all functions declared in the previous file. All the methods in that class are \emph{event-handling} methods, that is they are triggered in response to events that happens inside the application such as mouse scrolling and program quitting.% \note{}.  MATTIA what does that mean?
 
 To create a new project, we used the Project Generator wizard located in the same directory and directly provided by the environment. Such a way is simple and it is especially useful when dealing with several addons, which are automatically linked. Once we got the structure, we could access every source file in the \emph{src} folder. At its simplest, working with an openFrameworks project is adding new code to the appropriate method, or just create a new one and declare it in the \texttt{ofApp.cpp}. In \cite{} a further explanation of the main methods and their workflow is provided.
 
@@ -423,7 +423,7 @@ If we also assume a sound source as a point that radiates in every directions, w
 \theta = atan2(sin (\delta \gamma)cos(\varphi_2), cos(\phi_1)sin(\varphi_2)-sin(\varphi_1)cos(\varphi_2)cos(\delta \gamma)) 
 \end{dmath} 
 
-where \varphi is the \emph{latitude}, \delta is the \emph{longitude}.
+where $\varphi$ is the \emph{latitude}, $\delta$ is the \emph{longitude}.
 
 Once we got the bearing, we can start supposing that the angle between the heading of the user and the sound source should be the sum of the bearing and the direction the user is facing. Doing so, we can retrieve it using a compass. In order to access the compass orientation we built our own addon accessing the 'SENSOR TYPE ORIENTATION' provided by the android API. Having this information we now had to differentiate between four cases: (some images and explanation about how we calculated the angle between our heading orientation and the sound). In order to smooth the sensor data (especially for the orientation) we filtered the sensory information by computing the median of a chunk of mediansize instances of the sensor output. 
 
@@ -433,7 +433,7 @@ The audio engine was the most crucial part of our applications. As shortly menti
 \begin{figure}
 	\centering
 		\includegraphics[scale=0.75]{graphics/graphic.png}
-	\caption{Components of the model provided on a theoretical basis in \citep{Brown1997}}
+	\caption{Components of the model provided on a theoretical basis in \cite{Brown1997}}
 	\label{fig:workflow}
 \end{figure}
 
@@ -445,7 +445,7 @@ In the following formulas, the angles are measured in radians in the interaural-
 
 \subsubsection{The head model}
 
-The path length difference from the sound source to the two ears and the shadowing effect produced by the head at the far ear, lead to a delay and a intensity difference in the sound arriving at the left and right ears. In order to estimate the time delay, the Woodworth's formulas are used \citep{Woodworth} :
+The path length difference from the sound source to the two ears and the shadowing effect produced by the head at the far ear, lead to a delay and a intensity difference in the sound arriving at the left and right ears. In order to estimate the time delay, the Woodworth's formulas are used \cite{Woodworth} :
 
 \begin{equation}\label{eq:ITDfront}
 ITD = (a/c)[\theta + sin(\theta)]   \; [0 \leq \theta \leq \pi/2]
@@ -559,14 +559,14 @@ Participants were informed about... (how much do we want to tell them? possible 
 \subsubsection{Analyses}
 ... trials were excluded because the analyses of GPS data for those trials revealed very poor accuracy. The other trials which could be analysed for each factor combination summed up to ... trials for each of the two conditions in total.
 
-The threshold chosen to correctly reject the null-hypothesis was always 5\% ($\alpha$ = .05). Reported p-values were computed using the Greenhouse-Geisser correction because Mauchly's test for sphericity was significant for several main and interaction effects (We have to check if that is the case in our experiment). Also the number of participants was relatively low reducing the power of Mauchly's test for sphericity \citep[p. 72]{Rasch2014}. Therefore, sphericity could not always be assumed even when Mauchly's test for sphericity was not significant \citep[p. 72]{Rasch2014}. (Nevertheless, differences in significances (one test was significant the other was not) between sphericity assumed and Greenhouse-Geisser corrected values were rare.) 
+The threshold chosen to correctly reject the null-hypothesis was always 5\% ($\alpha$ = .05). Reported p-values were computed using the Greenhouse-Geisser correction because Mauchly's test for sphericity was significant for several main and interaction effects (We have to check if that is the case in our experiment). Also the number of participants was relatively low reducing the power of Mauchly's test for sphericity \cite[p. 72]{Rasch2014}. Therefore, sphericity could not always be assumed even when Mauchly's test for sphericity was not significant \cite[p. 72]{Rasch2014}. (Nevertheless, differences in significances (one test was significant the other was not) between sphericity assumed and Greenhouse-Geisser corrected values were rare.) 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Results}
 \subsubsection{Quantitative analysis}
 We mesured objective and subjective data on user performance. 
-For the objective measure we computed a two-way repeated measures analysis of variance (ANOVA) on time needed to find the sound source comprising two within-subject factors, namely 'audio engine' at two levels (3-D vs. panning) and 'distance' at two levels (25 vs. 50 meter), There were signicant main eects of ...(F(... ...) = ..., p = ...).
+For the objective measure we computed a two-way repeated measures analysis of variance (ANOVA) on time needed to find the sound source comprising two within-subject factors, namely 'audio engine' at two levels (3-D vs. panning) and 'distance' at two levels (25 vs. 50 meter), There were significant main effects of ...(F(... ...) = ..., p = ...).
 
 \subsubsection{Qualitative analysis}
  Subjective analysis of the quality of the soundscape was investigated with a questionnaire participants had to fill out after each sound engine condition. The questions were aimed at examining ... of the soundscape. Therefore participants used a 5 point lickertscale 
