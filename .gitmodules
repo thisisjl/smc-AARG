@@ -1,3 +1,6 @@
 [submodule "app_versions/exampleTweenPd"]
 	path = app_versions/exampleTweenPd
 	url = https://github.com/thisisjl/exampleTweenPd
+[submodule "app_versions/Panning"]
+	path = app_versions/Panning
+	url = https://github.com/girardimatthew/Panning

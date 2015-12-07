@@ -1,4 +1,4 @@
-#N canvas -44 103 1157 568 10;
+#N canvas 0 103 1157 568 10;
 #X obj 3 14 cnv 15 400 230 empty empty empty 20 12 0 14 -237165 -66577
 0;
 #X obj 624 14 cnv 15 500 230 empty empty Sound_item_1 20 12 0 14 -233017
@@ -53,10 +53,10 @@ and the azimuth angle to the user.;
 azimuth = 1.57 radians \; onoff = 1 (so play it);
 #X restore 545 18 pd doc;
 #X obj 786 339 hsl 128 15 -3.14 3.14 0 0 empty empty empty -2 -8 0
-10 -262144 -1 -1 3100 1;
+10 -262144 -1 -1 0 1;
 #X text 797 321 azimuth;
 #X obj 786 299 hsl 128 15 0 20 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 800 1;
+-1 -1 0 1;
 #X text 797 281 distance;
 #X msg 783 255 1;
 #X obj 390 326 unpack f f f;
@@ -73,6 +73,11 @@ azimuth = 1.57 radians \; onoff = 1 (so play it);
 #X obj 200 391 sounditem a.wav;
 #X obj 390 391 sounditem piano-a.wav;
 #X obj 10 391 sounditem Elvis.wav;
+#X obj 938 406 readsf~;
+#X obj 998 407 bng 15 250 50 0 empty empty loop 17 7 0 10 -262144 -1
+-1;
+#X obj 938 304 r earconebang;
+#X msg 938 346 open sexy.wav \, 1;
 #X connect 13 0 12 0;
 #X connect 13 1 12 1;
 #X connect 15 0 16 0;
@@ -115,3 +120,8 @@ azimuth = 1.57 radians \; onoff = 1 (so play it);
 #X connect 45 1 12 1;
 #X connect 46 0 12 0;
 #X connect 46 1 12 1;
+#X connect 47 0 12 1;
+#X connect 47 0 12 0;
+#X connect 47 1 48 0;
+#X connect 49 0 50 0;
+#X connect 50 0 47 0;
