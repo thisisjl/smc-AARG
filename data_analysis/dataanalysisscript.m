@@ -149,9 +149,9 @@ legend(h,{'train', 'test'});
 title('duration variance values for each model')
 ylabel('time (ms)')
 
-[counts bins] = hist(y);
-bar(y)
-text(bins,y,['y = ', num2str(counts(i))], 'VerticalAlignment', 'top', 'FontSize', 8)
+% [counts bins] = hist(y);
+% bar(y)
+% text(bins,y,['y = ', num2str(counts(i))], 'VerticalAlignment', 'top', 'FontSize', 8)
 
 % 	%% Plot duration
 %     figure;
