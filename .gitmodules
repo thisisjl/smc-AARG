@@ -4,3 +4,6 @@
 [submodule "app_versions/Panning"]
 	path = app_versions/Panning
 	url = https://github.com/girardimatthew/Panning
+[submodule "app_versions/HRTF"]
+	path = app_versions/HRTF
+	url = https://github.com/girardimatthew/HRTF
