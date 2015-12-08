@@ -67,9 +67,13 @@ for dd = 1:length(datadir)
         numberoftrials = max(unique(trialnumber));
 
         trial_duration = zeros(1,numberoftrials);
+        sound_found = zeros(1,numberoftrials);
+        
         for i = 1:numberoftrials
             % Did the subject found the sound?
             earconPlayed_trial = (0 < sum(earconPlayed(trialnumber == i)));
+            
+            sound_found(i) = earconPlayed_trial;
 
             if ~earconPlayed_trial
                 fprintf('Trial %i: subject did not find sound\n',i);
@@ -88,9 +92,9 @@ for dd = 1:length(datadir)
             
             trial_start = timestamps_trial(1);                             % get trial starting time
             trial_end = timestamps_trial(end);                             % get trial ending time
-            sound_found = timestamps_trial(idx_found);                     % get time at what sound was found
+            ts_sound_found = timestamps_trial(idx_found);                  % get time at what sound was found
             
-            trial_duration(i) = sound_found - trial_start;                 % compute duration of trial
+            trial_duration(i) = ts_sound_found - trial_start;              % compute duration of trial
         end  
 
         %% check which trials are training testing
@@ -100,11 +104,25 @@ for dd = 1:length(datadir)
         %% create data struct ds
         ds = [ds struct('name',filename,'trial_duration',trial_duration,...
             'trial_idx_train',trial_idx_train,'trial_idx_test',trial_idx_test,...
-            'model',char(strtok(datadir(dd),'_')))];
+            'model',char(strtok(datadir(dd),'_')),'sound_found',sound_found)];
 
     end
 end
 
+%% Plot durations of each model
+figure(1); hold on
+figure(2); hold on
+for i = 1:size(ds,2)                                        % for each data structure
+    switch ds(i).model                                      % see which model is it
+        case 'hrtf'                                         % if it is hrtf,
+            figure(1);
+            plot(ds(i).trial_duration(ds(i).trial_idx_test),'*-');
+            % figure(1).XTickLabel = {'1','2','3','4'};
+        case 'panning'                                      % if it is panning
+            figure(2);
+            plot(ds(i).trial_duration(ds(i).trial_idx_test),'*-');
+    end
+end
 
 
 %% Compute durations of each model
@@ -150,13 +168,21 @@ var_pan_train = var(durs_pan_train);
 %% Plotting
 disp('Plotting')
 
+% Plot all the values in boxplot
+figure;
+boxplot([durs_hrtf_test(1:length(ds)/2*3)' durs_pan_test(1:length(ds)/2*3)'],...
+    'labels',{'hrtf','panning'});
+title('duration comparison')
+xlabel('audio models')
+
+
 % Plot mean
 y = [mean_hrtf_train mean_hrtf_test; mean_pan_train mean_pan_test];
 figure;h = bar(y);
 set(gca,'XTickLabel',{'hrtf', 'panning'})
 legend(h,{'train', 'test'});
 title('mean duration for each model')
-ylabel('time (ms)')
+ylabel('time (s)')
 
 % Plot variance
 y = [var_hrtf_train var_hrtf_test; var_pan_train var_pan_test];
@@ -164,8 +190,11 @@ figure;h = bar(y);
 set(gca,'XTickLabel',{'hrtf', 'panning'})
 legend(h,{'train', 'test'});
 title('duration variance values for each model')
-ylabel('time (ms)')
+ylabel('time (s)')
 
+
+
+%%
 % [counts bins] = hist(y);
 % bar(y)
 % text(bins,y,['y = ', num2str(counts(i))], 'VerticalAlignment', 'top', 'FontSize', 8)
