@@ -74,12 +74,23 @@ for dd = 1:length(datadir)
             if ~earconPlayed_trial
                 fprintf('Trial %i: subject did not find sound\n',i);
             end
-
+           
             % compute the time needed to find the sound
-            timestamps_trial = timestamps(trialnumber == i);    % get all the timestamps of trial i
-            trial_start = timestamps_trial(1);                  % get starting time
-            trial_end = timestamps_trial(end);                  % get ending time
-            trial_duration(i) = trial_end - trial_start;        % compute duration of trial
+            timestamps_trial = timestamps(trialnumber == i);               % get all the timestamps of trial i
+            earconPlayed_trial = earconPlayed(trialnumber == i);           % get all the earcon values of trial i
+            
+            if earconPlayed_trial                                          % if sound was found,
+                idx_found = find(earconPlayed_trial);                      % get data index of when
+                idx_found = idx_found(1); 
+            else                                                           % if sound was not found
+                idx_found = length(timestamps_trial);                      % use end of trial (for now)
+            end
+            
+            trial_start = timestamps_trial(1);                             % get trial starting time
+            trial_end = timestamps_trial(end);                             % get trial ending time
+            sound_found = timestamps_trial(idx_found);                     % get time at what sound was found
+            
+            trial_duration(i) = sound_found - trial_start;                 % compute duration of trial
         end  
 
         %% check which trials are training testing
@@ -97,6 +108,7 @@ end
 
 
 %% Compute durations of each model
+disp('Computing durations of each model')
 
 durs_hrtf_test  = [];                                       % initialize array for hrtf durations
 durs_hrtf_train = [];
@@ -122,12 +134,23 @@ end
 
 
 % compute mean values:
+disp('Compute mean values')
 mean_hrtf_test = mean(durs_hrtf_test);
 mean_hrtf_train = mean(durs_hrtf_train);
 mean_pan_test = mean(durs_pan_test);
 mean_pan_train = mean(durs_pan_train);
 
-% Plot them
+% compute variance values:
+disp('Compute variance values')
+var_hrtf_test = var(durs_hrtf_test);
+var_hrtf_train = var(durs_hrtf_train);
+var_pan_test = var(durs_pan_test);
+var_pan_train = var(durs_pan_train);
+
+%% Plotting
+disp('Plotting')
+
+% Plot mean
 y = [mean_hrtf_train mean_hrtf_test; mean_pan_train mean_pan_test];
 figure;h = bar(y);
 set(gca,'XTickLabel',{'hrtf', 'panning'})
@@ -135,13 +158,7 @@ legend(h,{'train', 'test'});
 title('mean duration for each model')
 ylabel('time (ms)')
 
-% compute variance values:
-var_hrtf_test = var(durs_hrtf_test);
-var_hrtf_train = var(durs_hrtf_train);
-var_pan_test = var(durs_pan_test);
-var_pan_train = var(durs_pan_train);
-
-% Plot them
+% Plot variance
 y = [var_hrtf_train var_hrtf_test; var_pan_train var_pan_test];
 figure;h = bar(y);
 set(gca,'XTickLabel',{'hrtf', 'panning'})
