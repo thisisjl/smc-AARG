@@ -1,19 +1,22 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.6.17)  4 DEC 2015 10:19
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.26)  8 DEC 2015 11:07
 entering extended mode
-**main.tex
-(C:\Users\Andrea\Documents\SMC\Project\smc-AARG\report\main.tex
+**C:/Users/Lars/Desktop/Uni/Copenhagen/1.*Semester/Project/Git/smc-AARG/report/
+main.tex
+
+("C:/Users/Lars/Desktop/Uni/Copenhagen/1. Semester/Project/Git/smc-AARG/report/
+main.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
 croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
-lician, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, iceland
+lician, german, german-x-2012-05-30, greek, gujarati, hindi, hungarian, iceland
 ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
  lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
-german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
 ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
 an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
-(C:\Users\Andrea\AppData\Roaming\MiKTeX\2.9\tex\latex\ieeetran\IEEEtran.cls
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ieeetran\IEEEtran.cls"
 Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
 -- See the "IEEEtran_HOWTO" manual for usage information.
 -- http://www.michaelshell.org/tex/ieeetran/
@@ -26,7 +29,7 @@ Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
 \@IEEEtrantmptoksA=\toks14
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 503.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex/latex\psnfss\ot1ptm.fd"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 -- Using 8.5in x 11in (letter) paper.
@@ -120,36 +123,36 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \IEEEPARstartletwidth=\dimen125
 \c@IEEEbiography=\count93
 \@IEEEtranrubishbin=\box27
-) (C:\Users\Andrea\AppData\Roaming\MiKTeX\2.9\tex\latex\cite\cite.sty
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\cite\cite.sty"
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex/latex\graphics\graphicx.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex/latex\graphics\keyval.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks15
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex/latex\graphics\graphics.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex/latex\graphics\trig.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex/latex\00miktex\graphics.cfg"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex/latex\pdftex-def\pdftex.def"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex/generic\oberdiek\infwarerr.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex/generic\oberdiek\ltxcmds.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count94
@@ -157,24 +160,24 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen126
 \Gin@req@width=\dimen127
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex/latex\amsmath\amsmath.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
 Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip44
 
 For additional information on amsmath, use the `?' option.
-("C:\Program Files (x86)\MiKTeX 2.9\tex/latex\amsmath\amstext.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
 Package: amstext 2000/06/29 v2.01
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex/latex\amsmath\amsgen.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen128
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex/latex\amsmath\amsbsy.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen129
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex/latex\amsmath\amsopn.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count95
@@ -215,7 +218,8 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-(C:\Users\Andrea\Documents\SMC\Project\smc-AARG\report\main.aux)
+("C:\Users\Lars\Desktop\Uni\Copenhagen\1. Semester\Project\Git\smc-AARG\report\
+main.aux")
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 220.
 LaTeX Font Info:    ... okay on input line 220.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 220.
@@ -230,7 +234,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 220.
 LaTeX Font Info:    ... okay on input line 220.
 
 -- Lines per column: 58 (exact).
-(C:\Users\Andrea\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count107
 \scratchdimen=\dimen137
@@ -243,212 +247,155 @@ LaTeX Font Info:    ... okay on input line 220.
 \MPnumerator=\count111
 \makeMPintoPDFobject=\count112
 \everyMPtoPDFconversion=\toks22
-)
-Underfull \hbox (badness 10000) in paragraph at lines 316--317
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 318--320
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 321--322
-
- []
-
-
-LaTeX Warning: Citation `Brown1998' on page 1 undefined on input line 323.
-
-[1{C:/Users/Andrea/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+) [1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
 ]
-Underfull \hbox (badness 4266) in paragraph at lines 436--437
-[]\OT1/ptm/m/n/10 Headphones au-ral-iza-tion of-ten pro-duces an in-cor-rect
+Underfull \hbox (badness 10000) in paragraph at lines 343--344
+
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 436--437
+Underfull \hbox (badness 2088) in paragraph at lines 356--357
+ \OT1/ptm/m/it/10 6) Is-sues in headphones-conveyed sound: [][] \OT1/ptm/m/n/10
+ Head-phones
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 356--357
 
  []
 
 [2]
-Underfull \hbox (badness 2142) in paragraph at lines 458--460
+Underfull \hbox (badness 2142) in paragraph at lines 378--380
 []\OT1/ptm/m/n/10 The rea-sons why we de-cided to de-velop us-ing this
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 458--460
+Underfull \hbox (badness 10000) in paragraph at lines 378--380
 \OT1/ptm/m/n/10 pro-gram-ming en-vi-ron-ment was the need of a fast
  []
 
 
-Underfull \hbox (badness 5036) in paragraph at lines 458--460
+Underfull \hbox (badness 5036) in paragraph at lines 378--380
 \OT1/ptm/m/n/10 com-mu-ni-ca-tion be-tween the mo-bile plat-form and our
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 458--460
+Underfull \hbox (badness 10000) in paragraph at lines 378--380
 
  []
 
-[3]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 474.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 394.
 
- ("C:\Program Files (x86)\MiKTeX 2.9\tex/latex\psnfss\ot1pcr.fd"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-! Undefined control sequence.
-l.474 ...ouse scrolling and program quitting \note
-                                                  {}.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Underfull \hbox (badness 2961) in paragraph at lines 474--475
+Underfull \hbox (badness 2961) in paragraph at lines 394--395
  \OT1/ptm/m/it/10 4) The open-Frame-works project: [][] \OT1/ptm/m/n/10 all ope
 n-Frame-works
  []
 
+[3]
 
-! LaTeX Error: Environment dmath undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.502 \begin{dmath}
-                   
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.503 \theta
-             = atan2(sin (\delta \gamma)cos(\varphi_2), cos(\phi_1)sin(\varp...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+LaTeX Warning: Citation `Brown1997' on page 4 undefined on input line 434.
 
 
-! LaTeX Error: \begin{document} ended by \end{dmath}.
+LaTeX Warning: Citation `Brown1997' on page 4 undefined on input line 434.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.504 \end{dmath}
-                 
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.504 \end{dmath}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-
-Underfull \hbox (badness 1735) in paragraph at lines 501--505
-\OT1/ptm/m/n/10 bear-ing of the user from the sound source, as shown
- []
-
-
-Underfull \hbox (badness 1354) in paragraph at lines 501--505
-\OT1/ptm/m/it/10 ofx-Geo \OT1/ptm/m/n/10 ad-don, which con-tains a spe-cific me
-thod called
- []
-
-
-Underfull \hbox (badness 3049) in paragraph at lines 501--505
-\OT1/ptm/m/n/10 mula:  $\OML/cmm/m/it/10  \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 a
-tan\OT1/cmr/m/n/10 2(\OML/cmm/m/it/10 sin\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 \O
-T1/cmr/m/n/10 )\OML/cmm/m/it/10 cos\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 '[]\OT1/cm
-r/m/n/10 )\OML/cmm/m/it/10 ; cos\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 []\OT1/cmr/m
-/n/10 )\OML/cmm/m/it/10 sin\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 '[]\OT1/cmr/m/n/10
- ) \OMS/cmsy/m/n/10  $
- []
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.506 where \varphi
-                    is the \emph{latitude}, \delta is the \emph{longitude}.
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.507 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-LaTeX Warning: Citation `Brown1997' on page 4 undefined on input line 511.
-
-
-LaTeX Warning: Citation `Brown1997' on page 4 undefined on input line 511.
-
-
-Underfull \vbox (badness 1960) has occurred while \output is active []
-
- [4]
-<graphics/graphic.png, id=24, 318.43968pt x 397.485pt>
+<graphics/graphic.png, id=16, 319.94531pt x 368.87813pt>
 File: graphics/graphic.png Graphic file (type png)
 
 <use graphics/graphic.png>
-Package pdftex.def Info: graphics/graphic.png used on input line 520.
-(pdftex.def)             Requested size: 238.82918pt x 298.113pt.
+Package pdftex.def Info: graphics/graphic.png used on input line 438.
+(pdftex.def)             Requested size: 239.95839pt x 276.6579pt.
 
 
-LaTeX Warning: Citation `Brown1997' on page 5 undefined on input line 523.
+LaTeX Warning: Citation `Brown1997' on page 4 undefined on input line 439.
+
+[4]
+Overfull \hbox (14.5pt too wide) in paragraph at lines 502--503
+[]\OT1/ptm/m/it/10 ====================================== 
+ []
+
+[5 <C:/Users/Lars/Desktop/Uni/Copenhagen/1. Semester/Project/Git/smc-AARG/repor
+t/graphics/graphic.png>]
+
+LaTeX Warning: Citation `Rasch2014' on page 6 undefined on input line 567.
 
 
-LaTeX Warning: Citation `Brown1998' on page 5 undefined on input line 523.
+LaTeX Warning: Citation `Rasch2014' on page 6 undefined on input line 567.
 
 
-Underfull \vbox (badness 1158) has occurred while \output is active []
+LaTeX Warning: Citation `DeWinter2013' on page 6 undefined on input line 580.
 
- [5 <C:/Users/Andrea/Documents/SMC/Project/smc-AARG/report/graphics/graphic.png
->]
-No file main.bbl.
-(C:\Users\Andrea\Documents\SMC\Project\smc-AARG\report\main.lof)
-\tf@lof=\write3
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6]
+Missing character: There is no â in font ptmri7t!
+Missing character: There is no € in font ptmri7t!
+Missing character: There is no ™ in font ptmri7t!
+
+Underfull \hbox (badness 7832) in paragraph at lines 621--622
+[]\OT1/ptm/m/n/8 P.M. Del-gado. \OT1/ptm/m/it/8 First steps on Pure Datas ap-pr
+oach to real
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 621--622
+\OT1/ptm/m/it/8 time au-dio pro-cess-ing. Com-pil-ing ex-ter-nals. Analysing lo
+p \OT1/ptm/m/n/8 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 621--622
+\OT1/ptm/m/n/8 https://pmdelgado.wordpress.com/2015/09/17/first-steps-on-pure-d
+atas-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 621--622
+\OT1/ptm/m/n/8 approach-to-real-time-audio-processing-compiling-externals-analy
+sing-
+ []
+
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (1.0508pt too wide) in paragraph at lines 652--652
+("C:\Users\Lars\Desktop\Uni\Copenhagen\1. Semester\Project\Git\smc-AARG\report\
+main.lof"
+
+LaTeX Warning: Citation `Brown1997' on page 7 undefined on input line 1.
+
+)
+\tf@lof=\write3
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7]
+Overfull \hbox (1.0508pt too wide) in paragraph at lines 685--685
 [] 
  []
 
-[6] (C:\Users\Andrea\Documents\SMC\Project\smc-AARG\report\main.aux)
+[8
+
+]
+("C:\Users\Lars\Desktop\Uni\Copenhagen\1. Semester\Project\Git\smc-AARG\report\
+main.aux")
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 2709 strings out of 493921
- 40937 string characters out of 3147330
- 104161 words of memory out of 3000000
- 5995 multiletter control sequences out of 15000+200000
- 42233 words of font info for 80 fonts, out of 3000000 for 9000
+ 2718 strings out of 493921
+ 41130 string characters out of 3144878
+ 105230 words of memory out of 3000000
+ 6004 multiletter control sequences out of 15000+200000
+ 43855 words of font info for 83 fonts, out of 3000000 for 9000
  844 hyphenation exceptions out of 8191
- 27i,16n,20p,1407b,232s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,16n,20p,1480b,232s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
 m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program 
 Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Fil
@@ -461,9 +408,9 @@ onts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
 urw/times/utmbi8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/
 utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb
 >
-Output written on main.pdf (6 pages, 167769 bytes).
+Output written on main.pdf (8 pages, 180653 bytes).
 PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
+ 75 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

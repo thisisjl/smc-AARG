@@ -32,7 +32,7 @@
 % Also, note that IEEEtran.cls V1.7 and later provides a builtin
 % \ifCLASSINFOpdf conditional that works the same way.
 % When switching from latex to pdflatex and vice-versa, the compiler may
-% have to be run twice to clear warning/error messages.
+% have to be run twice to clear warning/error fsages.
 
 
 
@@ -111,7 +111,7 @@
 % *** MATH PACKAGES ***
 %
 \usepackage{amsmath}
-\usepackage{breqn}
+%\usepackage{breqn}
 
 
 % *** SPECIALIZED LIST PACKAGES ***
@@ -419,10 +419,13 @@ Since we are dealing with some kind of filtering depending on the sound sources 
 \end{quote}
 
 If we also assume a sound source as a point that radiates in every directions, we could easily calculate the bearing of the user from the sound source, as shown in (add figure). The bearing could be accessed via the \emph{ofxGeo} addon, which contains a specific method called \emph{GeoUtils::bearingHaversine} that uses the \textbf{`haversine`} formula:
-\begin{dmath}
-\theta = atan2(sin (\delta \gamma)cos(\varphi_2), cos(\phi_1)sin(\varphi_2)-sin(\varphi_1)cos(\varphi_2)cos(\delta \gamma)) 
-\end{dmath} 
 
+\begin{equation*}\label{eq:haversine}
+\begin{split}
+	\theta = & atan2(sin (\delta \gamma)cos(\varphi_2)) cos(\phi_1)sin(\varphi_2)\\
+	&-sin(\varphi_1)cos(\varphi_2)cos(\delta \gamma)) \\
+\end{split}
+\end{equation*}
 where $\varphi$ is the \emph{latitude}, $\delta$ is the \emph{longitude}.
 
 Once we got the bearing, we can start supposing that the angle between the heading of the user and the sound source should be the sum of the bearing and the direction the user is facing. Doing so, we can retrieve it using a compass. In order to access the compass orientation we built our own addon accessing the 'SENSOR TYPE ORIENTATION' provided by the android API. Having this information we now had to differentiate between four cases: (some images and explanation about how we calculated the angle between our heading orientation and the sound). In order to smooth the sensor data (especially for the orientation) we filtered the sensory information by computing the median of a chunk of mediansize instances of the sensor output. 
@@ -520,8 +523,7 @@ include pictures of user interface etc.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The experimental design}
-
+\section{The experiment}
 The aim of our experiment was to investigate how fast users were able to locate and navigate to a single sound source using our 3-D audio engine compared to a simple panning and 2/d distance calculation which served as a baseline performance. 
 
 Additionally we assessed a qualitative analysis of how intuitive it was for subjects to locate the sound as well as investigating whether the sound seemed to be embedded in the real scenery. (look at the questionaire again)
@@ -534,42 +536,51 @@ Additionally we assessed a qualitative analysis of how intuitive it was for subj
 Data were collected from ... participants (... women and ... men; mean age: ..., ranging from ... to ... years) coming from different backgrounds.\footnote{However, ... were master students in Sound and Music Computing at Aalborg University Copenhagen.} ... students were already familiar with 3-D audio sound and/or audio navigation before conduction of the experiment. All other participants were naive. All participants reported normal or corrected to normal vision and no hearing deficits. Participants received no form of compensation other than gratitude. 
 
 \subsubsection{Apparatus and stimuli}
-The experiment took place in ... . The mobile device used was a ... connected to ... headphones. The experiment was conducted with one person at a time. Sufficient breaks between trials were ensured 
+The experiment took place in a free field in "Valby Parken" (Coordinates: ...). The mobile device used was a Motorolla Moto G running with Android version 5.0.2. The device was connected to Sony MDR ZX600 stereo headphones. Only one person at a time was tested. 
 
-To create the auditory stimulus, digital vocal recordings of a male voice (age: ...) were collected using a ... . Recordings were done with ... bits of resolution for amplitude at a sampling rate of ...  kHz. Auditory stimuli were normalized in peak amplitude so that at the minimal distance to the soundsource (1.5m) using the maximal level of volume on the mobile device, the soundlevel of each soundsource was at ... dB. 
+To create the auditory stimulus, digital vocal recordings of a male voice (age: ...) were collected using a ... . Recordings were done with ... bits of resolution for amplitude at a sampling rate of ...  kHz. Auditory stimuli were normalized in peak amplitude so that at the minimal distance to the soundsource (7 meter) using the maximal level of volume on the mobile device, the soundlevel of each soundsource was at ... dB. 
 
 \subsubsection{Design}
-The experiment comprised one condition which comprised two within subject factors at 2 levels (sound engine).
+The experiment comprised two within subject factors at 2 levels (sound engine).
 
 The sound engine was either our 3-D audio engine (3-D) or a simple panning and distance amplitude modulation (panning).
 
-The starting point was fixed and the distance of the soundsource from that point was always 50 meters. However, the sound could appear at any angle from the fixed starting point. (maybe a figure of that?)
+The starting point was fixed and the distance of the soundsource from that point was always 48 meters.\footnote{However, because of poor GPS accuracies, the location of the soundsource was calculated with the GPS coordinates provided by the phone sensor instead of the actual fixed position in the free field. This ensured that the initial distance to the sound source was always the same.} The sound could appear at any angle from the starting point.
 
-For all trials the same soundfile was played. Each participant performed a total of ... trials meaning ... trials in each of the 4 conditions. Participants were encouraged to take a short break whenever they felt fatigued.
+For all trials the same soundfile was played. Each participant performed a total of 6 trials meaning 3 trials in each of the two conditions. Participants were encouraged to take a short break whenever they felt fatigued.
 
 \subsubsection{Procedure}
-The position of the sound sources in the different trials were completely randomized (apart from the distance of the sound source to the starting point) within and between subjects independently from the sound engine. This ensured that participants could not predict the location of the sound in the next trial. The order of trials with the one or the other sound engine was not randomized within subjects. Nevertheless, half of the participants started the experiment with the 3-D audio engine while the other half started with the audio panning sound engine to counterbalance for effects related to training.
+The position (angle from the starting point) of the sound sources in the different trials were completely randomized within and between subjects independently from the sound engine. This ensured that participants could not predict the location of the sound in the next trial. The order of trials with the one or the other sound engine was not randomized within subjects. Nevertheless, half of the participants started the experiment with the 3-D audio engine while the other half started with the audio panning sound engine to counterbalance for effects related to training.
 
-Each trial was initiated by the subjects with a button press after which the sound source was played and a timer was initiated. No visual feedback about the location of the sound source or the already passed time to locate it was given. For localization, subjects had to rely solely on the auditory cues given via the headphones. /footnote{Admittedly participants could have used the position of the starting point as some kind of referenced fixpoint. However, questions after the experiment about applied strategies did not reveal that participants used visual cues for localizing the sound source.} As soon as the participants reached a radius of 1.5m around the sound file, an earcon was played indicating the success of the localization and the internal timer was stopped. The participants went back to the initial starting point and could start the next trial.
+Each trial was initiated by the experimenter with a button press after which the sound source was played. No visual feedback about the location of the sound source or the already passed time to locate it was given. For localization, subjects had to rely solely on the auditory cues given via the headphones. /footnote{Admittedly participants could have used the position of the starting point as some kind of referenced fixpoint. However, participants did know nothing about the possible distances of the sound source. Additionally, questions after the experiment about applied strategies did not reveal that participants used visual cues for localizing the sound source.} As soon as the participants reached a radius of 7 meter around the sound source, an earcon was played indicating the success of the localization. The participants went back to the initial starting point and the next trial was started.
 
-Before the experiment, participants were familiarized with the target sound as well as the earcons that were played when having reached the location of the virtual sound source. Additionally all participants performed at least 2 practice trials with each sound engine before the actual measurements with that sound engine began. The practice trials were completely identical to the real trials. 
+Before the experiment, participants were familiarized with the target sound as well as the earcons that were played when having reached the location of the virtual sound source. Additionally, all participants performed at least two practice trials with the sound engine they were tested with first before the actual measurements with that sound engine began. The location in the practice trials were fixed at the same positions for all participants to allow us to guide the subject when they got lost. 
 
-Participants were informed about... (how much do we want to tell them? possible distances?) but knew nothing about... . They were instructed to find the sound source as fast as possible. After 5 minutes of searching for a sound the trial was aborted and labeled as "not found". 
+Participants were instructed to find the sound source as fast as possible. No information about the possible locations (distances and angles) was given to the subjects. Trials which lasted longer than 5 minutes were aborted and labeled as "not found". 
 
 \subsubsection{Analyses}
-... trials were excluded because the analyses of GPS data for those trials revealed very poor accuracy. The other trials which could be analysed for each factor combination summed up to ... trials for each of the two conditions in total.
+... trials were excluded because the analyses of GPS data for those trials revealed very poor accuracy. The other trials which could be analysed summed up to ... trials for each of the two conditions in total.
 
-The threshold chosen to correctly reject the null-hypothesis was always 5\% ($\alpha$ = .05). Reported p-values were computed using the Greenhouse-Geisser correction because Mauchly's test for sphericity was significant for several main and interaction effects (We have to check if that is the case in our experiment). Also the number of participants was relatively low reducing the power of Mauchly's test for sphericity \cite[p. 72]{Rasch2014}. Therefore, sphericity could not always be assumed even when Mauchly's test for sphericity was not significant \cite[p. 72]{Rasch2014}. (Nevertheless, differences in significances (one test was significant the other was not) between sphericity assumed and Greenhouse-Geisser corrected values were rare.) 
+The threshold chosen to correctly reject the null-hypothesis was always 5\% ($\alpha$ = .05). 
+
+WE PROBABLY DONT NEED THIS 
+((Reported p-values were computed using the Greenhouse-Geisser correction because Mauchly's test for sphericity was significant for several main and interaction effects (We have to check if that is the case in our experiment). Also the number of participants was relatively low reducing the power of Mauchly's test for sphericity \cite[p. 72]{Rasch2014}.)) Therefore, sphericity could not always be assumed even when Mauchly's test for sphericity was not significant \cite[p. 72]{Rasch2014}. (Nevertheless, differences in significances (one test was significant the other was not) between sphericity assumed and Greenhouse-Geisser corrected values were rare.) 
+WE PROBABLY DONT NEED THIS 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Results}
 \subsubsection{Quantitative analysis}
-We mesured objective and subjective data on user performance. 
-For the objective measure we computed a two-way repeated measures analysis of variance (ANOVA) on time needed to find the sound source comprising two within-subject factors, namely 'audio engine' at two levels (3-D vs. panning) and 'distance' at two levels (25 vs. 50 meter), There were significant main effects of ...(F(... ...) = ..., p = ...).
+We measured objective and subjective data on user performance. 
+
+For the objective measure we computed a two-sided t-test to compare the results for both sound engines. Analysis revealed that with the ... sound engine participants were significantly faster to locate the sound source (t(df) = 2.84, p = 0.01.). 
+
+If our results are not significant this could be because of low sample size -> "Numerous methodologists have 
+cautioned that a small sample size implies low statistical 
+power, that is, a high probability of Type II error" \cite{DeWinter2013}
 
 \subsubsection{Qualitative analysis}
- Subjective analysis of the quality of the soundscape was investigated with a questionnaire participants had to fill out after each sound engine condition. The questions were aimed at examining ... of the soundscape. Therefore participants used a 5 point lickertscale 
+ Subjective analysis of the quality of the soundscape was investigated with a questionnaire participants had to fill out after each sound engine condition. The questions were aimed at examining ... of the soundscape. Therefore participants used a 10 point lickertscale. Evaluation of the questionaires showed that ... 
 
 
 
