@@ -1,0 +1,102 @@
+files = dir(sprintf('*.txt'));
+
+for f = 1:2                                                                % for each file
+    filename = fullfile(files(f).name);
+
+    fprintf('Analizing file: %s\n',filename);
+
+    fileID = fopen(filename);
+    format = '%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f';
+    data = textscan(fileID,format,'delimiter', ',', 'Headerlines', 1);
+    fclose(fileID);
+
+    data = [data{1} data{2} data{3} data{4} data{5} data{6} data{7} ...
+        data{8} data{9} data{10} data{11} data{12} data{13} data{14} data{15}];
+
+    % time stamp values in seconds
+    timestamps = data(:,1);
+
+    % distance of the subject to the sound location
+    distance_raw = data(:,2);
+    distance_fil = data(:,3);
+
+    % azimuth angle of the subject to the sound location
+    azimuth_raw = data(:,4);
+    azimuth_fil = data(:,5);
+
+    % user latitude and longitude:
+    latitude = data(:,6);
+    longitude = data(:,7);
+    latitude_raw = data(:,8);
+    longitude_raw = data(:,9);
+
+    % sound latitude and longitude:
+    sound_lat = data(:,10);
+    sound_lon = data(:,11);
+
+    currentorientation = data(:,12);    % angle to the north of the device
+
+    % trial information:
+    trialstate = data(:,13);            % 0: idle 1: training 2: testing
+    trialnumber = data(:,14);
+    earconPlayed = data(:,15);
+
+
+    %% for each trial
+    % compute duration
+    numberoftrials = max(unique(trialnumber));
+
+    trial_duration = zeros(1,numberoftrials);
+    sound_found = zeros(1,numberoftrials);
+
+    for i = 1:numberoftrials
+        % Did the subject found the sound?
+        earconPlayed_trial = (0 < sum(earconPlayed(trialnumber == i)));
+
+        sound_found(i) = earconPlayed_trial;
+
+        if ~earconPlayed_trial
+            fprintf('Trial %i/%i: subject did not find sound\n',i,numberoftrials);
+        else
+            % copy all the information of this trial
+            newdata{f,i} = data(trialnumber == i,:);
+
+    %         A1 = [9.9, 9900];
+    %         A2 = [8.8,  7.7 ; ...
+    %               8800, 7700];
+    %         formatSpec = 'X is %4.2f meters or %8.3f mm\n';
+    %         fprintf(formatSpec,A1,A2)
+    %         
+    %         x = 0:.1:1;
+    %         A = [x; exp(x)];
+    % 
+    %         fileID = fopen('exp.txt','w');
+    %         fprintf(fileID,'%6s %12s\n','x','exp(x)');
+    %         fprintf(fileID,'%6.2f %12.8f\n',A);
+    %         fclose(fileID);
+
+
+        end
+    end  
+
+end
+
+%% write good trials to file
+fileID = fopen(fprintf('new_%s',files(1).name),'w');
+formatSpec = '%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f';
+
+for kk = 1:size(newdata,1)
+    for qq = 1:size(newdata,2)
+        
+        for ww = 1:length(newdata{})
+            fprintf(formatSpec,A1,A2)
+        end
+    end
+end
+
+    %         fileID = fopen('exp.txt','w');
+    %         
+    %         fprintf(fileID,'%6.2f %12.8f\n',A);
+    %         fclose(fileID);
+
+
