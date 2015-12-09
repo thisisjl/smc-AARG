@@ -1,7 +1,8 @@
 function [ ds ] = createdatastruct( filename )
     
     fprintf('Analizing file: %s\n',filename);
-
+    
+    % read data
     fileID = fopen(filename);
     format = '%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f';
     data = textscan(fileID,format,'delimiter', ',', 'Headerlines', 1);
@@ -39,14 +40,32 @@ function [ ds ] = createdatastruct( filename )
     earconPlayed = data(:,15);
 
 
-    %% for each trial
-    % compute duration
-    numberoftrials = max(unique(trialnumber));
+    %% prepare fields of data struct
+    
+    numberoftrials = max(unique(trialnumber));                             % compute number of trials
 
+	% prepare data structure fields
     trial_duration = zeros(1,numberoftrials);
     sound_found = zeros(1,numberoftrials);
+%     trial_start_idx = zeros(1,numberoftrials);
+%     trial_end_idx = zeros(1,numberoftrials);
+    
+    timestamps_trial = {[]};
+    distance_raw_trial = {[]};
+    distance_fil_trial = {[]};
+	azimuth_raw_trial = {[]};
+	azimuth_fil_trial = {[]};
+    
+    latitude_trial = {[]}; 
+    longitude_trial = {[]};
+    latitude_raw_trial = {[]};
+    longitude_raw_trial = {[]};
 
-    for i = 1:numberoftrials
+    sound_lat_trial = {[]};
+    sound_lon_trial = {[]};
+    
+    %% for each trial
+    for i = 1:numberoftrials                            
         % Did the subject found the sound?
         earconPlayed_trial = (0 < sum(earconPlayed(trialnumber == i)));
 
@@ -57,38 +76,91 @@ function [ ds ] = createdatastruct( filename )
         end
 
         % compute the time needed to find the sound
-        timestamps_trial = timestamps(trialnumber == i);               % get all the timestamps of trial i
+        timestamps_trial{i} = timestamps(trialnumber == i);               % get all the timestamps of trial i
         earconPlayed_trial = earconPlayed(trialnumber == i);           % get all the earcon values of trial i
 
         if earconPlayed_trial                                          % if sound was found,
             idx_found = find(earconPlayed_trial);                      % get data index of when
             idx_found = idx_found(1); 
         else                                                           % if sound was not found
-            idx_found = length(timestamps_trial);                      % use end of trial (for now)
+            idx_found = length(timestamps_trial{i});                      % use end of trial (for now)
         end
 
-        trial_start = timestamps_trial(1);                             % get trial starting time
-        trial_end = timestamps_trial(end);                             % get trial ending time
-        ts_sound_found = timestamps_trial(idx_found);                  % get time at what sound was found
-
+        trial_start = timestamps_trial{i}(1);                             % get trial starting time
+        trial_end = timestamps_trial{i}(end);                             % get trial ending time
+        ts_sound_found = timestamps_trial{i}(idx_found);                  % get time at what sound was found
+        
         trial_duration(i) = ts_sound_found - trial_start;              % compute duration of trial
+        
+        
+        % get the data indexes of this trial
+        trial_idx = find(trialnumber==i);                              % for all the samples of the trial
+        trial_start_idx = trial_idx(1);                             % for the first sample
+        trial_end_idx = trial_idx(end);                             % for the last sample
+        
+        
+        distance_raw_trial{i} = distance_raw(trial_start_idx:trial_end_idx);
+        distance_fil_trial{i} = distance_fil(trial_start_idx:trial_end_idx);
+        azimuth_raw_trial{i} = azimuth_raw(trial_start_idx:trial_end_idx);
+        azimuth_fil_trial{i} = azimuth_fil(trial_start_idx:trial_end_idx);
+        
+        latitude_trial{i} = latitude(trial_start_idx:trial_end_idx);
+        longitude_trial{i} = longitude(trial_start_idx:trial_end_idx);
+        latitude_raw_trial{i} = latitude_raw(trial_start_idx:trial_end_idx);
+        longitude_raw_trial{i} = longitude_raw(trial_start_idx:trial_end_idx);
+
+        sound_lat_trial{i} = sound_lat(trial_start_idx:trial_end_idx);
+        sound_lon_trial{i} = sound_lon(trial_start_idx:trial_end_idx);
+        
     end  
 
     %% check which trials are training testing
     trial_idx_train = unique(trialnumber(trialstate==1));
-    trial_idx_train_found = sound_found(trial_idx_train).*trial_idx_train';
+    trial_idx_train_found = find(sound_found(trial_idx_train).*trial_idx_train');
     
     trial_idx_test = unique(trialnumber(trialstate==2));
-    trial_idx_test_found = sound_found(trial_idx_test).*trial_idx_test';
-
+    trial_idx_test_found = find(sound_found(trial_idx_test).*trial_idx_test');
+    
+    %%
     %% create data struct ds
     if strfind(filename,'hrtf') model_name = 'hrtf'; else model_name = 'panning';end;
 
-    ds = struct('name',filename,'trial_duration',trial_duration,...
-        'trial_idx_train',trial_idx_train,'trial_idx_test',trial_idx_test,...
-        'model',model_name,'sound_found',sound_found,'numberoftrials',...
-        numberoftrials,'trial_idx_train_found',trial_idx_train_found,...
-        'trial_idx_test_found',trial_idx_test_found);
-
+%     ds = struct('name',filename,'trial_duration',trial_duration,...
+%         'trial_idx_train',trial_idx_train,'trial_idx_test',trial_idx_test,...
+%         'model',model_name,'sound_found',sound_found,'numberoftrials',...
+%         numberoftrials,'trial_idx_train_found',trial_idx_train_found,...
+%         'trial_idx_test_found',trial_idx_test_found,...
+%         'trial_duration_train_found',trial_duration(trial_idx_train_found),...
+%         'trial_duration_test_found',trial_duration(trial_idx_test_found));
+    
+    ds = struct('name',filename,...
+        'trial_duration',trial_duration,...
+        'trial_idx_train',trial_idx_train,...
+        'trial_idx_test',trial_idx_test,...
+        'model',model_name,...
+        'sound_found',sound_found,...
+        'numberoftrials', numberoftrials,...
+        'trial_idx_train_found',trial_idx_train_found,...
+        'trial_idx_test_found',trial_idx_test_found,...
+        'trial_duration_train_found',trial_duration(trial_idx_train_found),...
+        'trial_duration_test_found',trial_duration(trial_idx_test_found),...
+        'trial_start_idx',trial_start_idx,...
+        'trial_end_idx',trial_end_idx,...
+        'distance_raw_trial',{distance_raw_trial},...
+        'distance_fil_trial',{distance_fil_trial},...
+        'azimuth_raw_trial', {azimuth_raw_trial},...
+        'azimuth_fil_trial',{azimuth_fil_trial},...
+        'latitude_trial',{latitude_trial},...
+        'longitude_trial',{longitude_trial},...
+        'latitude_raw_trial',{latitude_raw_trial},...
+        'longitude_raw_trial',{longitude_raw_trial},...
+        'sound_lat_trial',{sound_lat_trial},...
+        'sound_lon_trial',{sound_lon_trial});
+    
 end
+
+
+
+
+
 
