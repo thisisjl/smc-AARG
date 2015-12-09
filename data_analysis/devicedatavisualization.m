@@ -38,7 +38,6 @@ for i = 1:size(ds,2)                                        % for each data stru
             plot(ds(i).trial_duration(ds(i).trial_idx_test),'*-');
             a = (strsplit(ds(i).name,'/'));a = a{2};a=a(1:3);
             sbjs_hrtf = [sbjs_hrtf(:,:);a];
-            % figure(1).XTickLabel = {'1','2','3','4'};
         case 'panning'                                      % if it is panning
             figure(2);
             plot(ds(i).trial_duration(ds(i).trial_idx_test),'*-');
