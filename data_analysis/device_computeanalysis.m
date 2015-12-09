@@ -107,16 +107,21 @@ for i = 1:size(ds,2)                                            % for each data 
 end
 
 % perform paired sample ttest
+disp('perform paired sample ttest')
 [h p] = ttest(durs_hrtf_test(1:18),durs_pan_test(1:18),'Alpha',0.05);
 % h = 0 means that the two models do not differ
 % if p > 0.05 the two gaussians are too overlapped.
 
 % perform Two-sample F test for equal variance
+disp('perform Two-sample F test for equal variance')
 [h p ci stats] = vartest2(durs_hrtf_test(1:18),durs_pan_test(1:18));
 
 % Wilcoxson sign to rank test
-signrank(durs_hrtf_test(1:18),durs_pan_test(1:18));
+disp('Wilcoxson sign to rank test')
+[p h] = signrank(durs_hrtf_test(1:18),durs_pan_test(1:18))
 
+% Single sample Kolmogorov-Smirnov goodness-of-fit hypothesis test
+disp('Single sample Kolmogorov-Smirnov goodness-of-fit hypothesis test')
 [h p] = kstest(durs_hrtf_test(1:18))%,durs_pan_test(1:18));
 [h p] = kstest(durs_pan_test(1:18))
 
