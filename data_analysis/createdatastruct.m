@@ -76,14 +76,19 @@ function [ ds ] = createdatastruct( filename )
 
     %% check which trials are training testing
     trial_idx_train = unique(trialnumber(trialstate==1));
+    trial_idx_train_found = sound_found(trial_idx_train).*trial_idx_train';
+    
     trial_idx_test = unique(trialnumber(trialstate==2));
+    trial_idx_test_found = sound_found(trial_idx_test).*trial_idx_test';
 
     %% create data struct ds
     if strfind(filename,'hrtf') model_name = 'hrtf'; else model_name = 'panning';end;
 
     ds = struct('name',filename,'trial_duration',trial_duration,...
         'trial_idx_train',trial_idx_train,'trial_idx_test',trial_idx_test,...
-        'model',model_name,'sound_found',sound_found);
+        'model',model_name,'sound_found',sound_found,'numberoftrials',...
+        numberoftrials,'trial_idx_train_found',trial_idx_train_found,...
+        'trial_idx_test_found',trial_idx_test_found);
 
 end
 
