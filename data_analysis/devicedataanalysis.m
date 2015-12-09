@@ -76,7 +76,7 @@ for dd = 1:length(datadir)
             sound_found(i) = earconPlayed_trial;
 
             if ~earconPlayed_trial
-                fprintf('Trial %i: subject did not find sound\n',i);
+                fprintf('Trial %i/%i: subject did not find sound\n',i,numberoftrials);
             end
            
             % compute the time needed to find the sound
@@ -112,17 +112,30 @@ end
 %% Plot durations of each model
 figure(1); hold on
 figure(2); hold on
+sbjs_hrtf = [];
+sbjs_pan  = [];
 for i = 1:size(ds,2)                                        % for each data structure
     switch ds(i).model                                      % see which model is it
         case 'hrtf'                                         % if it is hrtf,
             figure(1);
             plot(ds(i).trial_duration(ds(i).trial_idx_test),'*-');
+            a = (strsplit(ds(i).name,'/'));a = a{2};a=a(1:3);
+            sbjs_hrtf = [sbjs_hrtf(:,:);a];
             % figure(1).XTickLabel = {'1','2','3','4'};
         case 'panning'                                      % if it is panning
             figure(2);
             plot(ds(i).trial_duration(ds(i).trial_idx_test),'*-');
+            a = (strsplit(ds(i).name,'/'));a = a{2};a=a(1:3);
+            sbjs_pan = [sbjs_pan(:,:); a];
     end
 end
+figure(1);title('HRTF durations');legend(sbjs_hrtf);
+set(gca,'XTick',[1 2 3 4],'XTickLabels',{'1','2','3','4'})
+xlabel('Trials');ylabel('time (s)')
+
+figure(2);title('Panning durations');legend(sbjs_pan);
+set(gca,'XTick',[1 2 3 4],'XTickLabels',{'1','2','3','4'})
+xlabel('Trials');ylabel('time (s)')
 
 
 %% Compute durations of each model
@@ -172,7 +185,7 @@ disp('Plotting')
 figure;
 boxplot([durs_hrtf_test(1:length(ds)/2*3)' durs_pan_test(1:length(ds)/2*3)'],...
     'labels',{'hrtf','panning'});
-title('duration comparison')
+title('duration comparison of first three trials')
 xlabel('audio models')
 
 
