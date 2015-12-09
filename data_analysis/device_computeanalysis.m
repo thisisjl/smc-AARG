@@ -16,8 +16,9 @@ datadir = {'panning_data','hrtf_data'}; % define data directories
 ds = struct([]);                        % initalize data struct
 
 for dd = 1:length(datadir)
-    
+   
     files = dir(sprintf('%s/*.txt',char(datadir(dd))));
+    
 
 
     for f = 1:size(files,1)
@@ -44,35 +45,35 @@ for i = 1:size(ds,2)                                            % for each data 
             % Test trial:
             % discard trial if not sound found
             test_durations = ds(i).trial_duration(ds(i).trial_idx_test);   % all test trials
-            test_durations_found = test_durations(...
-                ds(i).sound_found.*ds(i).trial_idx_test');                 % sound found trials
+%             test_durations_found = test_durations(...
+%                 ds(i).sound_found.*ds(i).trial_idx_test');                 % sound found trials
             
             durs_hrtf_test = [durs_hrtf_test ...                % add the duration of the testing trials
-                test_durations_found];
+                test_durations];
             
             % Train trial:
             % discard trial if not sound found
             train_durations = ds(i).trial_duration(ds(i).trial_idx_train); % all train trials
-            train_durations_found = train_durations(...
-                ds(i).sound_found.*ds(i).trial_idx_train');    % sound found trials
+%             train_durations_found = train_durations(...
+%                 ds(i).sound_found.*ds(i).trial_idx_train');    % sound found trials
               
             durs_hrtf_train = [durs_hrtf_train...               % add the duration of the training trials
-                train_durations_found];
+                train_durations];
         
         case 'panning'                                          % if it is panning
             % Test trial:
             % discard trial if not sound found
             test_durations = ds(i).trial_duration(ds(i).trial_idx_test);   % all test trials
-            test_durations_found = test_durations(...
-                ds(i).sound_found.*ds(i).trial_idx_test');                 % sound found trials
-            
+%             test_durations_found = test_durations(...
+%                 ds(i).sound_found.*ds(i).trial_idx_test');                 % sound found trials
+          
             durs_pan_test = [durs_pan_test ...                  % add the duration of the testing trials
                 ds(i).trial_duration(ds(i).trial_idx_test)];    % where the sound was found
             
             % Train trial:
             % discard trial if not sound found
-            train_durations = ds(i).trial_duration(ds(i).trial_idx_train); % all train trials
-            train_durations_found = train_durations(ds(i).sound_found);    % sound found trials
+%             train_durations = ds(i).trial_duration(ds(i).trial_idx_train); % all train trials
+%             train_durations_found = train_durations(ds(i).sound_found);    % sound found trials
             
             durs_pan_train = [durs_pan_train...                 % add the duration of the training trials
                 ds(i).trial_duration(ds(i).trial_idx_train)];
@@ -113,8 +114,8 @@ end
 % perform Two-sample F test for equal variance
 [h p ci stats] = vartest2(durs_hrtf_test(1:18),durs_pan_test(1:18));
 
-% Wilcoxson rank sum test, equivalent to mann-whitney u-test
-ranksum(durs_hrtf_test(1:18),durs_pan_test(1:18));
+% Wilcoxson sign to rank test
+signrank(durs_hrtf_test(1:18),durs_pan_test(1:18));
 
 [h p] = kstest(durs_hrtf_test(1:18))%,durs_pan_test(1:18));
 [h p] = kstest(durs_pan_test(1:18))
