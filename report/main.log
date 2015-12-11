@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.26)  9 DEC 2015 12:13
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.26)  11 DEC 2015 14:21
 entering extended mode
 **C:/Users/Lars/Desktop/Uni/Copenhagen/1.*Semester/Project/Git/smc-AARG/report/
 main.tex
@@ -251,111 +251,111 @@ LaTeX Font Info:    ... okay on input line 220.
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 343--344
+Underfull \hbox (badness 10000) in paragraph at lines 345--346
 
  []
 
 
-Underfull \hbox (badness 2088) in paragraph at lines 356--357
+Underfull \hbox (badness 2088) in paragraph at lines 358--359
  \OT1/ptm/m/it/10 6) Is-sues in headphones-conveyed sound: [][] \OT1/ptm/m/n/10
  Head-phones
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 356--357
+Underfull \hbox (badness 10000) in paragraph at lines 358--359
 
  []
 
 [2]
-Underfull \hbox (badness 2142) in paragraph at lines 378--380
+Underfull \hbox (badness 2142) in paragraph at lines 380--382
 []\OT1/ptm/m/n/10 The rea-sons why we de-cided to de-velop us-ing this
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 378--380
+Underfull \hbox (badness 10000) in paragraph at lines 380--382
 \OT1/ptm/m/n/10 pro-gram-ming en-vi-ron-ment was the need of a fast
  []
 
 
-Underfull \hbox (badness 5036) in paragraph at lines 378--380
+Underfull \hbox (badness 5036) in paragraph at lines 380--382
 \OT1/ptm/m/n/10 com-mu-ni-ca-tion be-tween the mo-bile plat-form and our
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 378--380
+Underfull \hbox (badness 10000) in paragraph at lines 380--382
 
  []
 
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 394.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 396.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Underfull \hbox (badness 2961) in paragraph at lines 394--395
+Underfull \hbox (badness 2961) in paragraph at lines 396--397
  \OT1/ptm/m/it/10 4) The open-Frame-works project: [][] \OT1/ptm/m/n/10 all ope
 n-Frame-works
  []
 
 [3]
 
-LaTeX Warning: Citation `Brown1997' on page 4 undefined on input line 434.
+LaTeX Warning: Citation `Brown1997' on page 4 undefined on input line 436.
 
 
-LaTeX Warning: Citation `Brown1997' on page 4 undefined on input line 434.
+LaTeX Warning: Citation `Brown1997' on page 4 undefined on input line 436.
 
 <graphics/graphic.png, id=16, 319.94531pt x 368.87813pt>
 File: graphics/graphic.png Graphic file (type png)
 
 <use graphics/graphic.png>
-Package pdftex.def Info: graphics/graphic.png used on input line 438.
+Package pdftex.def Info: graphics/graphic.png used on input line 440.
 (pdftex.def)             Requested size: 239.95839pt x 276.6579pt.
 
 
-LaTeX Warning: Citation `Brown1997' on page 4 undefined on input line 439.
+LaTeX Warning: Citation `Brown1997' on page 4 undefined on input line 441.
 
 [4]
-Overfull \hbox (14.5pt too wide) in paragraph at lines 502--503
+Overfull \hbox (14.5pt too wide) in paragraph at lines 504--505
 []\OT1/ptm/m/it/10 ====================================== 
  []
 
 [5 <C:/Users/Lars/Desktop/Uni/Copenhagen/1. Semester/Project/Git/smc-AARG/repor
 t/graphics/graphic.png>]
 
-LaTeX Warning: Citation `Rasch2014' on page 6 undefined on input line 567.
+LaTeX Warning: Citation `Rasch2014' on page 6 undefined on input line 574.
 
 
-LaTeX Warning: Citation `Rasch2014' on page 6 undefined on input line 567.
+LaTeX Warning: Citation `Rasch2014' on page 6 undefined on input line 574.
+
+[6]
+
+LaTeX Warning: Citation `DeWinter2013' on page 7 undefined on input line 587.
 
 
-LaTeX Warning: Citation `DeWinter2013' on page 6 undefined on input line 580.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \vbox (badness 7326) has occurred while \output is active []
-
- [6]
 Missing character: There is no â in font ptmri7t!
 Missing character: There is no € in font ptmri7t!
 Missing character: There is no ™ in font ptmri7t!
 
-Underfull \hbox (badness 7832) in paragraph at lines 621--622
+Underfull \hbox (badness 7832) in paragraph at lines 630--631
 []\OT1/ptm/m/n/8 P.M. Del-gado. \OT1/ptm/m/it/8 First steps on Pure Datas ap-pr
 oach to real
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 621--622
+Underfull \hbox (badness 10000) in paragraph at lines 630--631
 \OT1/ptm/m/it/8 time au-dio pro-cess-ing. Com-pil-ing ex-ter-nals. Analysing lo
 p \OT1/ptm/m/n/8 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 621--622
+Underfull \hbox (badness 10000) in paragraph at lines 630--631
 \OT1/ptm/m/n/8 https://pmdelgado.wordpress.com/2015/09/17/first-steps-on-pure-d
 atas-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 621--622
+Underfull \hbox (badness 10000) in paragraph at lines 630--631
 \OT1/ptm/m/n/8 approach-to-real-time-audio-processing-compiling-externals-analy
 sing-
  []
@@ -363,25 +363,23 @@ sing-
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
+ [7]
 ("C:\Users\Lars\Desktop\Uni\Copenhagen\1. Semester\Project\Git\smc-AARG\report\
 main.lof"
 
-LaTeX Warning: Citation `Brown1997' on page 7 undefined on input line 1.
+LaTeX Warning: Citation `Brown1997' on page 8 undefined on input line 1.
 
 )
 \tf@lof=\write3
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7]
-Overfull \hbox (1.0508pt too wide) in paragraph at lines 685--685
+
+Overfull \hbox (1.0508pt too wide) in paragraph at lines 694--694
 [] 
  []
 
-[8
-
-]
+[8]
 ("C:\Users\Lars\Desktop\Uni\Copenhagen\1. Semester\Project\Git\smc-AARG\report\
 main.aux")
 
@@ -395,7 +393,7 @@ Here is how much of TeX's memory you used:
  6004 multiletter control sequences out of 15000+200000
  43855 words of font info for 83 fonts, out of 3000000 for 9000
  844 hyphenation exceptions out of 8191
- 27i,16n,20p,1480b,232s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,16n,20p,1477b,232s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
 m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program 
 Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Fil
@@ -408,7 +406,7 @@ onts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
 urw/times/utmbi8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/
 utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb
 >
-Output written on main.pdf (8 pages, 180869 bytes).
+Output written on main.pdf (8 pages, 182544 bytes).
 PDF statistics:
  75 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

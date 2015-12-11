@@ -526,28 +526,27 @@ include pictures of user interface etc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The experiment}
-The aim of our experiment was to investigate how fast users were able to locate and navigate to a single sound source using our 3-D audio engine compared to a simple panning and 2/d distance calculation which served as a baseline performance. 
+One of the aims of our experiment was to investigate how fast users were able to locate and navigate to a single sound source using our 3-D audio engine compared to a simple panning and 2/d distance calculation which served as a baseline performance. 
 
-Additionally we assessed a qualitative analysis of how intuitive it was for subjects to locate the sound as well as investigating whether the sound seemed to be embedded in the real scenery. (look at the questionaire again)
+Additionally we assessed a qualitative analysis of how intuitive it was for subjects to locate the sound as well as investigating whether the sound seemed to be embedded in the real scenery. These results were again compared to the panning model.
 
 (Here we can write a one paragraph preview of our results.)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Materials and methods}
 \subsubsection{Participants}
-Data were collected from ... participants (... women and ... men; mean age: ..., ranging from ... to ... years) coming from different backgrounds.\footnote{However, ... were master students in Sound and Music Computing at Aalborg University Copenhagen.} ... students were already familiar with 3-D audio sound and/or audio navigation before conduction of the experiment. All other participants were naive. All participants reported normal or corrected to normal vision and no hearing deficits. Participants received no form of compensation other than gratitude. 
+One participant had to be discarded because of 
+Qualitative data were collected from ... participants (... women and ... men; mean age: ..., ranging from ... to ... years). For the quantitative data 6 more participants were measured summing up to in total ... participants (...women and ... men; mean age: ..., rangint from ... to ... years). All participants were students coming from different backgrounds. \footnote{However, ... were master students in Sound and Music Computing at Aalborg University Copenhagen.} ... students were already familiar with 3-D audio sound and/or audio navigation before conduction of the experiment. All other participants were naive. All participants reported normal or corrected to normal vision and no hearing deficits. Participants received no form of compensation other than gratitude. 
 
 \subsubsection{Apparatus and stimuli}
-The experiment took place in a free field in "Valby Parken" (Coordinates: ...). The mobile device used was a Motorolla Moto G running with Android version 5.0.2. The device was connected to Sony MDR ZX600 stereo headphones. Only one person at a time was tested. 
+The experiment took place in a free field in "Valby Parken" in Copenhagen, Denmark (Coordinates: 55$^\circ$38'22.3"N, 12$^\circ$31'27.4"E). The mobile device used was a Motorolla Moto G running with Android version 5.0.2. The device was connected to Sony MDR ZX600 stereo headphones. Only one person at a time was tested. 
 
 To create the auditory stimulus, digital vocal recordings of a male voice (age: ...) were collected using a ... . Recordings were done with ... bits of resolution for amplitude at a sampling rate of ...  kHz. Auditory stimuli were normalized in peak amplitude so that at the minimal distance to the soundsource (7 meter) using the maximal level of volume on the mobile device, the soundlevel of each soundsource was at ... dB. 
 
 \subsubsection{Design}
-The experiment comprised two within subject factors at 2 levels (sound engine).
+The experiment comprised one within subject factor at 2 levels (sound engine). The two levels of the sound engine were our 3-D audio engine (3-D) and a simple panning and distance amplitude modulation (panning).
 
-The sound engine was either our 3-D audio engine (3-D) or a simple panning and distance amplitude modulation (panning).
-
-The starting point was fixed and the distance of the soundsource from that point was always 48 meters.\footnote{However, because of poor GPS accuracies, the location of the soundsource was calculated with the GPS coordinates provided by the phone sensor instead of the actual fixed position in the free field. This ensured that the initial distance to the sound source was always the same.} The sound could appear at any angle from the starting point.
+The starting point was fixed and the distance of the soundsource from that point was always 48 meters.\footnote{However, because of poor GPS accuracies, the location of the soundsource was calculated with the momentary GPS coordinates provided by the phone sensor instead of the actual fixed position in the free field. This ensured that the initial distance to the sound source was always the same.} The sound could appear at any angle from the starting point.
 
 For all trials the same soundfile was played. Each participant performed a total of 6 trials meaning 3 trials in each of the two conditions. Participants were encouraged to take a short break whenever they felt fatigued.
 
@@ -561,7 +560,13 @@ Before the experiment, participants were familiarized with the target sound as w
 Participants were instructed to find the sound source as fast as possible. No information about the possible locations (distances and angles) was given to the subjects. Trials which lasted longer than 5 minutes were aborted and labeled as "not found". 
 
 \subsubsection{Analyses}
-... trials were excluded because the analyses of GPS data for those trials revealed very poor accuracy. The other trials which could be analysed summed up to ... trials for each of the two conditions in total.
+For the quantitative analysis ... trials were excluded because either analyses of GPS data for those trials revealed very poor precision (sudden jumps or no changes in the GPS signall) or the orientation sensor got stuck which made it impossible for the subjects to locate the sound source. Nevertheless, each subject performed at least ... trials in each condition. The remaining trials to be analysed summed up to ... trials in the 3-D condition and ... trials in the panning condition.
+
+We measured objective and subjective data on user performance. 
+
+For the objective measure we computed a paired samples t-test to compare the results for both sound engines. However, checking whether our data is normally distrubuted, revealed that a t-test was not appropriate. Therefore we also computed a non-parametric Wilcoxen signed rank test which does not assume normal distributed data. 
+
+Subjective analysis of the quality of the soundscape was investigated with a questionnaire participants had to fill out after each sound engine condition. The questions were aimed at examining ... of the soundscape. Participants used a 10 point lickertscale going from "don't agree at all" to "completely agree".\footnote{The reasons for choosing a 10 point likertscale instead of the often referenced 5 or 7 point scales \cite{} were that a greater number of responses should equalize the distances between the possible answer possibilities supporting treating likertscale data also as interval data \cite{}. This gives us the grounds to use paired samples t-test for the qualitative analysis which is more powefull than the Wilcoxen signed rank test enabling us to detect smaller differences in ratings \cite{}. Since we only had few questions, having so many answer possibilities should not have fatigued the subject too much so that accuracy of the responses should not have suffered due to too many answer possibilities \cite{}. Though, it has to be noted that subject were outside when filling out the questionaire which due to cold temperatures might have driven the subjects to respond in a fast pace leading to less accurate responses.} 
 
 The threshold chosen to correctly reject the null-hypothesis was always 5\% ($\alpha$ = .05). 
 
@@ -572,21 +577,23 @@ WE PROBABLY DONT NEED THIS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Results}
-\subsubsection{Quantitative analysis}
-We measured objective and subjective data on user performance. 
+\subsubsection{Quantitative}
 
-For the objective measure we computed a two-sided t-test to compare the results for both sound engines. However, checking for equality in variances and whether our data is normally distrubuted or not revealed that a t-test was not appropriate. Therefore we computed also the Mann whitney U test which is robust regarding to normality and equal variance and group sizes.  Analysis revealed that with the ... sound engine participants were significantly faster to locate the sound source (t(df) = , p = 0.01.) or something else. 
+On average subjects needed ... seconds (sd = ) to find the sounds for the 3-D conditions and ... seconds (sd = ) 
+The paired samples t-test revealed that participants were significantly faster to locate the sound source with the ... sound engine compared to the ... (t(df) = , p = 0.01.). Also the less powerfull Wilcoxen signed rank test was significant () 
 
 If our results are not significant this could be because of low sample size -> "Numerous methodologists have 
 cautioned that a small sample size implies low statistical 
 power, that is, a high probability of Type II error" \cite{DeWinter2013}
 
-\subsubsection{Qualitative analysis}
- Subjective analysis of the quality of the soundscape was investigated with a questionnaire participants had to fill out after each sound engine condition. The questions were aimed at examining ... of the soundscape. Therefore participants used a 10 point lickertscale. Evaluation of the questionaires showed that ... 
+\subsubsection{Qualitative}
+
+Evaluation of the questionaires showed that ...
 
 
 
 \section{Discussion}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
