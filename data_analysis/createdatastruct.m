@@ -125,6 +125,13 @@ function [ ds ] = createdatastruct( filename )
     usefultrials = trial_duration(trial_idx_test_found);
     usefultrials_mean = mean(usefultrials);
     
+    %% get sound found or not for test
+	sound_found_test = sound_found(trial_idx_test);
+    
+    %% get number of test trials
+    testtrialsnum = length(trial_idx_test);
+    
+    
     
     %% create data struct ds
     if strfind(filename,'hrtf') model_name = 'hrtf'; else model_name = 'panning';end;
@@ -161,7 +168,9 @@ function [ ds ] = createdatastruct( filename )
         'sound_lat_trial',{sound_lat_trial},...
         'sound_lon_trial',{sound_lon_trial},...
         'usefultrials',usefultrials,...
-        'usefultrials_mean',usefultrials_mean);
+        'usefultrials_mean',usefultrials_mean,...
+        'sound_found_test',sound_found_test,...
+        'testtrialsnum',testtrialsnum);
     
 end
 
