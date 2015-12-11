@@ -13,7 +13,7 @@
 %% Read data - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 subjectnumber = {'001';'002';'003';'004';'005';'006';'007';'008';...%
     '010';'012';'013';'014';'015';'016';'017'};
-datadir = {'panning_data','hrtf_data'};                             % define data directories
+datadir = {'hrtf_data','panning_data'};                             % define data directories
 ds = struct([]);                                                    % initalize data struct
 
 for sbj = 1:length(subjectnumber)
@@ -28,7 +28,22 @@ for sbj = 1:length(subjectnumber)
     end
 end
 
-%% for each model...
+%% for each subject, create data summary
+
+fileID = fopen('datasummary.txt','w');
+fprintf(fileID,'subject\thrtf mean\tpanning mean\n');
+for sbj = 1:length(subjectnumber)-1
+    subjectnumber{sbj};
+    ds(sbj).usefultrials_mean;                                       % hrtf
+    ds(sbj+1).usefultrials_mean;                                     % panning
+    
+    formatSpec = '%s\t%f\t%f\n';
+    fprintf(fileID,formatSpec,subjectnumber{sbj},ds(sbj).usefultrials_mean,ds(sbj+1).usefultrials_mean);
+    
+end
+fclose(fileID);
+
+%%
 
 durs_hrtf_test  = [];                                           % initialize array for hrtf durations
 durs_hrtf_train = [];
