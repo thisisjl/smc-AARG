@@ -28,11 +28,6 @@ for sbj = 1:length(subjectnumber)
     end
 end
 
-% ds = struct('name',filename,'trial_duration',trial_duration,...
-%         'trial_idx_train',trial_idx_train,'trial_idx_test',trial_idx_test,...
-%         'model',model_name,'sound_found',sound_found);
-
-
 %% for each model...
 
 durs_hrtf_test  = [];                                           % initialize array for hrtf durations
