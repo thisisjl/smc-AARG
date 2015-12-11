@@ -11,19 +11,20 @@
 
 
 %% Read data - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+subjectnumber = {'001';'002';'003';'004';'005';'006';'007';'008';...%
+    '010';'012';'013';'014';'015';'016';'017'};
+datadir = {'panning_data','hrtf_data'};                             % define data directories
+ds = struct([]);                                                    % initalize data struct
 
-datadir = {'panning_data','hrtf_data'}; % define data directories
-ds = struct([]);                        % initalize data struct
+for sbj = 1:length(subjectnumber)
+    for dd = 1:length(datadir)
 
-for dd = 1:length(datadir)
-   
-    files = dir(sprintf('%s/*.txt',char(datadir(dd))));
-    
+        files = dir(sprintf('%s/%s*.txt',char(datadir(dd)),subjectnumber{sbj}));
 
-
-    for f = 1:size(files,1)
-        filename = fullfile(char(datadir(dd)),files(f).name);
-        ds = [ds createdatastruct(filename)];
+        for f = 1:size(files,1)
+            filename = fullfile(char(datadir(dd)),files(f).name);
+            ds = [ds createdatastruct(filename)];
+        end
     end
 end
 
