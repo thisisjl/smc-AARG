@@ -116,12 +116,16 @@ function [ ds ] = createdatastruct( filename )
 
     %% check which trials are training testing
     trial_idx_train = unique(trialnumber(trialstate==1));
-    trial_idx_train_found = find(sound_found(trial_idx_train).*trial_idx_train');
+    trial_idx_train_found = nonzeros(sound_found(trial_idx_train).*trial_idx_train')';
     
     trial_idx_test = unique(trialnumber(trialstate==2));
-    trial_idx_test_found = find(sound_found(trial_idx_test).*trial_idx_test');
+    trial_idx_test_found = nonzeros(sound_found(trial_idx_test).*trial_idx_test')';
     
-    %%
+    %% compute mean duration for this data file (only for test)
+    usefultrials = trial_duration(trial_idx_test_found);
+    usefultrials_mean = mean(usefultrials);
+    
+    
     %% create data struct ds
     if strfind(filename,'hrtf') model_name = 'hrtf'; else model_name = 'panning';end;
 
@@ -155,7 +159,9 @@ function [ ds ] = createdatastruct( filename )
         'latitude_raw_trial',{latitude_raw_trial},...
         'longitude_raw_trial',{longitude_raw_trial},...
         'sound_lat_trial',{sound_lat_trial},...
-        'sound_lon_trial',{sound_lon_trial});
+        'sound_lon_trial',{sound_lon_trial},...
+        'usefultrials',usefultrials,...
+        'usefultrials_mean',usefultrials_mean);
     
 end
 
