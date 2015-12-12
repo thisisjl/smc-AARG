@@ -11,20 +11,53 @@
 
 
 %% Read data - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+subjectnumber = {'000';'001';'002';'003';'004';'005';'006';'007';'008';...%
+    '010';'011';'012';'013';'014';'015';'016';'017'};
+datadir = {'hrtf_data','panning_data'};                             % define data directories
+ds = struct([]);                                                    % initalize data struct
 
-datadir = {'panning_data','hrtf_data'}; % define data directories
-ds = struct([]);                        % initalize data struct
+for sbj = 1:length(subjectnumber)
+    for dd = 1:length(datadir)
 
-for dd = 1:length(datadir)
-    
-    files = dir(sprintf('%s/*.txt',char(datadir(dd))));
+        files = dir(sprintf('%s/%s*.txt',char(datadir(dd)),subjectnumber{sbj}));
 
-
-    for f = 1:size(files,1)
-        filename = fullfile(char(datadir(dd)),files(f).name);
-        ds = [ds createdatastruct(filename)];
+        for f = 1:size(files,1)
+            filename = fullfile(char(datadir(dd)),files(f).name);
+            ds = [ds createdatastruct(filename)];
+        end
     end
 end
+
+%%
+
+for sbj = 1:2:length(ds)-1
+    figure(1);
+    plot(ds(sbj).usefultrials,'x');
+    
+    for e = 1:length(ds(sbj).usefultrials)
+        y = ds(sbj).usefultrials(e);
+        text(e+0.05,y,sprintf('%s',subjectnumber{ceil(sbj/2)}))
+    end
+    
+    hold on
+    
+    figure(2);
+    plot(ds(sbj+1).usefultrials,'x');
+    for e = 1:length(ds(sbj+1).usefultrials)
+        y = ds(sbj+1).usefultrials(e);
+        text(e+0.05,y,sprintf('%s',subjectnumber{ceil(sbj/2)}))
+    end
+    hold on
+end
+figure(1);title('HRTF durations');%legend(sbjs_hrtf);
+set(gca,'XTick',[1 2 3 4],'XTickLabels',{'1','2','3','4'})
+xlabel('Trials');ylabel('time (s)')
+axis([0.5 4.5 0 300])
+
+figure(2);title('Panning durations');%legend(sbjs_pan);
+set(gca,'XTick',[1 2 3 4],'XTickLabels',{'1','2','3','4'})
+xlabel('Trials');ylabel('time (s)')
+axis([0.5 4.5 0 300])
 
 %% Plot durations of each model
 figure(1); hold on
