@@ -106,7 +106,7 @@
 
 
 
-
+\usepackage{gensymb}
 
 % *** MATH PACKAGES ***
 %
@@ -447,12 +447,13 @@ The audio engine was the most crucial part of our applications. As shortly menti
 
 First, the monoaural sound which has been processed to add a range effect, goes to a head model and a room model. The binaural output of the former is then processed by the pinna model, and finally each one is added to the output of the room model to provide an externalization effect.
 
-In the following formulas, the angles are measured in radians in the interaural-polar system, where $\theta$ is the azimuth angle and $\phi$ is the elevation angle. However, in our application the latter is no considered since all the sound sources are placed in the horizontal plane without elevation.
+In the following formulas, the angles are measured in radians in the interaural-polar system, where $\theta$ is the azimuth angle and $\phi$ is the elevation angle. However, in our application the latter is no considered since all the sound sources are placed in the horizontal plane without elevation.\\
 
 
-\subsubsection{The head model}
+\subsubsection{The head model}~\\
 
-The path length difference from the sound source to the two ears and the shadowing effect produced by the head at the far ear, lead to a delay and a intensity difference in the sound arriving at the left and right ears. In order to estimate the time delay, the Woodworth's formulas are used~\cite{Woodworth} :
+
+ The path length difference from the sound source to the two ears and the shadowing effect produced by the head at the far ear, lead to a delay and a intensity difference in the sound arriving at the left and right ears. In order to estimate the time delay, the Woodworth's formulas are used~\cite{Woodworth} :
 
 \begin{equation}\label{eq:ITDfront}
 ITD = (a/c)[\theta + sin(\theta)]   \; [0 \leq \theta \leq \pi/2]
@@ -510,8 +511,44 @@ This gives us the filter coefficients $a_0 = 2\alpha (\theta)+T\beta$ and $a_1 =
 Y[n] =\frac{a_0X[n]+a_1X[n-1]-b_1Y[n-1]}{b_0}
 \end{equation} 
 
-\subsubsection{The pinna model}
+\subsubsection{The pinna model}~\\
 
+High frequency components that arrive to the listener's ears are influenced by the pinna, which provide some azimuth information, but it has been studied mainly because of its contribution to the estimation of the elevation \cite{BrownAndDuda}.
+
+Our model has the following form:
+
+\begin{figure}[h!]
+	\centering
+		\includegraphics[scale=0.75]{graphics/pinna_part.png}
+	\caption{Pinna model. Image taken from \cite{Brown1997}}
+	\label{fig:pinnaModel}
+\end{figure}
+
+
+
+where the $\rho_{k}$ are the reflection coefficients and the $\tau_{k}$ are the time delays of the \textit{k}th event of a total of \textit{n}. Informal listening tests showed that 5 events were enough to represent the pinna response and that it was convenient to use constant values for the amplitudes $\rho_{k}$,  independent of azimuth, elevation and the subject \cite{Brown1997}. The time delays seems to be properly approximated by the following formula:
+
+\begin{equation}\label{eq:pinna}
+\tau_{k}(\theta,\phi) = A_{k}cos(\theta/2)sin(D_{k}(90\degree - \phi)) + B_{k}
+\end{equation} 
+
+In this equation, dependent on the azimuth and elevation, the $A_{k}$ is an amplitude, $B_{k}$ an offset and $D_{k}$ is a scaling factor that has to be adapted to the individual listener. 
+In the following table one can see the values for the parameters used in the pinna model. Only one set of values for $D_{k}$ in our application have been used.
+
+\begin{table}[h]
+\centering
+\caption{Pinna model coefficients}
+\label{PinnaModel parameters}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+k & $\rho$  & $A_{k}$ & $B_{k}$  & $D_{k}$   \\ \hline
+1 & 0.5   & 1 & 2  & 1   \\ \hline
+2 & -1    & 5 & 4  & 0.5 \\ \hline
+3 & 0.5   & 5 & 7  & 0.5 \\ \hline
+4 & -0.25 & 5 & 11 & 0.5 \\ \hline
+5 & 0.25  & 5 & 13 & 0.5 \\ \hline
+\end{tabular}
+\end{table}
 
 
 \subsubsection{The room model}
