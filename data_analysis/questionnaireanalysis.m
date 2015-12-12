@@ -49,7 +49,7 @@ for i = 1:2
         enginename{i}))
 
     % It was difficult to tell if a sound was in front of or behind me
-    col = 4;
+    col = 5;
     [counts, centers] = hist([page1(engine==i,col);page2(engine~=i,col)], 1:1:10);
     figure;bar(centers,counts)
     title(sprintf('%s: It was difficult to tell if a sound was in front of or behind me',...
