@@ -32,16 +32,69 @@ end
 
 fileID = fopen('datasummary.txt','w');
 fprintf(fileID,'subject\thrtf mean\tpanning mean\n');
-for sbj = 1:length(subjectnumber)-1
-    subjectnumber{sbj};
-    ds(sbj).usefultrials_mean;                                       % hrtf
-    ds(sbj+1).usefultrials_mean;                                     % panning
+for sbj = 1:2:length(ds)-1
+%     subjectnumber{sbj};
+%     ds(sbj).usefultrials_mean                                       % hrtf
+%     ds(sbj+1).usefultrials_mean                                     % panning
+%     pause;
+%     sprintf('%s\t%s',ds(sbj).usefultrials_mean,ds(sbj+1).usefultrials_mean);
     
     formatSpec = '%s\t%f\t%f\n';
-    fprintf(fileID,formatSpec,subjectnumber{sbj},ds(sbj).usefultrials_mean,ds(sbj+1).usefultrials_mean);
+    fprintf(fileID,formatSpec,subjectnumber{ceil(sbj/2)},ds(sbj).usefultrials_mean,ds(sbj+1).usefultrials_mean);
     
 end
 fclose(fileID);
+
+%% Plot durations of each model
+
+for sbj = 2:2%length(subjectnumber)-1
+    
+    hrtf_durs = ds(sbj).usefultrials;
+    ds(sbj).sound_found_test;
+    
+    pann_durs = ds(sbj+1).usefultrials;
+    ds(sbj+1).sound_found_test;
+    
+    figure;plot(hrtf_durs,'*-');hold on
+    
+    xlabel('trials');ylabel('time (s)')
+    title(sprintf('%s HRTF',subjectnumber{sbj}));hold off
+    
+    figure;plot(pann_durs,'*-');hold on
+    xlabel('trials');ylabel('time (s)')
+    title(sprintf('%s PANNING',subjectnumber{sbj}));hold off
+        
+end
+
+
+%%
+
+figure(1); hold on
+figure(2); hold on
+sbjs_hrtf = [];
+sbjs_pan  = [];
+for i = 1:size(ds,2)                                        % for each data structure
+    switch ds(i).model                                      % see which model is it
+        case 'hrtf'                                         % if it is hrtf,
+            figure(1);
+            plot(ds(i).trial_duration(ds(i).trial_idx_test),'*-');
+            a = (strsplit(ds(i).name,'/'));a = a{2};a=a(1:3);
+            sbjs_hrtf = [sbjs_hrtf(:,:);a];
+        case 'panning'                                      % if it is panning
+            figure(2);
+            plot(ds(i).trial_duration(ds(i).trial_idx_test),'*-');
+            a = (strsplit(ds(i).name,'/'));a = a{2};a=a(1:3);
+            sbjs_pan = [sbjs_pan(:,:); a];
+    end
+end
+figure(1);title('HRTF durations');legend(sbjs_hrtf);
+set(gca,'XTick',[1 2 3 4],'XTickLabels',{'1','2','3','4'})
+xlabel('Trials');ylabel('time (s)')
+
+figure(2);title('Panning durations');legend(sbjs_pan);
+set(gca,'XTick',[1 2 3 4],'XTickLabels',{'1','2','3','4'})
+xlabel('Trials');ylabel('time (s)')
+
 
 %%
 
