@@ -46,6 +46,14 @@ for sbj = 1:2:length(ds)
 end
 fclose(fileID);
 
+%% for each subject, create data summary
+
+for sbj = 1:2:length(ds)
+    dataHRTF(ceil(sbj/2)) = ds(sbj).usefultrials_mean;
+    dataHRTF(ceil(sbj/2)) = ds(sbj+1).usefultrials_mean;
+    
+end
+
 %% Plot durations of each model
 
 for sbj = 2:2%length(subjectnumber)-1
