@@ -11,8 +11,8 @@
 
 
 %% Read data - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-subjectnumber = {'001';'002';'003';'004';'005';'006';'007';'008';...%
-    '010';'012';'013';'014';'015';'016';'017'};
+subjectnumber = {'000';'001';'002';'003';'004';'005';'006';'007';'008';...%
+    '010';'011';'012';'013';'014';'015';'016';'017'};
 datadir = {'hrtf_data','panning_data'};                             % define data directories
 ds = struct([]);                                                    % initalize data struct
 
@@ -32,7 +32,8 @@ end
 
 fileID = fopen('datasummary.txt','w');
 fprintf(fileID,'subject\thrtf mean\tpanning mean\n');
-for sbj = 1:2:length(ds)-1
+for sbj = 1:2:length(ds)
+    sbj
 %     subjectnumber{sbj};
 %     ds(sbj).usefultrials_mean                                       % hrtf
 %     ds(sbj+1).usefultrials_mean                                     % panning
