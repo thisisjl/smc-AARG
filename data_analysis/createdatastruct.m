@@ -64,10 +64,13 @@ function [ ds ] = createdatastruct( filename )
     sound_lat_trial = {[]};
     sound_lon_trial = {[]};
     
+    earconarray_trial = {[]};
+    
     %% for each trial
     for i = 1:numberoftrials                            
         % Did the subject found the sound?
         earconPlayed_trial = (0 < sum(earconPlayed(trialnumber == i)));
+        earconarray_trial{i} = earconPlayed(trialnumber == i);
 
         sound_found(i) = earconPlayed_trial;
 
@@ -77,10 +80,9 @@ function [ ds ] = createdatastruct( filename )
 
         % compute the time needed to find the sound
         timestamps_trial{i} = timestamps(trialnumber == i);               % get all the timestamps of trial i
-        earconPlayed_trial = earconPlayed(trialnumber == i);           % get all the earcon values of trial i
 
         if earconPlayed_trial                                          % if sound was found,
-            idx_found = find(earconPlayed_trial);                      % get data index of when
+            idx_found = find(earconarray_trial{i});                      % get data index of when
             idx_found = idx_found(1); 
         else                                                           % if sound was not found
             idx_found = length(timestamps_trial{i});                      % use end of trial (for now)
@@ -171,7 +173,8 @@ function [ ds ] = createdatastruct( filename )
         'usefultrials',usefultrials,...
         'usefultrials_mean',usefultrials_mean,...
         'sound_found_test',sound_found_test,...
-        'testtrialsnum',testtrialsnum);
+        'testtrialsnum',testtrialsnum,...
+        'earconarray_trial',{earconarray_trial});
     
 end
 
