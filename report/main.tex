@@ -565,9 +565,9 @@ include pictures of user interface etc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The experiment}
-One of the aims of our experiment was to investigate how fast users were able to locate and navigate to a single sound source using our 3-D audio engine compared to a simple panning and 2/d distance calculation which served as a baseline performance. 
+One of the aims of our experiment was to investigate how fast users were able to locate and navigate to a single sound source using our 3-D audio engine compared to a simple panning and 2/d distance calculation which served as a baseline performance. Therefore the time needed from the beginning of a trial until the sound source was found was measured. 
 
-Additionally we assessed a qualitative analysis of how intuitive it was for subjects to locate the sound as well as investigating whether the sound seemed to be embedded in the real scenery. These results were again compared to the panning model.
+Additionally we assessed a qualitative analysis of how intuitive it was for subjects to locate the sound as well as investigating whether the sound seemed to be embedded in the real scenery. These results were again compared to the panning model. The data was obtained with a 10 point lickertscale questionnaire goint from "don't agree at all" to "completely agree".
 
 (Here we can write a one paragraph preview of our results.)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -590,22 +590,18 @@ The starting point was fixed and the distance of the soundsource from that point
 For all trials the same soundfile was played. Each participant performed a total of 6 trials meaning 3 trials in each of the two conditions. Participants were encouraged to take a short break whenever they felt fatigued.
 
 \subsubsection{Procedure}
-The position (angle from the starting point) of the sound sources in the different trials were completely randomized within and between subjects independently from the sound engine. This ensured that participants could not predict the location of the sound in the next trial. The order of trials with the one or the other sound engine was not randomized within subjects. Nevertheless, half of the participants started the experiment with the 3-D audio engine while the other half started with the audio panning sound engine to counterbalance for effects related to training.
+The position (angle from the starting point) of the sound sources in the different trials were completely randomized within and between subjects independently from the sound engine. This ensured that participants could not predict the location of the sound in the next trial. The order of trials with the one or the other sound engine was not randomized within subjects. Nevertheless, half of the participants started the experiment with the 3-D audio engine while the other half started with the audio panning sound engine to counterbalance for effects related to training. After each block of trials (one block were 3 trials with one of the sound engines) participants had to fill out the qualitative questionaire.
 
-Each trial was initiated by the experimenter with a button press after which the sound source was played. No visual feedback about the location of the sound source or the already passed time to locate it was given. For localization, subjects had to rely solely on the auditory cues given via the headphones. /footnote{Admittedly participants could have used the position of the starting point as some kind of referenced fixpoint. However, participants did know nothing about the possible distances of the sound source. Additionally, questions after the experiment about applied strategies did not reveal that participants used visual cues for localizing the sound source.} As soon as the participants reached a radius of 7 meter around the sound source, an earcon was played indicating the success of the localization. The participants went back to the initial starting point and the next trial was started.
+Each trial was initiated by the experimenter with a button press after which the sound source was played. No visual feedback about the location of the sound source or the already passed time to locate it was given. For localization, subjects had to rely solely on the auditory cues given via the headphones. /footnote{Admittedly participants could have used the position of the starting point as some kind of fixpoint. However, participants did know nothing about the possible distances of the sound source. Additionally, questions after the experiment about applied strategies did not reveal that participants used visual cues for localizing the sound source.} As soon as the participants reached a radius of 7 meter around the sound source, an earcon was played indicating the success of the localization. The participants went back to the initial starting point and the next trial was started.
 
 Before the experiment, participants were familiarized with the target sound as well as the earcons that were played when having reached the location of the virtual sound source. Additionally, all participants performed at least two practice trials with the sound engine they were tested with first before the actual measurements with that sound engine began. The location in the practice trials were fixed at the same positions for all participants to allow us to guide the subject when they got lost. 
 
 Participants were instructed to find the sound source as fast as possible. No information about the possible locations (distances and angles) was given to the subjects. Trials which lasted longer than 5 minutes were aborted and labeled as "not found". 
 
 \subsubsection{Analyses}
-For the quantitative analysis ... trials were excluded because either analyses of GPS data for those trials revealed very poor precision (sudden jumps or no changes in the GPS signall) or the orientation sensor got stuck which made it impossible for the subjects to locate the sound source. Nevertheless, each subject performed at least ... trials in each condition. The remaining trials to be analysed summed up to ... trials in the 3-D condition and ... trials in the panning condition.
+For the quantitative analysis ... trials were excluded because either analyses of GPS data for those trials revealed very poor precision (sudden jumps or no changes in the GPS signall for ... seconds) or the orientation sensor got stuck which made it impossible for the subjects to locate the sound source. Nevertheless, each subject performed at least ... trials in each condition. The remaining trials to be analysed summed up to ... trials in the 3-D condition and ... trials in the panning condition.
 
-We measured objective and subjective data on user performance. 
-
-For the objective measure we computed a paired samples t-test to compare the results for both sound engines. However, checking whether our data is normally distrubuted, revealed that a t-test was not appropriate. Therefore we also computed a non-parametric Wilcoxen signed rank test which does not assume normal distributed data. 
-
-Subjective analysis of the quality of the soundscape was investigated with a questionnaire participants had to fill out after each sound engine condition. The questions were aimed at examining ... of the soundscape. Participants used a 10 point lickertscale going from "don't agree at all" to "completely agree".\footnote{The reasons for choosing a 10 point likertscale instead of the often referenced 5 or 7 point scales~\cite{} were that a greater number of responses should equalize the distances between the possible answer possibilities supporting treating likertscale data also as interval data~\cite{}. This gives us the grounds to use paired samples t-test for the qualitative analysis which is more powefull than the Wilcoxen signed rank test enabling us to detect smaller differences in ratings~\cite{}. Since we only had few questions, having so many answer possibilities should not have fatigued the subject too much so that accuracy of the responses should not have suffered due to too many answer possibilities~\cite{}. Though, it has to be noted that subject were outside when filling out the questionaire which due to cold temperatures might have driven the subjects to respond in a fast pace leading to less accurate responses.} 
+The reasons for choosing a 10 point likertscale instead of the often referenced 5 or 7 point scales~\cite{} were that a greater number of responses should equalize the distances between the possible answer possibilities supporting treating likertscale data also as interval data~\cite{}. This gives us the grounds to use paired samples t-test for the qualitative analysis which is more powefull than the Wilcoxen signed rank test enabling us to detect smaller differences in ratings~\cite{}. Since we only had few questions, having so many answer possibilities should not have fatigued the subject too much so that accuracy of the responses should not have suffered due to too many answer possibilities~\cite{}. Though, it has to be noted that subject were outside when filling out the questionaire which due to cold temperatures might have driven the subjects to respond in a fast pace leading to less accurate responses.
 
 The threshold chosen to correctly reject the null-hypothesis was always 5\% ($\alpha$ = .05). 
 
@@ -617,21 +613,22 @@ WE PROBABLY DONT NEED THIS
 
 \subsection{Results}
 \subsubsection{Quantitative}
+On average subjects needed ... seconds (SD = ) to find the sounds for the 3-D conditions and ... seconds (SD = ) for the panning condition. 
 
-On average subjects needed ... seconds (sd = ) to find the sounds for the 3-D conditions and ... seconds (sd = ) 
-The paired samples t-test revealed that participants were significantly faster to locate the sound source with the ... sound engine compared to the ... (t(df) = , p = 0.01.). Also the less powerfull Wilcoxen signed rank test was significant () 
-
-If our results are not significant this could be because of low sample size -> "Numerous methodologists have 
-cautioned that a small sample size implies low statistical 
-power, that is, a high probability of Type II error"~\cite{DeWinter2013}
+We computed a paired samples t-test to compare the results for both sound engines which revealed no significant difference between the means for both sound engines (t(df) = , p = ). However, checking whether our data is normally distrubuted showed that for the 3-D data the assumption of normality was violated (Shapiro wilk test: ...) (here we could also add the q-q plot). Therefore, we additionally computed the non-parametric Wilcoxen signed rank test which does not assume normal distributed data. Nevertheless, we could not find a significant difference in scores for time needed to find the soundsource between both conditions (median: 3-D = , panning= ; Z=..., p = ... )(3-D vs. panning). 
 
 \subsubsection{Qualitative}
 
-Evaluation of the questionaires showed that ...
+Mean and median values for the different questions were (mean: 1: ,2:,3: ; median: ) .
+
+Evaluation of the questionaires showed that ratings for questions 1, 2,3 .... for the 3-D engine were significantly different from the panning.
 
 
 
 \section{Discussion}
+If our results are not significant this could be because of low sample size -> "Numerous methodologists have 
+cautioned that a small sample size implies low statistical 
+power, that is, a high probability of Type II error"~\cite{DeWinter2013}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
