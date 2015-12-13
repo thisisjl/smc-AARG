@@ -155,7 +155,6 @@ for i = 1:length(dataHRTFall);
     dataPanningwithOutliers(i) = mean(dataPanningall{i});
 end
 
-
 for i = 1:length(dataHRTFall);
     dataHRTF(i) = mean(dataHRTFall{i});
     dataPanning(i) = mean(dataPanningall{i});
