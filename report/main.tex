@@ -575,10 +575,10 @@ Additionally we assessed a qualitative analysis of how intuitive it was for subj
 \subsection{Materials and methods}
 \subsubsection{Participants}
 One participant had to be discarded because of 
-Qualitative data were collected from 11 participants (3 women and 8 men; mean age: 25, ranging from 22 to 30 years). For the quantitative data 6 more participants were measured summing up to in total 17 participants (4 women and 13 men; mean age: ..., ranging from 22 to 30 years). All participants were students coming from different backgrounds.\footnote{However, 14 subjects were master students in Sound and Music Computing at Aalborg University Copenhagen.} Six students were already familiar with 3-D audio sound and four of them had experience in audio navigation before conduction of the experiment. The other participants were naive. All participants reported normal or corrected to normal vision and no hearing deficits. Participants received no form of compensation other than gratitude. 
+Qualitative data were collected from 11 participants (3 women and 8 men; mean age: 25, ranging from 22 to 30 years). For the quantitative data 6 more participants were measured summing up to in total 17 participants (4 women and 13 men; mean age: 25, ranging from 22 to 30 years). All participants were students coming from different backgrounds.\footnote{However, 14 subjects were master students in Sound and Music Computing at Aalborg University Copenhagen.} Six students were already familiar with 3-D audio sound and four of them had experience in audio navigation before conduction of the experiment. The other participants were naive. All participants reported normal or corrected to normal vision and no hearing deficits. Participants received no form of compensation other than gratitude. 
 
 \subsubsection{Apparatus and stimuli}
-The experiment took place in a free field in "Valby Parken" in Copenhagen, Denmark (Coordinates: 55$^\circ$38'22.3"N, 12$^\circ$31'27.4"E). The mobile device used was a Motorolla Moto G running with Android version 5.0.2. The device was connected to Sony MDR ZX600 stereo headphones. Only one person at a time was tested. 
+The experiment took place in a free field (grass) in "Valby Parken" in Copenhagen, Denmark (Coordinates: 55$^\circ$38'22.3"N, 12$^\circ$31'27.4"E). The mobile device used was a Motorolla Moto G running with Android version 5.0.2. The device was connected to Sony MDR ZX600 stereo headphones. Only one person at a time was tested. 
 
 To create the auditory stimulus, digital vocal recordings of a male voice (age: ...) were collected using a ... . Recordings were done with ... bits of resolution for amplitude at a sampling rate of ...  kHz. Auditory stimuli were normalized in peak amplitude so that at the minimal distance to the soundsource (7 meter) using the maximal level of volume on the mobile device, the soundlevel of each soundsource was at ... dB. 
 
@@ -599,23 +599,19 @@ Before the experiment, participants were familiarized with the target sound as w
 Participants were instructed to find the sound source as fast as possible. No information about the possible locations (distances and angles) was given to the subjects. Trials which lasted longer than 5 minutes were aborted and labeled as "not found". 
 
 \subsubsection{Analyses}
-For the quantitative analysis ... trials were excluded because either analyses of GPS data for those trials revealed very poor precision (sudden jumps or no changes in the GPS signall for ... seconds) or the orientation sensor got stuck which made it impossible for the subjects to locate the sound source. Nevertheless, each subject performed at least ... trials in each condition. The remaining trials to be analysed summed up to ... trials in the 3-D condition and ... trials in the panning condition.
+For the quantitative analysis 26 trials were excluded because either analyses of GPS data for those trials revealed very poor precision (sudden jumps or no changes in the GPS signal for a period of time) or the orientation sensor got stuck which either increased the time needed to find the sound source to a great extent or made it even impossible for the subjects to locate the sound source within 5 minutes. One subject had to be discarded completely from the analyses because there was no single trial with reliable GPS for the panning engine. The other 16 subjects performed at least one trial in each condition. The remaining trials to be analysed summed up to 41 trials in the 3-D condition and 42 trials in the panning condition.
 
-The reasons for choosing a 10 point likertscale instead of the often referenced 5 or 7 point scales~\cite{} were that a greater number of responses should equalize the distances between the possible answer possibilities supporting treating likertscale data also as interval data~\cite{}. This gives us the grounds to use paired samples t-test for the qualitative analysis which is more powefull than the Wilcoxen signed rank test enabling us to detect smaller differences in ratings~\cite{}. Since we only had few questions, having so many answer possibilities should not have fatigued the subject too much so that accuracy of the responses should not have suffered due to too many answer possibilities~\cite{}. Though, it has to be noted that subject were outside when filling out the questionaire which due to cold temperatures might have driven the subjects to respond in a fast pace leading to less accurate responses.
+The reasons for choosing a 10 point likertscale instead of the often referenced 5 or 7 point scales~\cite{} were that a greater number of responses should equalize the distances between the possible answer possibilities supporting treating likertscale data also as interval data~\cite{}. This gives us the grounds to use paired samples t-test for the qualitative analysis which is more powefull than the Wilcoxon signed rank test enabling us to detect smaller differences in ratings~\cite{}. Since we only had few questions, having so many answer possibilities should not have fatigued the subject too much so that accuracy of the responses should not have suffered due to too many answer possibilities~\cite{}. Though, it has to be noted that subject were outside when filling out the questionaire which due to cold temperatures might have driven the subjects to respond in a fast pace leading to less accurate responses.
 
 The threshold chosen to correctly reject the null-hypothesis was always 5\% ($\alpha$ = .05). 
-
-WE PROBABLY DONT NEED THIS 
-((Reported p-values were computed using the Greenhouse-Geisser correction because Mauchly's test for sphericity was significant for several main and interaction effects (We have to check if that is the case in our experiment). Also the number of participants was relatively low reducing the power of Mauchly's test for sphericity~\cite[p. 72]{Rasch2014}.)) Therefore, sphericity could not always be assumed even when Mauchly's test for sphericity was not significant~\cite[p. 72]{Rasch2014}. (Nevertheless, differences in significances (one test was significant the other was not) between sphericity assumed and Greenhouse-Geisser corrected values were rare.) 
-WE PROBABLY DONT NEED THIS 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Results}
 \subsubsection{Quantitative}
-On average subjects needed ... seconds (SD = ) to find the sounds for the 3-D conditions and ... seconds (SD = ) for the panning condition. 
+On average subjects needed 104.6 seconds (SD = 44.8) to find the sounds for the 3-D conditions and 109.8 seconds (SD = 44.1) for the panning condition. 
 
-We computed a paired samples t-test to compare the results for both sound engines which revealed no significant difference between the means for both sound engines (t(df) = , p = ). However, checking whether our data is normally distrubuted showed that for the 3-D data the assumption of normality was violated (Shapiro wilk test: ...) (here we could also add the q-q plot). Therefore, we additionally computed the non-parametric Wilcoxen signed rank test which does not assume normal distributed data. Nevertheless, we could not find a significant difference in scores for time needed to find the soundsource between both conditions (median: 3-D = , panning= ; Z=..., p = ... )(3-D vs. panning). 
+We computed a paired samples t-test to compare the results for both sound engines which revealed no significant difference between the means for both sound engines (t(15) =-.48, p =.64). However, checking whether our data is normally distrubuted using the Shapiro-Wilk test showed that for the 3-D data the assumption of normality was violated (W(16)=.81, p = .004) and close to significance in the panning condition (W(16)=.89, p =.054). Therefore, we additionally computed the non-parametric Wilcoxon signed rank test which does not assume normal distributed data. Nevertheless, we could not find a significant difference in scores for time needed to find the soundsource between both conditions (median: 3-D=85.3, panning=95.9; Z=-.83, p = 0.41 ). 
 
 \subsubsection{Qualitative}
 
@@ -626,6 +622,8 @@ Evaluation of the questionaires showed that ratings for questions 1, 2,3 .... fo
 
 
 \section{Discussion}
+There was no performance difference between the two sound engines. This could have 2 reasons. first it is actually equally good. Probably the difference if there is a difference at all is so small that with such few data we could not detect the small difference. However the mean value was lower although not significantly.
+
 If our results are not significant this could be because of low sample size -> "Numerous methodologists have 
 cautioned that a small sample size implies low statistical 
 power, that is, a high probability of Type II error"~\cite{DeWinter2013}
