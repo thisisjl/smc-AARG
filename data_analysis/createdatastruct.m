@@ -101,11 +101,16 @@ function [ ds ] = createdatastruct( filename )
         trial_end_idx = trial_idx(end);                             % for the last sample
         
         
-        distance_raw_trial{i} = distance_raw(trial_start_idx:trial_end_idx);
-        distance_fil_trial{i} = distance_fil(trial_start_idx:trial_end_idx);
-        azimuth_raw_trial{i} = azimuth_raw(trial_start_idx:trial_end_idx);
-        azimuth_fil_trial{i} = azimuth_fil(trial_start_idx:trial_end_idx);
+        distance_raw_trial{i} = distance_raw(trialnumber==i);
+        distance_fil_trial{i} = distance_fil(trialnumber==i);
+        azimuth_raw_trial{i} = azimuth_raw(trialnumber==i);
+        azimuth_fil_trial{i} = azimuth_fil(trialnumber==i);
         
+%         distance_raw_trial{i} = distance_raw(trial_start_idx:trial_end_idx);
+%         distance_fil_trial{i} = distance_fil(trial_start_idx:trial_end_idx);
+%         azimuth_raw_trial{i} = azimuth_raw(trial_start_idx:trial_end_idx);
+%         azimuth_fil_trial{i} = azimuth_fil(trial_start_idx:trial_end_idx);
+%         
         latitude_trial{i} = latitude(trial_start_idx:trial_end_idx);
         longitude_trial{i} = longitude(trial_start_idx:trial_end_idx);
         latitude_raw_trial{i} = latitude_raw(trial_start_idx:trial_end_idx);
