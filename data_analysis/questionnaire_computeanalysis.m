@@ -1,0 +1,82 @@
+%% Questionnaire analysis script
+% data is tab separated value (.tsv)
+
+%% Read data:
+filename = 'questionnaire_answers.tsv';
+fprintf('Analizing file: %s\n',filename);
+
+fileID = fopen(filename);
+format = '%s%f%s%s%s%s%s%f%f%f%f%f%f%f%f%f%f%s%f%s%s%s%s%s%s%f%f%f%s%s%s%s%f';
+data = textscan(fileID,format,'delimiter', '\t', 'Headerlines', 1);
+fclose(fileID);
+
+% get numerical data for each page
+page1 = [data{8} data{9} data{10} data{11} data{12}];
+page2 = [data{13} data{14} data{15} data{16} data{17}];
+engine = data{33};                                      % engine: 1 is hrtf, 2 is panning
+
+% define engine names
+enginename = {'hrtf','panning'};
+
+%% questions data: HRTF vs PANNING
+% It was easy and intuitive to find the sounds
+col = 1;
+q1_hrtf = [page1(engine==1,col);page2(engine~=1,col)];
+q1_pann = [page1(engine==2,col);page2(engine~=2,col)];
+
+% The sounds appeared to be bound to a physical location in the area:
+col = 2;
+q2_hrtf = [page1(engine==1,col);page2(engine~=1,col)];
+q2_pann = [page1(engine==2,col);page2(engine~=2,col)];
+
+% There was a strong connection between my position and what I heard in the headphones
+col = 3;
+q3_hrtf = [page1(engine==1,col);page2(engine~=1,col)];
+q3_pann = [page1(engine==2,col);page2(engine~=2,col)];
+
+% The soundscape was more inside my head than outside in the area
+col = 4;
+q4_hrtf = [page1(engine==1,col);page2(engine~=1,col)];
+q4_pann = [page1(engine==2,col);page2(engine~=2,col)];
+
+% It was difficult to tell if a sound was in front of or behind me
+col = 5;
+q5_hrtf = [page1(engine==1,col);page2(engine~=1,col)];
+q5_pann = [page1(engine==2,col);page2(engine~=2,col)];
+
+%% Rest of the data
+% Age
+age = data{2};
+
+% Gender
+gender = strcmp(data{3},'Male'); % 0 is female, 1 is male
+
+% vision impairment
+visim = strcmp(data{5},'Yes');  % 0 is no, 1 is yes
+
+% corrected with lenses
+lenses = strcmp(data{6},'Yes');  % 0 is no, 1 is yes
+
+% musical training
+musictrn = strcmp(data{18},'Yes');
+
+% years musical training
+musictrn_years = data{19};
+
+% Did you have any experience with 3-D sound before?
+exp3D = data{20};
+
+% Did you have any experience with audio navigation before?
+expnav = data{22};
+
+% Are you comfortable with wearing headphones?   
+comfhead = data{24};
+
+% 11. The sound of the surroundings (trafic noise etc.) was a confusing factor
+confusing = data{26};
+
+% 12. The sound cues were accurate and easy to interpret
+cues = data{27};
+
+% 13. The sound source was pleasant
+pleasant = data{28};
