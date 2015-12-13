@@ -80,3 +80,37 @@ cues = data{27};
 
 % 13. The sound source was pleasant
 pleasant = data{28};
+
+%% Stastical analysis - QUALITATIVE ANALYSIS
+a = q1_hrtf;
+b = q1_pann;
+
+% compute mean
+meanHRTF = mean(a);
+meanPanning = mean(b);
+
+% compute median
+mdnHRTF = median(a);
+mdnPanning = median(b);
+
+% compute std
+stdHRTF = std(a);
+stdPanning = std(b);
+
+% q-q Plot
+figure;qqplot(a);
+figure;qqplot(b);
+
+% Shapiro-Wilk test
+[h1, p1, w1] = swtest(a);
+[h2, p2, w2] = swtest(b);
+% perform paired samples t-test
+[ht_test,pt_test,ci,statst_test] = ttest(a, b);
+
+% perform Wilcoxen-signed rank test
+[p,h,stats] = signrank(a, b);
+
+% another test
+signtest(a, b);
+
+
