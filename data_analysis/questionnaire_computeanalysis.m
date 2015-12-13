@@ -2,7 +2,7 @@
 % data is tab separated value (.tsv)
 
 %% Read data:
-filename = 'questionnaire_answers.tsv';
+filename = 'FINAL DATA/FINAL_qualitative_Data.tsv';
 fprintf('Analizing file: %s\n',filename);
 
 fileID = fopen(filename);
@@ -82,35 +82,39 @@ cues = data{27};
 pleasant = data{28};
 
 %% Stastical analysis - QUALITATIVE ANALYSIS
-a = q1_hrtf;
-b = q1_pann;
+a = q5_hrtf;
+b = q5_pann;
 
 % compute mean
-meanHRTF = mean(a);
-meanPanning = mean(b);
+disp('---- mean ----')
+meanHRTF = mean(a)
+meanPanning = mean(b)
 
 % compute median
-mdnHRTF = median(a);
-mdnPanning = median(b);
+disp('---- median ----')
+mdnHRTF = median(a)
+mdnPanning = median(b)
 
 % compute std
-stdHRTF = std(a);
-stdPanning = std(b);
+disp('---- std ----')
+stdHRTF = std(a)
+stdPanning = std(b)
 
 % q-q Plot
+disp('---- q plot ----')
 figure;qqplot(a);
 figure;qqplot(b);
 
-% Shapiro-Wilk test
-[h1, p1, w1] = swtest(a);
-[h2, p2, w2] = swtest(b);
+% Shapiro-Wilk test. Test for normality
+disp('---- Shapiro-Wilk test a ----')
+[h1, p1, w1] = swtest(a)
+disp('---- Shapiro-Wilk test b ----')
+[h2, p2, w2] = swtest(b)
+
 % perform paired samples t-test
-[ht_test,pt_test,ci,statst_test] = ttest(a, b);
+disp('---- perform paired samples t-test ----')
+[ht_test,pt_test,ci,statst_test] = ttest(a, b)
 
 % perform Wilcoxen-signed rank test
-[p,h,stats] = signrank(a, b);
-
-% another test
-signtest(a, b);
-
-
+disp('---- perform Wilcoxen-signed rank test ----')
+[p,h,stats] = signrank(a, b)
