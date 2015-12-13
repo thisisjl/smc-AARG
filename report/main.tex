@@ -67,6 +67,10 @@
 %
 \ifCLASSINFOpdf
 \usepackage{graphicx}
+
+\usepackage{booktabs} % lluis added these:
+\usepackage{multirow}
+\usepackage{siunitx}
   % \usepackage[pdftex]{graphicx}
   % declare the path(s) where your graphic files are
   % \graphicspath{{../pdf/}{../jpeg/}}
@@ -615,9 +619,80 @@ We computed a paired samples t-test to compare the results for both sound engine
 
 \subsubsection{Qualitative}
 
-Mean and median values for the different questions were (mean: 1: ,2:,3: ; median: ) .
+%Statistical tests applied to each question of the questionnaire do not show significant difference between both sound engines either.
+Evaluation of the questionnaires, Table \ref{table:questionnairetable}, showed that ratings for questions 1, 2, 3 and 4 for the 3D model were significantly different from the panning.
 
-Evaluation of the questionaires showed that ratings for questions 1, 2,3 .... for the 3-D engine were significantly different from the panning.
+\begin{table}[h]
+ \begin{tabular}{llllllll}
+
+    \toprule
+    \multirow{2}{*}{Question} &
+      \multicolumn{2}{c}{Mean (s)} &
+      \multicolumn{2}{c}{Std (s)} &
+      \multicolumn{2}{c}{Median (s)} \\
+& {3D model} & {Panning} & {3D model} & {Panning} & {3D model} & {Panning}\\
+      \midrule
+
+1    & 6.36    & 5.91    & 1.75    & 1.70    & 6    & 6    \\
+2    & 6.91    & 5.82    & 2.51    & 2.27    & 8    & 6    \\
+3    & 7.09    & 6.00    & 1.22    & 1.55    & 7    & 6    \\
+4    & 6.64    & 6.09    & 2.58    & 1.97    & 7    & 5    \\
+5    & 6.09    & 6.55    & 2.21    & 2.54    & 7    & 7    \\
+
+
+    \bottomrule
+  \end{tabular}\\
+  \caption{Questionnaire results}
+  \label{table:questionnairetable}
+\end{table}
+
+Summing the results for the first four questions in order to obtain an overall result, 
+
+%\begin{verbatim}
+%---- Shapiro-Wilk test 3D model ----
+%h1 = 0,  p1 = 0.4444,  w1 = 0.9332
+%
+%---- Shapiro-Wilk test panning ----
+%h2 = 0,  p2 = 0.6878,  w2 = 0.9534
+%
+%---- perform paired samples t-test ----
+%ht_test = 0
+%pt_test = 0.3199
+%ci = [-2.3598 6.5417]
+%
+%statst_test = 
+%    tstat: 1.0468
+%       df: 10
+%       sd: 6.6250
+%
+%---- perform Wilcoxen-signed rank test ----
+%p = 0.3223
+%h = 0
+%stats = signedrank: 38
+%\end{verbatim}
+
+\begin{table}[h]
+ \begin{tabular}{llllllll}
+
+    \toprule
+    \multirow{2}{*}{Question} &
+      \multicolumn{2}{c}{Mean (s)} &
+      \multicolumn{2}{c}{Std (s)} &
+      \multicolumn{2}{c}{Median (s)} \\
+& {3D model} & {Panning} & {3D model} & {Panning} & {3D model} & {Panning}\\
+      \midrule
+
+1      & 23.73  & 21.64  & 3.72    & 5.45    & 24  & 21\\
+
+    \bottomrule
+  \end{tabular}\\
+  \caption{Overall results}
+%  \label{table:questionnairetable2}
+\end{table}
+
+
+
+
 
 
 
