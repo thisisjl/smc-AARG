@@ -110,7 +110,7 @@
 % http://www.tug.org/applications/pdftex
 
 
-
+\usepackage{scrextend} % mg added this. use the same footnote mark 
 \usepackage{gensymb}
 
 % *** MATH PACKAGES ***
@@ -205,10 +205,10 @@
 
 
 
-
 % *** PDF, URL AND HYPERLINK PACKAGES ***
 %
-%\usepackage{url}
+
+\usepackage[hyphens]{url}
 % url.sty was written by Donald Arseneau. It provides better support for
 % handling and breaking URLs. url.sty is already installed on most LaTeX
 % systems. The latest version and documentation can be obtained at:
@@ -268,7 +268,26 @@ Copenhagen, Denmark\\
 %\IEEEauthorblockA{\IEEEauthorrefmark{4}Tyrell Inc., 123 Replicant Street, Los Angeles, California 90210--4321}}
 
 
-
+% *****************************************************************************************************
+% *****************************************************************************************************
+% added by mg. it is the structure that Stefania suggested use to use
+% THIS SHOULD BE THE MAIN STRUCTURE OF THE PAPER
+% Here is the structure
+% 1) Abstract: a summary of the project and results
+% 2) Introduction: Your problem, state of the art
+% 3) Implementation: description of your app, the 3D sound features, the sounds,etc….
+% 4) Experiment design
+% -description of experiment
+% -data analysis
+% -discussion
+% 5) Conclusion 
+% -your conclusion
+% future work
+% -references
+% Appendix
+% with implementations, etc….all you did which does not fit inside the paper
+% *****************************************************************************************************
+% *****************************************************************************************************
 
 % use for special paper notices
 %\IEEEspecialpapernotice{(Invited Paper)}
@@ -307,9 +326,12 @@ Copenhagen, Denmark\\
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-% The calculating capacity of mobile devices has highly increased in the last few years and almost every device has a GPS/compass sensor, it is now possible to enhance the user daily life experience. The main issue is how much can an HRTF model improve the user experience of hearing sound through headphones. Therefore an efficient HRTF model based on~\cite{Brown1998} has been implemented, and combining it with sensors data such as those stated above, it is possible to place a 'virtual sound object' in a specific location. Additionaly, the required angle between the sound and the user is computed. The user can therefore explore an environment through sound. To test our hypothesis the HRTF model is compared with a Panning model. write the results and the conclusion.
 
-We developed an application for mobile devices that uses an efficient HRTF model based on to create 3D soundscapes. The HRTF model is based on a combination of filters and delays provided on theoretical basis by Brown et. al. [1]. The device orientation is used to set the angle between the sound and the user. This model has many possibilities on the limited hardware capabilities of the mobile devices in comparison to HRTF database based models. The prototype will present the user several sounds scattered in a limited area where the user can interact with
+\\ \textit{previous version}\\
+We developed an application for mobile devices that uses an efficient HRTF model based on to create 3D soundscapes. The HRTF model is based on a combination of filters and delays provided on theoretical basis by Brown et. al. [1]. The device orientation is used to set the angle between the sound and the user. This model has many possibilities on the limited hardware capabilities of the mobile devices in comparison to HRTF database based models. The prototype will present the user several sounds scattered in a limited area where the user can interact with.
+
+{\textit{matteo's version}}\\
+Since the calculating capacity of mobile devices has highly increased in the last few years and almost every device has a GPS/compass sensor, it is now possible to enhance the user daily life experience. The main issue is how much can an HRTF model improve the user experience of hearing sound through headphones. Therefore an efficient HRTF model based on~\cite{Brown1997} has been implemented, and combining it with sensors data such as those stated above, it is possible to place a `virtual sound object' in a specific location. Additionaly, the required angle between the sound and the user is computed. The user can therefore explore an environment through sound. To test our hypothesis the HRTF model is compared with a cosine panner model~\cite{AndyFarnell2010}. write the results and the conclusion.
 \end{abstract}
 
 
@@ -322,27 +344,25 @@ HTRF, mobile devices, soundscape, Pure Data, OpenFrameworks
 
 \section{Introduction}
 
+A lot of research on modeling 3-D sound has been done with fairly good results~\cite{begault19943}. The best results can be obtained by those models implementing 3-D sound using personalized Head related transfer functions (HRTF) which needs tedious measuring of impulse responses etc. ~\cite{Meshram2014}. Mobile applications as well as multimedia productions are usually aimed at a big number of users, thus implementing HRTFs requiring measurements of the individual user would be very inpractcal. Furthermore the convolution needed for using databases with Head related impulse responses is an unnessesarry heavy technique in terms of computational power and memory, two things that are not abundand in mobile devices. Therefore, the aim of this project was to develop a computationally efficient and general HRTF model, yet, keeping the quality of the 3-D sound as good as possible. We used the model provided on a theoretical basis in~\cite{Brown1997} by implementing a combination of filters and delays in Pure Data and C. This audio engine was then embedded in a mobile application. Compass and GPS data provided by the mobile device was used to compute from which direction and at what distance the sound should appear to be coming from. With the application users should be able to discover a virtual sound space situated in Copenhagen. our HRTF model should satisfy two major requirements. 
+\\1. It should provide direction cues that are good enough to guide the user to the position where a specific sound is situated.\\2. The implemented HRTF model should provide an intuitive way of locating a sound source from an qualitative aspect. \\The first aim was to let the user find a sound source as fast as possible hypothesizing that our model would give and better or at least as good result as a simple stereophonic panning. Our second hypothesis was that the model would give a qualitatively more natural and intuitive feeling of the sounds position in the space
 
+Taken both hypothesizes together the user should experience a soundscape in at least 2-dimensions, azimuth and distance.
 
-A lot of research on modeling 3-D sound has been done with fairly good solutions (references). The best results can be obtained by those models implementing 3-D sound using personalized HRTF functions which needs tedious measuring of impulse responses etc (reference). Since mobile applications as well as multimedia productions are usually aimed at a big number of users, implementing personalized HRTF functions would require measurements of the individual user which is almost impossible. Additionally, using huge databases with HRTF's for subjects having similar head diameters and pinnae structures (dunno, how those HRTF's work) are not feasible for mobile applications as memory space is limited. Therefore, the aim of this project was to develop a computationally efficient and general HRTF model, yet, keeping the quality of the 3-D sound as good as possible. We therefore used the model provided on a theoretical basis in~\cite{Brown1997} by implementing a combination of filters and delays in Pure Data and C. This audio engine was then embedded in a mobile application. Sensor data provided by the mobile device was used to compute from which direction the sound should appear to be coming from. With the application users should be able to discover a virtual sound space situated in Copenhagen. This means that our HRTF model should satisfy two major requirements. 
-\\1. It should provide direction cues that are good enough to guide the user to the position where a specific sound is situated.\\2. The implemented HRTF model should provide an intuitive way of locating a sound source from an qualitative aspect. \\The first aim is bound to accuracy of the GPS signal and orientation data provided by the individual mobile phone. We hypothized that using a general HRTF model should be of sufficient quality to satisfy the first requirement since sensory data can be rather noisy anyways which would be overfitted by a very precise HRTF model.\\ ===Something about the second hypothesis===
-
-Taken both hypothesises together the user should experience a soundscape in at least 2-dimensions, azimuth and distance.
-
-The purpose of this paper is...\textit{(it should be short, specific and immediate)}
+The purpose of this paper is first to describe the implementation of a efficient and general HRTF model for mobile devices. Secondly to make a comparative test between that and a simple stereophonic panning based on both qualitative and quantitative measures. 
 
 First, some state of the art research on audio augmented reality will be provided. That section will be followed by the presentation of our implementation of the audio engine as well as the main application. In the last part we will present the results obtained by testing our application and discuss those in light of the two hypotheses stated above.
 
 
 
 \subsection{State of the art}
-The concept of audio augmented reality (AAR) deals with techniques where a real sound environment is extended with virtual auditory environments. Nowadays, the progress in audio technology and computing predicts the introduction of completely new type of interactive audio applications~\cite{}. Advances in mobile technologies have made it possible to create audio augmented spaces almost anywhere. For instance, spatial auditory displays that can provide the user with landmarks and are capable to attract the user's attention have been tested and introduced~\cite{}. Many experiments, qualitative and quantitative researches have been designed so far to better understand the way in which people usually perceive multiple simultaneous sources differently placed and to increase the level of immersion in the experience.
+The concept of audio augmented reality (AAR) deals with techniques where a real sound environment is extended with virtual auditory environments. Recently, the progress in audio technology and computing predicts the introduction of completely new type of interactive audio applications~\cite{}. Advances in mobile technologies have made it possible to create audio augmented spaces almost anywhere. For instance, spatial auditory displays that can provide the user with landmarks and are capable to attract the user's attention have been tested and introduced~\cite{}. Many experiments, qualitative and quantitative researches have been designed so far to better understand the way in which people usually perceive multiple simultaneous sources differently placed and to increase the level of immersion in the experience.
 
-\subsubsection{Audio reality vs Virtual reality}
-First of all, the possibility to hear the natural acoustic environment around a user differentiates the concept of audio augmented reality from the traditional concept of a virtual reality audio environment~\cite{}. In virtual reality, generally participants are abstracted from the natural environment and are surrounded only by a completely synthetic one (acoustic and/or visual). On the opposite, in augmented reality a virtual environment is \emph{superimposed} on a real one. To be more specific, in a mobile audio augmented environment participants are able to interact with the virtual audio mixed with real vision and soundscape.
+\subsubsection{Audio reality vs Augmented reality}
+First of all, the possibility to hear the natural acoustic environment around a user differentiates the concept of audio augmented reality from the traditional concept of a virtual reality audio environment~\cite{}. In virtual reality, generally participants are abstracted from the natural environment and are surrounded only by a completely synthetic one (acoustic and/or visual). On the opposite, in augmented reality a virtual environment is \emph{superimposed} on a real one. To be more specific, in a mobile audio augmented environment participants are able to interact with the virtual audio mixed with real vision and/or soundscape.
 
 \subsubsection{Augmented audio reality}
-The aim of AAR is to combine both real and virtual sound scenes so that virtual sounds are perceived as an extension to the natural ones. Virtual sound, as expressed in \cite{}, could be originated from another environment or artificially created. Two extreme possible augmentations are possible. The former is a perfect augmentation of the listener's auditory environment and is achieved when the listener is unable to predict whether a sound source is part of the real or the virtual audio environment. The latter is a high-quality virtual auditory scene with some characteristic that are not possible in acoustic environments.
+taking this definition of augmented reality, audio audmente reality (AAR) should be within the bounderies of 1) a perfect augmentation of the listener's auditory environment and is achieved when the listener is unable to predict whether a sound source is part of the real or the virtual audio environment.and 2) a set of artifisial sounds that are not possiblein the real world sumperimposed and fitted to the visual percieved world like in \cite{}. Any combination of these two fall within the boundaries of AAR
 
 \subsubsection{Previous work}
 Several work has been done in this field although this area is relatively new. \emph{Audio Aura} (Mynatt 1995) was one of the first project to deal exclusively with audio in augmented reality system. It basically consisted in providing information to users as they travelled through their workspace. These information was triggered by particular locations in the workspace. The use of audio in \emph{Audio Aura} is particularly interesting because most of its cues were associated to sounds from nature rather then recorded vocal, speech or synthetic sounds. Similar in approach to \emph{Audio Aura} was the \emph{Automated Tour Guide} (Bederson 1995). In both cases, triggers are readily identifiable, still and rarely changing. Those augmented sounds were associated to pre-determined locations in space and there was no need to determine the precise location of an individual. \\
@@ -357,9 +377,9 @@ This ambiguity can be solved with the information provided by the filter effect 
 %Thus, having a database with own measured HRTF for each user would be the ideal case. However, because of the large amount of data that the customized HTRFs required to generate externalized virtual sources would entail, and the expensive real-time computation of them every time the sound source moves, this is almost impossible. In addition, due to the limited memory space of the mobile devices, having a database with standard HTRFs would not be the best choice and it is desirable to find a more efficient HTRF model.\\
 
 \subsubsection{Localization/Lateralization}
-Headphones are much related to the concept of mobile and wearable application and have been used successfully in many virtual reality applications. Headphones, and earphones as well, make the ear receive the sound separately. That is advantageous because the whole scale of differences between the signals coming to ears, i.e. \emph{interaural time differences} (ITD) and \emph{interaural intensity differences} (IID), can be manipulated separately and individually~\cite{}.\\
-Generally speaking, when listening to sounds coming from headphones, the sound sources seem to be located inside the subject's head~\cite{}. This is usually called \emph{lateralization}, or intracranial, or `inside-head-localization` (IHL). On the opposite, there is the effect of having the sound outside the heed, according to specific direction and distance, i.e. \emph{localization} or `outside-head-localization` (OHL).
-It has been necessary distinguish localization inside and outside the head. This difference in terminology has reinforced the assumption that there is a basic difference between perception of sound conveyed by headphones and sound that reaches the ear from an external and real source~\cite{}. It has also demonstrated that a listener can make a clear distinction in headphones listening between localized (that is, sound inside the head) and lateralized sounds sources and that both these type can coexist in the listener's experience~\cite{}.  
+Headphones are an intergraded part of many mobile and wearable application and have been used successfully in countless virtual reality applications. Headphones make the ear receive the sound separately. That is advantageous because the whole scale of differences between the signals coming to ears, i.e. \emph{interaural time differences} (ITD) and \emph{interaural intensity differences} (IID), can be manipulated separately and individually~\cite{}.\\
+When there is a misfit between the perceived space and the sound the listener hear it is impossible to place it in the physical space. It is thus percieved in lack of better options to origin from inside the head\cite{}. This effect is usually called \emph{lateralization}, or intracranial, or `inside-head-localization` (IHL). On the opposite, there is the effect of having the sound outside the heed, according to specific direction and distance, i.e. \emph{localization} or `outside-head-localization` (OHL).
+It has been necessary distinguish localization inside and outside the head. This difference in terminology serve to emphasis the difference between a sound source coneyed directly by headphones and that of a real source~\cite{}. It has also demonstrated that a listener can make a clear distinction in headphones listening between localized (that is, sound inside the head) and lateralized sounds sources and that both these type can coexist in the listener's experience~\cite{}.  
 
 \subsubsection{Issues in headphones-conveyed sound}
 Headphones auralization often produces an incorrect localization of virtual sound sources~\cite{} and many issues could be experienced.\\
@@ -368,97 +388,151 @@ externalization is related to the perception of auditory distance such that ther
 \paragraph{Localization errors}
 \emph{localization} error refers to the deviation of the reported position of a sound source from a measured `target` location, i.e. the listener fails in matching the correct location of the sound. Localization errors can be divided in \emph{azimuth} (deviations along the horizontal plane) and \emph{elevation} errors (deviation from eye-level elevation)~\cite{}. Dynamic cues related to head turning and other movements of either a listener or a sound source should be taken into consideration~\cite{}. These errors might come from some location accuracy. Determining the accurate position of the user of one of the most important task in an AR system owing to that system always produces output to the used based on his or her location in space~\cite{}. That said, any location inaccuracy should be avoided using GPS receiver with high sensitivity and reliability. Here, the implementation design takes a crucial role as noted in~\cite{}.
 \paragraph{Reversal errors}
-sometimes called front-back or back-front `confusion`, that error refers to the judgement of a sound source as located on the opposite side of the interaural axis than the target position~\cite{}. An informal proposal has been made, which tries to help the user in front-back discrimination on the basis of the familiarity of the effects on timbre cues, e.g. unique patterns in \emph{early reflections} depending on the virtual sound location. Indeed, this has not yet been verified experimentally.
+sometimes called front-back or back-front `confusion`, that error refers to the judgement of a sound source as located on the opposite side of the interaural axis than the target position~\cite{} due to the cone of confusion. An informal proposal has been made, which tries to help the user in front-back discrimination on the basis of the familiarity of the effects on timbre cues, e.g. unique patterns in \emph{early reflections} depending on the virtual sound location. Indeed, this has not yet been verified experimentally. Informal Proposal has suggested to use difference in \emph{early reflections} to help judge where the sound origins. However in application where the listener can change its angle to the source, the front and back will soon be obvious through the movement of the sound.
 
 \subsubsection{Conclusion}
 Although it is a recent field of research, several works and experiments in the context of audio augmented reality has been made so far. Most of research has been done mainly on the use of visual information with very little attention paid to the audio aspects.\\ 
-The use of audio and its refinement in an augmented reality environment is a big deal. There are many issues and challenges that an audio environment presents~\cite{}. For instance, providing a way for the user to orient himself or herself in an only-audio virtual space is even more difficult than providing visual cues. Another interesting aspects of audio, as also explained in~\cite{}, is the fact that audio does not persist and it starts disappearing as soon as it has heard. That deals with a more attention due to the audio to capture every detail that may help the user retrieve a specific sound in a specific location.\\
-Finally, with the advent of portable systems such as sensors-equipped smartphone and laptop a further development of \emph{geolocated AR} has been made possible. That systems use locational sensing and user tracking technologies (e.g. Global Positioning System, or GPS) to let the user navigate through a audio-augmented space and to get a more defined listener's position, which is essential for a correct externalizaton. More information will be given in further sections.
-
+The use of audio and its refinement in an augmented reality environment is a big deal. There are many issues and challenges that an audio environment presents~\cite{}. For instance, providing a way for the user to orient himself or herself in an only-audio virtual space is even more difficult than providing visual cues. Another interesting aspects of audio, is that it, contrary to visual images or signs, is unstabil and thus need to be continiously repeated or be infinite in order to work as a dirrectional cue ~\cite{}.   
+Finally, with the advent of portable systems such as sensors-equipped smartphones and laptops a further development of \emph{geospecific AR} has been made possible. That is systems that use locational sensing and user tracking technologies (e.g. Global Positioning System, or GPS) to let the user navigate through a audio-augmented space and to get a more defined listener's position, which is essential for a correct externalizaton. More information will be given in further sections.
 	
-\section{Design and implementation choiches}	
-\textit{also some argumentation why we used a HRTF model based on filtering rather than using a database (citations why database not efficient and why quality better with databases but good enough with filtering)}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The application}
-\subsection{openFrameworks}
-We decided to develop our application for Android platform. Nevertheless, we did not use the facilities and the built-in code provided by Android Studio, but instead we decided to use openFrameworks. 
+\section{Design, Implementation and Mobile Application}
+\subsection{Introduction}
+The mobile application developed has been called `\emph{Audio Treasure Hunt}'' and the user has to find one sound located around him in the shortest time possible. As stated above, a Pure Data external called \textit{headShadow}' has been implemented and it performes a head shadowing effects. The reason that led to this development process is due to efficiency~\cite{aroundMe}, since the application runs on mobile device where the computational power is limited to its hardware. Indeed, there is a Pure Data object called earplug$\sim$ which is a realtime binaural filter based on KEMAR impulse measurement. It allows you to spatialize a sound in realtime. It basically takes the KEMAR data set, and interpolates 366 locations where HRTF measurement exists in a spherical surface. you get azimuth control 0-360 and elevation -40 - 90\footnote{https://puredata.info/downloads/earplug}. Testing this Pd object on a personal computer has shown its inaccuracy. Hence, it has not been tested on a mobile device. 
+Given that the aim of this application is testing the implemented HRTF model, two versions of this application have been developed. The first one uses the HRTF model~\cite{Brown1997} and the second one uses a cosine Panner model~\cite{AndyFarnell2010}.
+At a later stage these two applications have been tested on users and the time required to find the sound has been compared. That is, statistical analysis has been applyed on the data in order to prove its quality. To develop and implement this application several programming languages have been used\footnote{Java, C++/C, PureData}. This first version of the application runs only on Android platform.
 
-The reasons why we decided to develop using this programming environment was the need of a fast communication between the mobile platform and our program code. It works using C++ language, which implies that the code is compiled directly into assembly language and hence works very fast~\cite{} and does not need to be interpreted by a virtual machine as it is the case for a java-built environment such as Android Studio~\cite{}. \\
-Discussing all the steps involved in the building process is beyond the scope of this paper (and more information can be found in~\cite{} and~\cite{}), but a short explanation of what is openFrameworks and the main operations used to achieve our application will be given. \\
-\subsubsection{Description}
+% Using an HRTF databased would required personalized head related transfer functions, which are difficult to obtain due to the tedious and expensive measurement process requiring an anechoic chamber~\cite{Meshram2014}. Additionally, a database would required a large amount of disk space. Therefore an HRTF model based on~\cite{Brown1997} has been implemented for the mobile application.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \textit{also some argumentation why we used a HRTF model based on filtering rather than using a database (citations why database not efficient and why quality better with databases but good enough with filtering)}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{openFrameworks}
+OpenFrameworks\footnote{http://openframeworks.cc/\label{refOF}} has been choosen as development framework rather than Android Studio\footnote{http://developer.android.com/sdk/index.html}. This choice is due to cross-platform reasons. Even though this first application runs only on Android, future improvements will also inlcude iOS development.
+% It works using C++ language, which implies that the code is compiled directly into assembly language and hence works very fast~\cite{} and does not need to be interpreted by a virtual machine as it is the case for a java-built environment such as Android Studio~\cite{AndSTD}. 
+Discussing all the steps involved in the building process is beyond the scope of this paper, but a short explanation of what is openFrameworks and the main operations used to achieve this application will be given. \\
+\subsubsection{Description}~\\
 OpenFrameworks, by definition given on its website, is:
 \begin{center}
-{\footnotesize{\textit{an open source C++ toolkit for creative coding}}~\cite{}}
+{\footnotesize{\textit{an open source C++ toolkit for creative coding}}\footref{refOF}.}
 \end{center}
-Since it is entirely written in C++, distributed under MIT license and actually runs on five operative systems and four IDEs, it undoubtedly presents some kind of advantages. It gives the opportunity to several users to deal with code designed to be minimal and easy to grasp and use it on the favourite IDE. In that case, we use both OS X and Windows platform, and Xcode and Visual Studio as integrated development environment. That \textit{simple and intuitive framework for experimentation}~\cite{} is designed to work as a general purpose glue and wraps together several commonly used libraries, such as \emph{OpenGl, OpenCv, PortAudio} and many more. Nowadays, this is a popular platform for experiments in generative and sound art and creating interactive installations and audiovisual performances~\cite{}. The current operative version is \emph{0.9.0}.
+Since it is entirely written in C++, distributed under MIT license and actually runs on five operative systems and four IDEs, it is massively cross-compatible. It gives the opportunity to deal with code designed to be minimal and easy to grasp\footref{refOF}. 
+%In that case, both OS X and Windows platform, and Xcode and Visual Studio as integrated development environment. 
+That \textit{simple and intuitive framework for experimentation}\footref{refOF} is designed to work as a general purpose glue and wraps together several commonly used libraries, such as \emph{OpenGl, OpenCv, PortAudio} and many more. Nowadays, this is a popular platform for experiments in generative and sound art and creating interactive installations and audiovisual performances\footref{refOF}. The current operative version is \emph{0.9.0}.
 
-\subsubsection{Addons}
-its design philosophy claims for a collaborative environment. It thrives on the contributions of many people, and collaborate mainly on \emph{addons} and projects. An \emph{addons} is made of several snippets of code put together in order to extend openFrameworks functionality, bring some external framework and allow it to be integrated into openFrameworks project or make specific and complicated tasks easier and reusable in other contexts~\cite{}. It also generally contains the library itself in a form that is ready to be linked to project binaries. In our case, as depicted in the next section, we used several \textit{third-party} addons and built our own library called \emph{ofxOrientation} to access sensors information about localization and orientation and provide the HTRF model with right values. 
+\subsubsection{Addons}~\\
+its design philosophy claims for a collaborative environment. It thrives on the contributions of many people, and collaborate mainly on addons and projects. An \emph{addons} is made of several snippets of code put together in order to extend openFrameworks functionality, bring some external framework and allow it to be integrated into openFrameworks project or make specific and complicated tasks easier and reusable in other project~\cite{}{\footnotesize{\textit{ask Mattia where to find this reference}}} . It also generally contains the library itself in a form that is ready to be linked to project binaries.
+Several \textit{third-party} addons has been used such as \emph{ofxGui, ofxXmlSettings, ofxAndroid, ofxGeo, ofxMaps, ofxTween, ofxPd}. Additionally, it has been implemented a specific addons called \emph{ofxOrientation}, which accesses sensors data regarding orientation. This step was necessary in order to retrieve the required angle between the sound location and the user orientation, which is then use by the HRTF model.
 
-\subsubsection{Main issues}
-openFrameworks requires such lots efforts to be mastered and its learning rate is quite steep. Its weakness is in fact due to the lack of documentation and people who don't have at least some programming background could feel quite uncomfortable. Hopefully, its community is continuously providing discussion and projects, while addons are released with some example to compile and have to be created using a bunch of accurate rules.
+\subsubsection{The openFrameworks project}~\\
+All openFrameworks project have a similar structure of folders and files. The most important folder among them is for sure the \emph{src} folder. It contains all the source codes and consists at least of \texttt{main.cpp} (containing the \texttt{main( )} function to let the operating system start the application), \texttt{ofApp.h} (containing declaration of the specific class) and \texttt{ofApp.cpp}, which contains definition of all functions declared in the previous file. All the methods in that class are \emph{event-handling} methods, hence they are triggered in response to events that happens inside the application such as mouse scrolling and program quitting.% \note{}.  MATTIA what does that mean? 
+To create a new project, the Project Generator wizard has been used which is located in the same directory and directly provided by the environment. Such a way is simple and it is especially useful when dealing with several addons, which are automatically linked. 
+% Once we got the structure, we could access every source file in the \emph{src} folder. 
+At its simplest, working with an openFrameworks project is adding new code to the appropriate method, or just create a new one and declare it in the \texttt{ofApp.cpp}. In\footref{refOF} a further explanation of the main methods and their workflow is provided.
 
-\subsubsection{The openFrameworks project}
-all openFrameworks project have a similar structure of folders and files. The most important folder among then is for sure the \emph{src} folder. It contains all the source codes and consists at least of \texttt{main.cpp} (containing the \texttt{main( )} function to let the operating system start the application), \texttt{ofApp.h} (containing declaration of the specific class) and \texttt{ofApp.cpp}, which contains definition of all functions declared in the previous file. All the methods in that class are \emph{event-handling} methods, that is they are triggered in response to events that happens inside the application such as mouse scrolling and program quitting.% \note{}.  MATTIA what does that mean?
-
-To create a new project, we used the Project Generator wizard located in the same directory and directly provided by the environment. Such a way is simple and it is especially useful when dealing with several addons, which are automatically linked. Once we got the structure, we could access every source file in the \emph{src} folder. At its simplest, working with an openFrameworks project is adding new code to the appropriate method, or just create a new one and declare it in the \texttt{ofApp.cpp}. In~\cite{} a further explanation of the main methods and their workflow is provided.
-
-\subsubsection{Compiling}
-\textit{soon...}
-
- 
 
 \subsection{Sensor data retrieving}
-Our application required two kind of sensors data: \emph{GPS} and \emph{orientation}. 
+The implemented mobile application required two kind of sensors data: \emph{GPS} and \emph{orientation}. 
 \begin{itemize}  
-\item GPS is a way of determining location that has become amazingly common with the increasing of portable technologies. Any device that receives a GPS signal is 	called a GPS \emph{receiver}. As explained in~\cite{} the receiver calculates its position by precisely timing the signals sent by the GPS satellites.
-We needed the GPS user position to calculate the distance to the sounds that were placed on fixed locations in the real environment. 
-\item orientation usually is derived using a combination of field sensors, such as accelerometer and magnetometer. 
-In this case, we needed orientation to define the angle the user is heading relative to the sound sources.
+\item GPS is a way of determining location that has become common with the increasing of portable technologies. Any device that receives a GPS signal is 	called a GPS \emph{receiver}. As explained in~\cite{} {\footnotesize{\textit{ask Mattia where to find this reference}}} the receiver calculates its position by precisely timing the signals sent by the GPS satellites.
+The GPS user position is needed to calculate the distance to the sounds that were placed on fixed locations in the real environment. 
+\item Orientation is computed using the orientation sensor. It is a software-based sensors which derives its data from the accelerometer and the geomagnetic field sensor.
+\\
+{\footnotesize{\textit{cannot add \\ http://developer.android.com/guide/topics/sensors/sensors\_position.html}}}. 
+\\
+Therefore, it is possible to determine a device's position relative to the magnetic North Pole.
 \end{itemize}
 
-To access the GPS data we used \emph{ofxMaps} and \emph{ofxGeo} addons (reference to webpage/gitrepository). Reading the GPS position on an Android platform requires a listening mechanism and we implemented it in openFrameworks by calling the \texttt{ofRegisterGPSEvent()} in the \texttt{setup()} method of our main code. We also added a method to our application, in the \texttt{ofApp.h} precisely, to handle the updates from the Android OS system calls. It is named \texttt{locationChanged()} and adds an event handler for the dispatched event~\cite{}. Moreover, the \texttt{startGPS()} method is called at the beginning and \texttt{stopPGS()} should call when quitting the application to avoid an overconsumption of phone battery.
+To access the GPS data \emph{ofxMaps}\footnote{https://github.com/bakercp/ofxMaps} and \emph{ofxGeo}\footnote{https://github.com/bakercp/ofxGeo} addons has been used. The GPS position on an Android platform requires a listening mechanism, which has been implemented in openFrameworks by calling the \texttt{ofRegisterGPSEvent()} in the \texttt{setup()} method of the source code. In the \texttt{ofApp.h} a method has been added in order to handle the updates from the Android OS system calls. It is named \texttt{locationChanged()} and adds an event handler for the dispatched event~\cite{} {\footnotesize{\textit{ask Mattia where to find this reference}}}. Moreover, the \texttt{startGPS()} method is called at the beginning and \texttt{stopPGS()} should call when quitting the application to avoid an overconsumption of phone battery. 
 
-{\footnotesize \textit{(Something about smoothing if we used it, and maybe we have to look into the code how they used smoothing).}}
+% Due to unstable GPS and Orientation signals filters implementation has been necessary. Therefore two median filters has been applied in order to smooth the dataflow.
+% \\ 
+% {\footnotesize{\textit{add how we implemented our filter and the formula too, if any}}}
+% \\
 
-Since we are dealing with some kind of filtering depending on the sound sources position (e.g. the sound could appear in front of the user as well as behind), it is necessary to take into consideration the user's orientation. That is basically the angle created between the heading of the user and the geographic north pole. Initially, we assumed the user always faced to the north, i.e. the angle between the user and the geographic north pole\footnote{There is a difference between \emph{geographic} and \emph{magnetic} north pole.} is equal to 0. If we can discard the deviation of the user's orientation, it is possible to define the angle between the user and the sound source as the \emph{true bearing \footnote{It is possible refer to it simply as \emph{bearing}.}}. This is, by definition
-\begin{quote}
-{\footnotesize{\textit{the angle measured in degrees in a clockwise direction \footnote{All bearings are measured in a horizontal plane.} from the north line~\cite{}.}}}
-\end{quote}
+% **************************************************************************************************************************
+% **************************************************************************************************************************
+% Mattia's Version
+% Since we are dealing with filtering depending on the sound sources position (e.g. the sound could appear in front of the user as well as behind), it is necessary to take into consideration the user's orientation. That is basically the angle created between the heading of the user and the geographic north pole. Initially, it has been assumed that the user always faced the north, i.e. the angle between the user and the geographic north pole is equal to 0. Discarding the deviation of the user's orientation, it is possible to define the angle between the user and the sound source as the \emph{true bearing \footnote{It is possible refer to it simply as \emph{bearing}.}}. This is, by definition
+% \begin{quote}
+% {\footnotesize{\textit{the angle measured in degrees in a clockwise direction \footnote{All bearings are measured in a horizontal plane.} from the north line~\cite{} == ask Mattia where did he find this definition == .}}}
+% \end{quote}
+% Assuming a sound source as a point that radiates in every directions, the bearing of the user from the sound source can be calculated, as shown in (add figure)
+% {\footnotesize{\textit{Ask Mattia which figure to add}}}.
+% The bearing could be accessed via the \emph{ofxGeo} addon, which contains a specific method called \emph{GeoUtils::bearingHaversine} that uses the \textit{`haversine'} formula:
 
-If we also assume a sound source as a point that radiates in every directions, we could easily calculate the bearing of the user from the sound source, as shown in (add figure). The bearing could be accessed via the \emph{ofxGeo} addon, which contains a specific method called \emph{GeoUtils::bearingHaversine} that uses the \textbf{`haversine`} formula:
+% \begin{equation*}\label{eq:haversine}
+% \begin{split}
+% 	\theta = & atan2(sin (\delta \gamma)cos(\varphi_2)) cos(\phi_1)sin(\varphi_2)\\
+% 	&-sin(\varphi_1)cos(\varphi_2)cos(\delta \gamma)) \\
+% \end{split}
+% \end{equation*}
+% where $\varphi$ is the \emph{latitude}, $\delta$ is the \emph{longitude}.
+% Once the bearing is determined, it can be assumed that the angle between the heading of the user and the sound source should be the sum of the bearing and the direction the user is facing. Doing so, using a compass it can be retrieved. In order to access the compass orientation a specific addon has been implemented which accesses the `SENSOR TYPE ORIENTATION' provided by the Android API. Having this information four cases has to be differentiated: 
+% \\
+% {\footnotesize{(some images and explanation about how we calculated the angle between our heading orientation and the sound.)}}
+% \\
+% In order to smooth the sensor data (especially for the orientation) we filtered the sensory information by computing the median of a chunk of mediansize instances of the sensor output. 
+% **************************************************************************************************************************
+% **************************************************************************************************************************
 
-\begin{equation*}\label{eq:haversine}
+To retrieve compass orientation a specific addon called \emph{ofxOrientation} has been implemented. It accesses the `TYPE\_ORIENTATION' provided by the Android API and it measures degrees of rotation that a device makes around all three physical axes (x, y, z). In this case, only the z-axis is needed. Having the device's position relative to the magnetic North Pole and the sound location, \textit{theta} can be computed.
+
+\subsection{Computing theta and distance}
+To compute the distance between two point, in this case the sound location and the user location, the \textit{Haversine} formula\footnote{http://www.movable-type.co.uk/scripts/latlong.html} is taken into consideration.
+\begin{equation}\label{eq:distancehaversine1}
 \begin{split}
-	\theta = & atan2(sin (\delta \gamma)cos(\varphi_2)) cos(\phi_1)sin(\varphi_2)\\
-	&-sin(\varphi_1)cos(\varphi_2)cos(\delta \gamma)) \\
+  a = {\sin}^{2}(\Delta\varphi / 2) + \cos \varphi _1 + \cos \varphi _2 + \sin^2(\Delta\lambda / 2)
 \end{split}
-\end{equation*}
-where $\varphi$ is the \emph{latitude}, $\delta$ is the \emph{longitude}.
-
-Once we got the bearing, we can start supposing that the angle between the heading of the user and the sound source should be the sum of the bearing and the direction the user is facing. Doing so, we can retrieve it using a compass. In order to access the compass orientation we built our own addon accessing the 'SENSOR TYPE ORIENTATION' provided by the android API. Having this information we now had to differentiate between four cases: (some images and explanation about how we calculated the angle between our heading orientation and the sound). In order to smooth the sensor data (especially for the orientation) we filtered the sensory information by computing the median of a chunk of mediansize instances of the sensor output. 
+\end{equation}
+\begin{equation}\label{eq:distancehaversine2}
+\begin{split}
+  c = 2 * atan2(\sqrt{a},\sqrt{(1-a)}) 
+\end{split}
+\end{equation}
+\begin{equation}\label{eq:distancehaversine3}
+\begin{split}
+  d = R * c
+\end{split}
+\end{equation}
+where $\varphi$ is the \emph{latitude}, $\lambda$ is the \emph{longitude}, \emph{R} is earth's radius (mean radius = 6,371 km). \\
+Therefore, the distance is computed by calling the \emph{GeoUtils::distanceHaversine} method, which in then used to simulate the sound pressure in a free field. First of all, to calculate the angle \textit{theta} required by the HRTF model the angle \textit{beta} must be computed. The angle \textit{beta} is defined as the angle between the positive y-axis and the sound location. Hence, the angle \textit{theta} is then obtained and fed to the HRTF model.
 
 \subsection{Audio engine}
-The audio engine was the most crucial part of our applications. As shortly mentioned in the introduction we decided to use a filter based HRTF model which claimed to be both 'efficient' and of reasonable 'quality'~\cite{Brown1997} in order to achieve a satisfying user experience and an efficient real time application. We basically followed the workflow (order of filter and delay lines) given in~\cite{Brown1997} and depicted in figure \ref{fig:workflow}. 
+The audio engine is the core part of the mobile application. As shortly mentioned in the introduction a filter based HRTF model has been implemented, which is claimed to be both efficient and of reasonable quality~\cite{Brown1997} in order to achieve a satisfying user experience and an efficient real time application. The workflow given in~\cite{Brown1997} has been followed, which is depicted in Figure \ref{fig:workflow}. 
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 		\includegraphics[scale=0.75]{graphics/graphic.png}
 	\caption{Components of the model provided on a theoretical basis in~\cite{Brown1997}}
 	\label{fig:workflow}
 \end{figure}
 
+\begin{figure}[h!]
+  \centering
+    \includegraphics[scale=0.5]{graphics/audioengine.png}
+  \caption{The audio engine implemented in Pure Data}
+  \label{fig:augioengine}
+\end{figure}
 
+To implement the HRTF model~\cite{Brown1997} the audio programming language PureData has been used. Additionaly, in order to embed this model in the Android platform \textit{libpd}\footnote{http://libpd.cc/} has been taken into consideration. Therefore, a PureData external called \textit{headShadow} has been implemented and written in C. Each single part of the HRTF model has been implemented using PureData. 
 First, the monoaural sound which has been processed to add a range effect, goes to a head model and a room model. The binaural output of the former is then processed by the pinna model, and finally each one is added to the output of the room model to provide an externalization effect.
 
-In the following formulas, the angles are measured in radians in the interaural-polar system, where $\theta$ is the azimuth angle and $\phi$ is the elevation angle. However, in our application the latter is no considered since all the sound sources are placed in the horizontal plane without elevation.\\
+In the following formulas, the angles are measured in radians in the interaural-polar system, where $\theta$ is the azimuth angle and $\phi$ is the elevation angle. However, in the mobile application the latter is no considered since all the sound sources are placed in the horizontal plane without elevation.
 
+\subsubsection{The distance model}~\\
+In order to simulate the sound pressure in the free field the inverse distance law has been applyed. Since sound intensity is proportional to the square of sound pressure, the inverse square law (for sound intensity) becomes the inverse distance law (for sound pressure)~\cite{everest2009master}. Therefore, sound pressure is inversely proportional to distance \textit{r}:
+\begin{equation}\label{eq:soundpressure}
+P = \frac{k}{r}
+\end{equation}
+where \textit{P} is the sound pressure, \textit{k} is a costant and \textit{r} is the distance from source.
+Hence, for every doubling of distance \textit{r} from the sound source, sound pressure will be halved. When the distance from
+the source is doubled, the sound-pressure level decreases by 6 dB~\cite{everest2009master}.
+This model has been implemented in Pure Data.
 
 \subsubsection{The head model}~\\
-
-
- The path length difference from the sound source to the two ears and the shadowing effect produced by the head at the far ear, lead to a delay and a intensity difference in the sound arriving at the left and right ears. In order to estimate the time delay, the Woodworth's formulas are used~\cite{Woodworth} :
+The path length difference from the sound source to the two ears and the shadowing effect produced by the head at the far ear, lead to a delay and a intensity difference in the sound arriving at the left and right ears. In order to estimate the time delay, the Woodworth's formulas are used~\cite{Woodworth} :
 
 \begin{equation}\label{eq:ITDfront}
 ITD = (a/c)[\theta + sin(\theta)]   \; [0 \leq \theta \leq \pi/2]
@@ -479,10 +553,10 @@ T_{L} (\theta) = \frac{a+a\theta}{c}
 T_{R} (\theta) = \frac{a-a sin(\theta)}{c}
 \end{equation}
 
-These formulas refers to a source in front of the head and on the right, with azimuths $0 \leq \theta \leq \pi/2$. If the source is placed on the right ($- \pi/2 \leq \theta \leq 0$), the expressions are reversed.
+These formulas refers to a source in front of the head and on the right, with azimuths $0 \leq \theta \leq \pi/2$. If the source is placed on the left ($- \pi/2 \leq \theta \leq 0$), the expressions are reversed.
 
 
-% We therefore used the analog filter models provided in \cite{Brown1997} and further specified in \cite{Brown1998}.
+% We therefore used the analog filter models provided in \cite{Brown1997} and further specified in \cite{Brown1997}.
 
  % The head shadow filter, implementing the ILD, was given by the following analog transfer function:
  The head shadow effect is characterized in the following analog transfer function:
@@ -504,40 +578,41 @@ Applying the substitution in equation~\ref{eq:bilin} to equation~\ref{eq:analog}
 H\left( z,\theta\right) = \frac{\alpha (\theta)(\frac{2}{T} \frac{z-1}{z+1})+\beta}{(\frac{2}{T} \frac{z-1}{z+1})+\beta}
 \end{equation}
 
-To identify the filter coefficients we transformed Equation ~\ref{eq:filter} and obtained the following frequency response\footnote{For the derivation of Equation~\ref{eq:filterparam} see appendix A}:
+To identify the filter coefficients the equation has been transformed ~\ref{eq:filter} and obtained the following frequency response\footnote{For the derivation of Equation~\ref{eq:filterparam} see appendix A}:
 \begin{equation}\label{eq:filterparam}
 H\left( z,\theta\right) = \frac{2\alpha (\theta)+T\beta+z^{-1}(-2\alpha(\theta)+T\beta)}{2+T\beta+z^{-1}(-2+T\beta)} = \frac{Y(z)}{X(z)}
 \end{equation} 
 
 \emph{======================================}
 
-This gives us the filter coefficients $a_0 = 2\alpha (\theta)+T\beta$ and $a_1 = -2\alpha(\theta)+T\beta$ as well as $b_0 = 2+T\beta$ and $b_1 = -2+T\beta$. Since we could not use the filter function in Matlab which has as input values the filter coefficientes we had to isolate the output $Y(z)$ in Equation~\ref{eq:filterparam} as well as going from the frequency to the time domain. The result is given in Equation~\ref{eq:out}\footnote{For the derivation of Equation~\ref{eq:out} see appendix B}:
+Hence, the filter coefficients $a_0 = 2\alpha (\theta)+T\beta$ and $a_1 = -2\alpha(\theta)+T\beta$ as well as $b_0 = 2+T\beta$ and $b_1 = -2+T\beta$ are given. 
+% Since we could not use the filter function in Matlab which has as input values the filter coefficientes we had 
+It was necessary to isolate the output $Y(z)$ in Equation~\ref{eq:filterparam} as well as going from the frequency to the time domain. The result is given in Equation~\ref{eq:out}\footnote{For the derivation of Equation~\ref{eq:out} see appendix B}:
 \begin{equation}\label{eq:out}
 Y[n] =\frac{a_0X[n]+a_1X[n-1]-b_1Y[n-1]}{b_0}
 \end{equation} 
 
 \subsubsection{The pinna model}~\\
-
-High frequency components that arrive to the listener's ears are influenced by the pinna, which provide some azimuth information, but it has been studied mainly because of its contribution to the estimation of the elevation \cite{BrownAndDuda}.
+High frequency components that arrive to the listener's ears are influenced by the pinna, which provide azimuth information. It has been studied mainly because of its contribution to the estimation of the elevation~\cite{Brown1997}.
 
 Our model has the following form:
 
 \begin{figure}[h!]
-	\centering
-		\includegraphics[scale=0.75]{graphics/pinna_part.png}
-	\caption{Pinna model. Image taken from \cite{Brown1997}}
-	\label{fig:pinnaModel}
+  \centering
+    \includegraphics[scale=0.75]{graphics/pinna_part.png}
+  \caption{Pinna model. Image taken from~\cite{Brown1997}}
+  \label{fig:pinnaModel}
 \end{figure}
 
 
 
-where the $\rho_{k}$ are the reflection coefficients and the $\tau_{k}$ are the time delays of the \textit{k}th event of a total of \textit{n}. Informal listening tests showed that 5 events were enough to represent the pinna response and that it was convenient to use constant values for the amplitudes $\rho_{k}$,  independent of azimuth, elevation and the subject \cite{Brown1997}. The time delays seems to be properly approximated by the following formula:
+where the $\rho_{k}$ are the reflection coefficients and the $\tau_{k}$ are the time delays of the \textit{k}th event of a total of \textit{n}. Informal listening tests showed that 5 events were enough to represent the pinna response and that it was convenient to use constant values for the amplitudes $\rho_{k}$,  independent of azimuth, elevation and the subject~\cite{Brown1997}. The time delays seem to be properly approximated by the following formula:
 
 \begin{equation}\label{eq:pinna}
-\tau_{k}(\theta,\phi) = A_{k}cos(\theta/2)sin(D_{k}(90\degree - \phi)) + B_{k}
+\tau_{k}(\theta,\phi) = A_{k}cos(\theta/2)sin(D_{k}(90\degree-\phi)) + B_{k}
 \end{equation} 
 
-In this equation, dependent on the azimuth and elevation, the $A_{k}$ is an amplitude, $B_{k}$ an offset and $D_{k}$ is a scaling factor that has to be adapted to the individual listener. 
+In this equation, dependent on the azimuth and elevation, the $A_{k}$ is an amplitude, $B_{k}$ an offset and $D_{k}$ is a scaling factor that should be adapted to the individual listener. 
 In the following table one can see the values for the parameters used in the pinna model. Only one set of values for $D_{k}$ in our application have been used.
 
 \begin{table}[h]
@@ -556,23 +631,19 @@ k & $\rho$  & $A_{k}$ & $B_{k}$  & $D_{k}$   \\ \hline
 \end{table}
 
 
+
 \subsubsection{The room model}
+To implement the room model, ask Nikolaj to write something about it.
 
-Finally, a room model is added to the two outputs of the pinna model...
-
-
-
-
-
-\subsection{User interface}
-include pictures of user interface etc.
+%\subsection{User interface}
+%include pictures of user interface etc.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The experiment}
-One of the aims of our experiment was to investigate how fast users were able to locate and navigate to a single sound source using our 3-D audio engine compared to a simple panning and 2/d distance calculation which served as a baseline performance. Therefore the time needed from the beginning of a trial until the sound source was found was measured. 
+One of the aims of our experiment was to investigate how fast users were able to locate and navigate to a single sound source using our 3-D audio engine compared to a cosine panner based on~\cite{AndyFarnell2010} and 2/d distance calculation which served as a baseline performance. Therefore the time needed from the beginning of a trial until the sound source was found was measured. 
 
-Additionally we assessed a qualitative analysis of how intuitive it was for subjects to locate the sound as well as investigating whether the sound seemed to be embedded in the real scenery. These results were again compared to the panning model. The data was obtained with a 10 point lickertscale questionnaire goint from "don't agree at all" to "completely agree".
+Additionally we assessed a qualitative analysis of how intuitive it was for subjects to locate the sound as well as investigating whether the sound seemed to be embedded in the real scenery. These results were again compared to the cosine panner model~\cite{AndyFarnell2010}. The data was obtained with a 10 point lickertscale questionnaire going from ``don't agree at all" to `completely agree".
 
 (Here we can write a one paragraph preview of our results.)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -588,7 +659,7 @@ The experiment took place in a free field (grass) in "Valby Parken" in Copenhage
 To create the auditory stimulus, digital vocal recordings of a male voice (age: ...) were collected using a ... . Recordings were done with ... bits of resolution for amplitude at a sampling rate of ...  kHz. Auditory stimuli were normalized in peak amplitude so that at the minimal distance to the soundsource (7 meter) using the maximal level of volume on the mobile device, the soundlevel of each soundsource was at ... dB. 
 
 \subsubsection{Design}
-The experiment comprised one within subject factor at 2 levels (sound engine). The two levels of the sound engine were our 3-D audio engine (3-D) and a simple panning and distance amplitude modulation (panning).
+The experiment comprised one within subject factor at 2 levels (sound engine). The two levels of the sound engine were our 3-D audio engine (3-D) and a cosine panner~\cite{AndyFarnell2010} and distance amplitude modulation (panning).
 
 The starting point was fixed and the distance of the soundsource from that point was always 48 meters.\footnote{However, because of poor GPS accuracies, the location of the soundsource was calculated with the momentary GPS coordinates provided by the phone sensor instead of the actual fixed position in the free field. This ensured that the initial distance to the sound source was always the same.} The sound could appear at any angle from the starting point.
 
@@ -608,7 +679,7 @@ For the quantitative analysis 26 trials were excluded because either analyses of
 
 The reasons for choosing a 10 point likertscale instead of the often referenced 5 or 7 point scales~\cite{} were that a greater number of responses should equalize the distances between the possible answer possibilities supporting treating likertscale data also as interval data~\cite{}. This gives us the grounds to use paired samples t-test for the qualitative analysis which is more powefull than the Wilcoxon signed rank test enabling us to detect smaller differences in ratings~\cite{}. Since we only had few questions, having so many answer possibilities should not have fatigued the subject too much so that accuracy of the responses should not have suffered due to too many answer possibilities~\cite{}. Though, it has to be noted that subject were outside when filling out the questionaire which due to cold temperatures might have driven the subjects to respond in a fast pace leading to less accurate responses.
 
-The threshold chosen to correctly reject the null-hypothesis was always 5\% ($\alpha$ = .05). 
+The threshold chosen to correctly reject the null-hypothesis was always 5\% ($\alpha$ = .05).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -618,7 +689,7 @@ On average subjects needed 104.6 seconds (SD = 44.8) to find the sounds for the 
 
 We computed a paired samples t-test to compare the results for both sound engines which revealed no significant difference between the means for both sound engines (t(15) =-.48, p =.64). However, checking whether our data is normally distrubuted using the Shapiro-Wilk test showed that for the 3-D data the assumption of normality was violated (Z=.81, p = .004) and close to significance in the panning condition (Z=.89, p =.054). Therefore, we additionally computed the non-parametric Wilcoxon signed rank test which does not assume normal distributed data. Nevertheless, we could not find a significant difference in scores for time needed to find the soundsource between both conditions (median: 3-D=85.3, panning=95.9; Z=-.83, p = 0.41 ). 
 
-\subsubsection{Qualitative}
+\subsubsection{Qualitative}~\\
 The Shapiro-Wilk test showed that the data was normally distributed both for the 3D model (Z = 0.933, p = 0.44) and the Panning model (Z = 0.95, p = 0.67). 
 
 %Statistical tests applied to each question of the questionnaire do not show significant difference between both sound engines either.
@@ -657,7 +728,7 @@ Summing the results for the first four questions to form an overall category of 
 %---- Shapiro-Wilk test 3D model ----
 %h1 = 0,  p1 = 0.4444,  w1 = 0.9332
 
-%	SWstatistic - The test statistic (non normalized).
+% SWstatistic - The test statistic (non normalized).
 %
 %   pValue - is the p-value, or the probability of observing the given
 %     result by chance given that the null hypothesis is true. Small values
@@ -711,7 +782,6 @@ Summing the results for the first four questions to form an overall category of 
 \label{table:overallquestionaire}
 \end{table}
 
-
 \section{Discussion}
 There was no performance difference between the two sound engines. This could have 2 reasons. first it is actually equally good. Probably the difference if there is a difference at all is so small that with such few data we could not detect the small difference. However the mean value was lower although not significantly.
 If our results are not significant this could be because of low sample size -> "Numerous methodologists have 
@@ -728,6 +798,8 @@ As for the qualitative analyses the explanation why our 3-D was not rated signif
 \section{Conclusion}
 
 
+\section{Future works}
+
 % conference papers do not normally have an appendix
 
 
@@ -741,7 +813,7 @@ As for the qualitative analyses the explanation why our 3-D was not rated signif
 
 % \begin{thebibliography}{4}
 
-% \bibitem{Brown1998}
+% \bibitem{Brown1997}
 % C. Phillip Brown and Richard O. Duda, \textit{An efficient HRTF model for 3-D sound}. Proceedings of the IEEE Workshop on Applications of Signal Processing to Audio and Acoustics. New York: IEEE. 1997
 
 % \bibitem{HowTo}Johannes M. Zmoelnig, \textit{HOWTO write an External for puredata}.\\\texttt{ http://
