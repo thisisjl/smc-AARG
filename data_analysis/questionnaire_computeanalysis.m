@@ -1,6 +1,6 @@
 %% Questionnaire analysis script
 % data is tab separated value (.tsv)
-
+clc
 %% Read data:
 filename = 'FINAL DATA/FINAL_qualitative_Data.tsv';
 fprintf('Analizing file: %s\n',filename);
@@ -44,6 +44,28 @@ col = 5;
 q5_hrtf = [page1(engine==1,col);page2(engine~=1,col)];
 q5_pann = [page1(engine==2,col);page2(engine~=2,col)];
 
+
+% sum answers
+qa_hrtf = q1_hrtf + q2_hrtf + q3_hrtf + (10 - q4_hrtf);
+qa_pann = q1_pann + q2_pann + q3_pann + (10 - q4_pann);
+
+q_hrtf = {q1_hrtf,q2_hrtf,q3_hrtf,q4_hrtf,q5_hrtf};
+q_pann = {q1_pann,q2_pann,q3_pann,q4_pann,q5_pann};
+
+qnw_hrtf = zeros(size(q1_hrtf));
+qnw_pann = zeros(size(q1_hrtf));
+
+for i = 1:length(q_hrtf)
+    idx_hrtf = find(5<q_hrtf{i});
+    
+    qnw_hrtf(idx_hrtf) = qnw_hrtf(idx_hrtf) + ...
+        q_hrtf{i}(idx_hrtf);
+    
+    idx_pann = find(q_pann{i}>=5);
+    qnw_pann(idx_pann) = qnw_pann(idx_pann) + ...
+        q_pann{i}(idx_pann);
+end
+
 %% Rest of the data
 % Age
 age = data{2};
@@ -82,8 +104,8 @@ cues = data{27};
 pleasant = data{28};
 
 %% Stastical analysis - QUALITATIVE ANALYSIS
-a = q5_hrtf;
-b = q5_pann;
+a = qa_hrtf;
+b = qa_pann;
 
 % compute mean
 disp('---- mean ----')
@@ -118,3 +140,5 @@ disp('---- perform paired samples t-test ----')
 % perform Wilcoxen-signed rank test
 disp('---- perform Wilcoxen-signed rank test ----')
 [p,h,stats] = signrank(a, b)
+
+%%
