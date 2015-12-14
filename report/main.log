@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.26)  14 DEC 2015 14:12
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.26)  14 DEC 2015 15:53
 entering extended mode
 **C:/Users/Lars/Desktop/Uni/Copenhagen/1.*Semester/Project/Git/smc-AARG/report/
 main.tex
@@ -357,7 +357,25 @@ Type  H <return>  for immediate help.
 l.30   }
         
 ? 
-) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\was\gensymb.sty"
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\koma-script\scrextend.sty"
+Package: scrextend 2012/07/29 v3.11b KOMA-Script KOMA-Script package (extend ot
+her classes with features of KOMA-Script classes)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\koma-script\scrkbase.sty"
+Package: scrkbase 2012/07/29 v3.11b KOMA-Script package (KOMA-Script-dependent 
+basics and keyval usage)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\koma-script\scrbase.sty"
+Package: scrbase 2012/07/29 v3.11b KOMA-Script package (KOMA-Script-independent
+ basics and keyval usage)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\koma-script\scrlfile.sty"
+Package: scrlfile 2012/06/15 v3.12 KOMA-Script package (loading files)
+
+Package scrlfile, 2012/06/15 v3.12 KOMA-Script package (loading files)
+                  Copyright (C) Markus Kohm
+
+)))) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\was\gensymb.sty"
 Package: gensymb 2003/07/02 v1.0 (WaS)
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
@@ -418,6 +436,10 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
+\Urlmuskip=\muskip17
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
 ("C:\Users\Lars\Desktop\Uni\Copenhagen\1. Semester\Project\Git\smc-AARG\report\
 main.aux")
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 227.
@@ -460,67 +482,72 @@ Package gensymb Info: Using \Omega for \ohm on input line 227.
 
 Package gensymb Warning: Not defining \micro.
 
-
-LaTeX Warning: Citation `Brown1997' on page 1 undefined on input line 327.
-
 [1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 352--353
+Underfull \hbox (badness 10000) in paragraph at lines 372--373
 
  []
 
 
-Underfull \hbox (badness 2088) in paragraph at lines 365--366
+Underfull \hbox (badness 2088) in paragraph at lines 385--386
  \OT1/ptm/m/it/10 6) Is-sues in headphones-conveyed sound: [][] \OT1/ptm/m/n/10
  Head-phones
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 365--366
+Underfull \hbox (badness 10000) in paragraph at lines 385--386
 
  []
 
 [2]
-Underfull \hbox (badness 2142) in paragraph at lines 387--389
-[]\OT1/ptm/m/n/10 The rea-sons why we de-cided to de-velop us-ing this
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 3536) in paragraph at lines 412--415
+[]\OT1/ptm/m/n/10 OpenFrameworks[] has been choosen as de-vel-op-ment
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 387--389
-\OT1/ptm/m/n/10 pro-gram-ming en-vi-ron-ment was the need of a fast
+Underfull \hbox (badness 2334) in paragraph at lines 412--415
+\OT1/ptm/m/n/10 iOS de-vel-op-ment. Dis-cussing all the steps in-volved in
  []
 
 
-Underfull \hbox (badness 5036) in paragraph at lines 387--389
-\OT1/ptm/m/n/10 com-mu-ni-ca-tion be-tween the mo-bile plat-form and our
- []
+Underfull \hbox (badness 10000) in paragraph at lines 412--415
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 387--389
-
- []
-
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 403.
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
-Underfull \hbox (badness 2961) in paragraph at lines 403--404
- \OT1/ptm/m/it/10 4) The open-Frame-works project: [][] \OT1/ptm/m/n/10 all ope
-n-Frame-works
  []
 
 [3]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 429.
 
-LaTeX Warning: Citation `Brown1997' on page 4 undefined on input line 443.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Overfull \hbox (2.63454pt too wide) in paragraph at lines 440--445
+\OT1/ptm/m/it/8 http://developer.android.com/guide/topics/sensors/sensors[]posi
+tion.html\OT1/ptm/m/n/10 . 
+ []
 
 
-LaTeX Warning: Citation `Brown1997' on page 4 undefined on input line 443.
+Underfull \hbox (badness 1571) in paragraph at lines 447--448
+\OT1/ptm/m/n/10 a method has been added in or-der to han-dle the up-
+ []
 
 
-LaTeX Warning: File `graphics/graphic.png' not found on input line 447.
+Underfull \hbox (badness 1616) in paragraph at lines 447--448
+\OT1/ptm/m/n/10 dates from the An-droid OS sys-tem calls. It is named
+ []
+
+
+Underfull \hbox (badness 4913) in paragraph at lines 480--481
+\OT1/ptm/m/it/10 ofx-Ori-en-ta-tion \OT1/ptm/m/n/10 has been im-ple-mented. It 
+ac-cesses the
+ []
+
+
+LaTeX Warning: File `graphics/graphic.png' not found on input line 507.
 
 
 ! Package pdftex.def Error: File `graphics/graphic.png' not found.
@@ -529,69 +556,46 @@ See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.447 ...raphics[scale=0.75]{graphics/graphic.png}
+l.507 ...raphics[scale=0.75]{graphics/graphic.png}
                                                   
 ? 
 
-LaTeX Warning: Citation `Brown1997' on page 4 undefined on input line 448.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<graphics/audioengine.png, id=16, 487.8225pt x 584.1825pt>
+File: graphics/audioengine.png Graphic file (type png)
+
+<use graphics/audioengine.png>
+Package pdftex.def Info: graphics/audioengine.png used on input line 514.
+(pdftex.def)             Requested size: 243.91064pt x 292.09053pt.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 455--456
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 458--459
-
- []
-
-
-LaTeX Warning: Citation `Woodworth' on page 4 undefined on input line 461.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [4]
-Overfull \hbox (14.5pt too wide) in paragraph at lines 512--513
+Overfull \hbox (14.5pt too wide) in paragraph at lines 586--587
 []\OT1/ptm/m/it/10 ====================================== 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 519--520
-
- []
-
-
-LaTeX Warning: Citation `BrownAndDuda' on page 5 undefined on input line 521.
-
-<graphics/pinna_part.png, id=24, 170.13562pt x 199.49532pt>
+[5 <C:/Users/Lars/Desktop/Uni/Copenhagen/1. Semester/Project/Git/smc-AARG/repor
+t/graphics/audioengine.png>]
+<graphics/pinna_part.png, id=32, 170.13562pt x 199.49532pt>
 File: graphics/pinna_part.png Graphic file (type png)
 
 <use graphics/pinna_part.png>
-Package pdftex.def Info: graphics/pinna_part.png used on input line 527.
+Package pdftex.def Info: graphics/pinna_part.png used on input line 602.
 (pdftex.def)             Requested size: 127.6014pt x 149.62111pt.
-
-
-LaTeX Warning: Citation `Brown1997' on page 5 undefined on input line 528.
-
-
-LaTeX Warning: Citation `Brown1997' on page 5 undefined on input line 534.
-
-[5 <C:/Users/Lars/Desktop/Uni/Copenhagen/1. Semester/Project/Git/smc-AARG/repor
-t/graphics/pinna_part.png>] [6]
+ [6 <C:/Users/Lars/Desktop/Uni/Copenhagen/1. Semester/Project/Git/smc-AARG/repo
+rt/graphics/pinna_part.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: Citation `DeWinter2013' on page 7 undefined on input line 719.
-
 [7]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8]
 ("C:\Users\Lars\Desktop\Uni\Copenhagen\1. Semester\Project\Git\smc-AARG\report\
-main.lof"
-
-LaTeX Warning: Citation `Brown1997' on page 8 undefined on input line 1.
-
-
-LaTeX Warning: Citation `Brown1997' on page 8 undefined on input line 2.
-
-)
+main.lof")
 \tf@lof=\write3
 
 ("C:\Users\Lars\Desktop\Uni\Copenhagen\1. Semester\Project\Git\smc-AARG\report\
@@ -601,59 +605,50 @@ main.lot")
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (1.0508pt too wide) in paragraph at lines 818--818
+Overfull \hbox (1.0508pt too wide) in paragraph at lines 887--887
 [] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8]
+ [9]
 ("C:\Users\Lars\Desktop\Uni\Copenhagen\1. Semester\Project\Git\smc-AARG\report\
 main.bbl"
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.3 \end{thebibliography}
-                         
-? 
-) [9
+Missing character: There is no â in font ptmr7t!
+Missing character: There is no € in font ptmr7t!
+Missing character: There is no ™ in font ptmr7t!
+) [10
 
 ]
 ("C:\Users\Lars\Desktop\Uni\Copenhagen\1. Semester\Project\Git\smc-AARG\report\
-main.aux")
-
-LaTeX Warning: There were undefined references.
-
- ) 
+main.aux") ) 
 Here is how much of TeX's memory you used:
- 8614 strings out of 493921
- 160341 string characters out of 3144878
- 208774 words of memory out of 3000000
- 11835 multiletter control sequences out of 15000+200000
- 45064 words of font info for 83 fonts, out of 3000000 for 9000
+ 9145 strings out of 493921
+ 169203 string characters out of 3144878
+ 230512 words of memory out of 3000000
+ 12350 multiletter control sequences out of 15000+200000
+ 42850 words of font info for 81 fonts, out of 3000000 for 9000
  844 hyphenation exceptions out of 8191
- 33i,16n,35p,10437b,256s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program 
-Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files 
-(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files (x8
-6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX 2.
-9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
-ype1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/ti
-mes/utmbi8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a
-.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (9 pages, 202741 bytes).
+ 33i,16n,35p,10437b,250s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C
+:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/
+Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Pro
+gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Progra
+m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program File
+s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x
+86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86
+)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/M
+iKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
+1/urw/times/utmbi8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/time
+s/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.p
+fb>
+Output written on main.pdf (10 pages, 256444 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
+ 96 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
