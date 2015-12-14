@@ -783,21 +783,49 @@ Summing the results for the first four questions to form an overall category of 
 \end{table}
 
 \section{Discussion}
-The results show that both sound engines did not differ in terms of performance. Although numerically subjects were slightly faster to locate the sound source when using the HRTF audio engine, this difference could not be verified statistically.\footnote{However, it might have been the case that our sample size was so small that the difference in performance would have had to be bigger to show significant results given the sample size in this experiment. As noted by several methodologists Type II errors have a high probability to occur for low sample sizes \cite{DeWinter2013}}.  
+The results show that both sound engines did not differ in terms of performance. Although numerically subjects were slightly faster to locate the sound source when using the HRTF audio engine, this difference could not be verified statistically.\footnote{However, it might have been the case that our sample size was so small that the difference in performance would have had to be bigger to show significant results given the sample size in this experiment. As noted by several methodologists Type II errors have a high probability to occur for low sample sizes \cite{DeWinter2013}}. On top of the small sample size, an unreliable GPS source (different number of GPS satellites fixes for each experiment, with mean of fixes: 11), and also the different weather conditions can explain the large variance and thus the threshold of significance difference between the models.
 
 As for the qualitative analyses the explanation why our 3-D audio engine was not rated significantly better then the other could be due to the choice of a unnatural high reverberation level for a free field. This explanation is inspired by the fact that a lot of participants had background knowledge in acoustics and therefore made more predictions about a proper reverberation level for a free field. Some subjects even reported the reverberation to be the reason for low ratings of the question regarding whether the soundsource was perceived to be embedded in the real scenery. This negative effect on the ratings might have nullified the difference between panning and HRTF in terms of perceiving the sound moving around and not inside the head. Some support for this explanation can be gained from noticing that the ratings of the first three questions taken together (as well as the third question alone) were significantly higher than a neutral response for the HRTF but not for the Panning. This might illustrate a slight superiority in quality of the HRTF.
 
 Another issue that should be adressed is the adequacy of the questionaire used in this experiment. Probably, in spite of the discussion about why we chose to use a 10-point likert scale instead of the often used 5- or 7-point likert scale, subjects might not have been able to accurately respond to the questions posed leading indistinguishable results. Also the fact that most of the questions were not different to the mean of the scale provide some evidence that subjects were either actually indifferent to the posed questions or had difficulties of knowing which number corresponds to which degree of agreement to the stated question.
 
+Finally, we believe that there is an expectation to hear the sounds coming from the device. That means subjects already knew that the sound will play from the headphones and not from a location in the real world. 
+
+
+
+% discussion
+%quantitative:
+%- prediction: with more trials maybe there is a learning curve, but not many trials. -> compare mean of subjects to superusers. testing from training could be promising.
+%70 s for superusers
+%112 for untrained users
+%
+%- on top of small sample size, and an unreliable gps source (different number of gps satellites fixes, mean of fixes: 11) and also the different weather conditions add up to the large variance and thus the threshold of significance difference between models.
+%- 
+%- 
+%
+%qualitative:
+%- there is an expectation to hear the sounds from the device. When we hear sounds from an object in the real world, there is an expectation that the sound is coming from there.
+%- reverb should also be carefully tested depending on the location of the experiment.
+%- we did not achieve a significant externalization factor with the hrtf. future works: improve externalization, so this might help the hrtf
+
+
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Conclusion}
-
+%add to conclusion:
+%that the prototype with multiple sounds is created but further optimization of the code should be necessary to test it given that the sound sources were distorted.
+%
 
 \section{Future works}
 
 % conference papers do not normally have an appendix
+%Given that, it could be interesting to replicate the experiment using an external sound source, i.e. a loudspeaker, and compare the trials in which we play from the loudspeaker or headphone
+% virtual reality??
 
 
 % use section* for acknowledgment
