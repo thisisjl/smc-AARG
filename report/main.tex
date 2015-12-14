@@ -504,7 +504,7 @@ The audio engine is the core part of the mobile application. As shortly mentione
 
 \begin{figure}[h!]
 	\centering
-		\includegraphics[scale=0.75]{graphics/graphic.png}
+		\includegraphics[scale=0.55]{graphics/graphic.jpg}
 	\caption{Components of the model provided on a theoretical basis in~\cite{Brown1997}}
 	\label{fig:workflow}
 \end{figure}
@@ -633,8 +633,11 @@ k & $\rho$  & $A_{k}$ & $B_{k}$  & $D_{k}$   \\ \hline
 
 
 \subsubsection{The room model}
-To implement the room model, ask Nikolaj to write something about it.
+In ~\cite{Brown1997}, they imply a very simple room model consisting of only one delay with variable delay time and level according to the distance. An attempt to make a similar model was made by setting the delay time to the difference between the direct path from the object to the listener and a path that bounces on the ground half way between the object and the listener. We opted for a more complex model due to the poor experienced effect and the large alteration (comb filtering) of the sound quality
 
+The chosen model is based on the reverb algorithm rev2~ implemented in pd. Compared to the original model the amount of early reflections are reduced  and spread more out through this we simulate a very large but little reflective room, with a subtle tail, resembling the characteristics of an outdoor environment. the amount of reverb is diminished according to the distance between the user and the virtual sound source. This happens significantly slower than the 2/d of the direct sound namely 8/(15+d), in this way the ratio between the direct and the reflected signal change even though the total level go down, this model approximate the test data in ~\cite{begault19943}. The rev2~ has a direct through signal incorporated, this has been removed in order  to easier control this dry/wet relation. As showed in the model (fig. 1) the room model is added in parallel with the Head model and added the output of the pina model. 
+
+A further improvement could implement variable early reflections delay-times. And separate control over reverb tail and early reflections level.
 %\subsection{User interface}
 %include pictures of user interface etc.
 
