@@ -1,6 +1,7 @@
 
 
 \documentclass[journal]{IEEEtran}
+\usepackage{tablefootnote}
 % Some Computer Society conferences also require the compsoc mode option,
 % but others use the standard conference format.
 %
@@ -615,12 +616,13 @@ The threshold chosen to correctly reject the null-hypothesis was always 5\% ($\a
 \subsubsection{Quantitative}
 On average subjects needed 104.6 seconds (SD = 44.8) to find the sounds for the 3-D conditions and 109.8 seconds (SD = 44.1) for the panning condition. 
 
-We computed a paired samples t-test to compare the results for both sound engines which revealed no significant difference between the means for both sound engines (t(15) =-.48, p =.64). However, checking whether our data is normally distrubuted using the Shapiro-Wilk test showed that for the 3-D data the assumption of normality was violated (W(16)=.81, p = .004) and close to significance in the panning condition (W(16)=.89, p =.054). Therefore, we additionally computed the non-parametric Wilcoxon signed rank test which does not assume normal distributed data. Nevertheless, we could not find a significant difference in scores for time needed to find the soundsource between both conditions (median: 3-D=85.3, panning=95.9; Z=-.83, p = 0.41 ). 
+We computed a paired samples t-test to compare the results for both sound engines which revealed no significant difference between the means for both sound engines (t(15) =-.48, p =.64). However, checking whether our data is normally distrubuted using the Shapiro-Wilk test showed that for the 3-D data the assumption of normality was violated (Z=.81, p = .004) and close to significance in the panning condition (Z=.89, p =.054). Therefore, we additionally computed the non-parametric Wilcoxon signed rank test which does not assume normal distributed data. Nevertheless, we could not find a significant difference in scores for time needed to find the soundsource between both conditions (median: 3-D=85.3, panning=95.9; Z=-.83, p = 0.41 ). 
 
 \subsubsection{Qualitative}
+The Shapiro-Wilk test showed that the data was normally distributed both for the 3D model (Z = 0.933, p = 0.44) and the Panning model (Z = 0.95, p = 0.67). 
 
 %Statistical tests applied to each question of the questionnaire do not show significant difference between both sound engines either.
-Evaluation of the questionnaires, Table \ref{table:questionnairetable}, showed that the mean values for questions 1, 2, 3 and 4 for the 3D model were significantly different from the panning.
+Evaluation of the questionnaires, Table \ref{table:questionnairetable}, showed that the mean and median values for questions 1, 2, 3 and 4 for the 3D model were only numerically different from the panning. Neither the paired samples t-test nor the Wilcoxon signed rank test showed significant results comaring the two conditions (3-D vs. panning). However, performing a one sample t-test on means of the four questions for each model comparing it with a neutral response (5.5) showed that users rated the connection between their position and what was presented via the headphones better than neutral for the 3-D sound engine (t(10) = 4.32, p =.002; Z =2.74 , p = .006) but not for the panning (t(10) = 1.07, p = .31; Z = .90, p=.367). For all other questions there were no significant differences.\footnote{It is worth noting that choosing mean and meadian as 5 instead of 5.5, showed that also for question two, a paired samples t-test and the wilcoxon signed rank test were significant for the 3-D (t(10) = 2.52 , p = .03 ; Z = 2.19, p =.028) but not for the panning sound engine (t(10) = 1.19, p = .26 ; Z = 1.2, p =.23).}
 
 \begin{table}[h]
 \scalebox{0.85}{
@@ -638,7 +640,7 @@ Evaluation of the questionnaires, Table \ref{table:questionnairetable}, showed t
 1    & 6.36    & 5.91    & 1.75    & 1.70    & 6    & 6    \\
 2    & 6.91    & 5.82    & 2.51    & 2.27    & 8    & 6    \\
 3    & 7.09    & 6.00    & 1.22    & 1.55    & 7    & 6    \\
-4    & 6.64    & 6.09    & 2.58    & 1.97    & 7    & 5    \\
+4\tablefootnote{It should be noted that for this question lower values represent higher quality of a 3-D sound because of the direction of the question.}    & 6.64    & 6.09    & 2.58    & 1.97    & 7    & 5    \\
 5    & 6.09    & 6.55    & 2.21    & 2.54    & 7    & 7    \\
 
 
@@ -649,8 +651,7 @@ Evaluation of the questionnaires, Table \ref{table:questionnairetable}, showed t
   \label{table:questionnairetable}
 \end{table}
 
-Summing the results for these first four questions in order to obtain an overall result between the two conditions, the Shapiro-Wilk test showed that the data was normally distributed both for the 3D model (W(10) = 0.933, p = 0.44) and the Panning model (W(10) = 0.95, p = 0.67). Given that, a Paired sample Student t-test was conducted, but significant difference between models was not found (t(10) = 1.05, p = 0.32).
-
+Summing the results for the first four questions to form an overall category of quality of the two sound engines lead to the mean and median values depicted in Table \ref{table:overallquestionaire}. Again, the difference between both sound engines were only numerically visible since performing a paired samples t-test and a Wilcoxon signed rank test showed no significant results  (t(10) = 1.05, p = 0.32; Z = -1.07, p = .283). Furthermore, running a one sample t-test and wilcoxon signed rank test to compare the results of both sound engines to a mean (5.5) that represents being neutral towards a question showed no significant results for both conditions (HRTF: t(10) = 1.54, p = .154; Z = 1.54, p = .13; Panning: t(10) = -.22, p =.829; Z = -0.5, p = .96). However, summing only the first three questions, showed that the 3-D model ratings were significantly higher than the neutral mean (5.5) (t(10) = 2.83, p = .018; Z = 2.09, p = .036) which was not the case for the panning condition (t(10) = .86, p = .41; Z = 0.76, p = .447).
 
 %\begin{verbatim}
 %---- Shapiro-Wilk test 3D model ----
@@ -707,22 +708,19 @@ Summing the results for these first four questions in order to obtain an overall
   
   }
   \caption{Overall results}
-%  \label{table:questionnairetable2}
+\label{table:overallquestionaire}
 \end{table}
-
-
-
-
-
-
 
 
 \section{Discussion}
 There was no performance difference between the two sound engines. This could have 2 reasons. first it is actually equally good. Probably the difference if there is a difference at all is so small that with such few data we could not detect the small difference. However the mean value was lower although not significantly.
-
 If our results are not significant this could be because of low sample size -> "Numerous methodologists have 
 cautioned that a small sample size implies low statistical 
 power, that is, a high probability of Type II error"~\cite{DeWinter2013}
+
+
+As for the qualitative analyses the explanation why our 3-D was not rated significantly better then the other could be due to a too high reverberation level for a free field. since a lot of participants had background in audio knowledge about a proper reverberation level for a free field can be assumed which even increased the negative effect on the ratings of the 3-D audio engine. This might have nullified the difference in left to right ear panning vs. 3-D sound. We had even wors numerical values for the fourth question for the HRTF. Also the questions might not have been posed in an optimal way...
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -791,6 +789,7 @@ power, that is, a high probability of Type II error"~\cite{DeWinter2013}
 
 \pagebreak
 \listoffigures
+\listoftables
 \pagebreak
 \begin{appendices}
 \section{Derivations}
