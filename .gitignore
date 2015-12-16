@@ -1,1 +1,9 @@
 .DS_store
+report/*.aux
+report/*.bbl
+report/*.blg
+report/*.lof
+report/*.log
+report/*.lot
+report/*.synctex.gz
+report/.DS_Store
