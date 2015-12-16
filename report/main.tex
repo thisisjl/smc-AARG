@@ -532,24 +532,34 @@ The chosen model is based on the reverb algorithm \textit{rev2~} implemented in 
 
 A further improvement could implement variable early reflections delay-times. And separate control over reverb tail and early reflections level.
 
-\subsection{Sensor data retrieving}
-The implemented mobile application required two kind of sensors data: \emph{GPS} and \emph{orientation}. 
-\begin{itemize}  
-\item GPS is a way of determining location that has become common with the increasing of portable technologies. Any device that receives a GPS signal is  called a GPS \emph{receiver}. As explained in~\cite{} {\footnotesize{\textit{ask Mattia where to find this reference}}} the receiver calculates its position by precisely timing the signals sent by the GPS satellites.
-The GPS user position is needed to calculate the distance to the sounds that were placed on fixed locations in the real environment. 
-\item Orientation is computed using the orientation sensor. It is a software-based sensors which derives its data from the accelerometer and the geomagnetic field sensor.
-\\
-{\footnotesize{\textit{cannot add \\ http://developer.android.com/guide/topics/sensors/sensors\_position.html}}}. 
-\\
-Therefore, it is possible to determine a device's position relative to the magnetic North Pole.
-\end{itemize}
+\subsection{Sensor data retrieval}
+The implemented mobile application required two kind of input variables to encode the specific location of the soundsource in the real world, namely the distance between the soundsource and the user as well as the direction from which the sound source was coming from. This information could be obtained by accessing the GPS\footnote{GPS is a way of determining location and most of the mobile devices nowadays include a GPS receiver. As explained in~\cite{noble2009} COMMENT:[ask Mattia where to find this reference] the GPS receiver calculates its position by precisely timing the signals sent by the GPS satellites.} and orientation sensors of the mobile device. 
 
-To access the GPS data \emph{ofxMaps}\footnote{https://github.com/bakercp/ofxMaps} and \emph{ofxGeo}\footnote{https://github.com/bakercp/ofxGeo} addons has been used. The GPS position on an Android platform requires a listening mechanism, which has been implemented in openFrameworks by calling the \texttt{ofRegisterGPSEvent()} in the \texttt{setup()} method of the source code. In the \texttt{ofApp.h} a method has been added in order to handle the updates from the Android OS system calls. It is named \texttt{locationChanged()} and adds an event handler for the dispatched event~\cite{noble2009} {\footnotesize{\textit{ask Mattia where to find this reference}}}. Moreover, the \texttt{startGPS()} method is called at the beginning and \texttt{stopPGS()} should call when quitting the application to avoid an overconsumption of phone battery. 
+To access the GPS data \emph{ofxMaps}\footnote{https://github.com/bakercp/ofxMaps} and \emph{ofxGeo}\footnote{https://github.com/bakercp/ofxGeo} addons has been used.\footnote{The GPS position on an Android platform requires a listening mechanism, which has been implemented in openFrameworks by calling the \texttt{ofRegisterGPSEvent()} in the \texttt{setup()} method of the source code. In the \texttt{ofApp.h} a method has been added in order to handle the updates from the Android OS system calls. It is named \texttt{locationChanged()} and adds an event handler for the dispatched event~\cite{noble2009}. Moreover, the \texttt{startGPS()} method is called at the beginning and \texttt{stopPGS()} should call when quitting the application to avoid an overconsumption of phone battery.} With the GPS position of the user it was possible to compute the distance between the user and the soundsource which was done using the \textit{Haversine} formula\footnote{http://www.movable-type.co.uk/scripts/latlong.html}. which expected as input arguments the GPS location of the user (provided by the GPS data of the phone) and the soundsource.
 
-% Due to unstable GPS and Orientation signals filters implementation has been necessary. Therefore two median filters has been applied in order to smooth the dataflow.
-% \\ 
-% {\footnotesize{\textit{add how we implemented our filter and the formula too, if any}}}
-% \\
+\begin{equation}\label{eq:distancehaversine1}
+\begin{split}
+  a = {\sin}^{2}(\Delta\varphi / 2) + \cos \varphi _1 + \cos \varphi _2 + \sin^2(\Delta\lambda / 2)
+\end{split}
+\end{equation}
+\begin{equation}\label{eq:distancehaversine2}
+\begin{split}
+  c = 2 * atan2(\sqrt{a},\sqrt{(1-a)}) 
+\end{split}
+\end{equation}
+\begin{equation}\label{eq:distancehaversine3}
+\begin{split}
+  d = R * c
+\end{split}
+\end{equation}
+where $\varphi$ is the \emph{latitude}, $\lambda$ is the \emph{longitude}, \emph{R} is earth's radius (mean radius = 6,371 km).
+
+In order to compute the azimuth, which is the angle from which the soundsource should appear to come from, first, the orientation of the mobile device to the magnetic north pole was extracted.\footnote{For that, the Android API provides access to the TYPE\_ORIENTATION sensor which, apart from other things, returns the orientation of the mobile device to the magnetic North Pole~\cite{AndroidOrientation}.} 
+
+Having the device's position relative to the magnetic North Pole and the sound location the azimuth can be computed using the following method \textbf{COMMENT:LARS} [Here please explain the method how we calculate the formula]. 
+
+As a last step before sending the data to the audio engine simple mean filters were applied to smoothen the changes in the raw data. For the distance a buffersize of 49 values and for the azimuth averaging over 7 values have proven to result in the most satisfying tradeoff between delay of feedback to the users actions and not having sudden jumps in distance or orientation (see appendix or figure). \textbf{COMMENT:LARS}[We have to include figures of this smoothing here or refer to them in the appendix]. Additionally an outlier filter was applied to the raw GPS data. In case there was a jump in the GPS data resulting in a difference of two consecutive distance values of more than 30 meters, that outlier was ignored and the last known GPS location was used.
+
 
 % **************************************************************************************************************************
 % **************************************************************************************************************************
@@ -577,58 +587,28 @@ To access the GPS data \emph{ofxMaps}\footnote{https://github.com/bakercp/ofxMap
 % **************************************************************************************************************************
 % **************************************************************************************************************************
 
-To retrieve compass orientation a specific addon called \emph{ofxOrientation} has been implemented. It accesses the `TYPE\_ORIENTATION' provided by the Android API and it measures degrees of rotation that a device makes around all three physical axes (x, y, z). In this case, only the z-axis is needed. Having the device's position relative to the magnetic North Pole and the sound location, \textit{theta} can be computed.
-
-\subsection{Computing distance and azimuth}
-To compute the distance between two point, in this case sound and user location, the \textit{Haversine} formula\footnote{http://www.movable-type.co.uk/scripts/latlong.html} was used.
-\begin{equation}\label{eq:distancehaversine1}
-\begin{split}
-  a = {\sin}^{2}(\Delta\varphi / 2) + \cos \varphi _1 + \cos \varphi _2 + \sin^2(\Delta\lambda / 2)
-\end{split}
-\end{equation}
-\begin{equation}\label{eq:distancehaversine2}
-\begin{split}
-  c = 2 * atan2(\sqrt{a},\sqrt{(1-a)}) 
-\end{split}
-\end{equation}
-\begin{equation}\label{eq:distancehaversine3}
-\begin{split}
-  d = R * c
-\end{split}
-\end{equation}
-where $\varphi$ is the \emph{latitude}, $\lambda$ is the \emph{longitude}, \emph{R} is earth's radius (mean radius = 6,371 km). \\
-Therefore, the distance is computed by calling the \emph{GeoUtils::distanceHaversine} method, which is then employ to simulate sound pressure in free field. Second of all, to calculate the azimuth (theta) required by the HRTF model the angle \textit{beta} must be computed. The angle \textit{beta} is defined as the angle between the positive y-axis and the sound location. Hence, the angle \textit{theta} is then obtained and fed to the HRTF model.
 
 \subsection{User interface}
-[MG: Since Stefania said that we should include a screenshot of the application. I think we could add it here and briefly discuss it. Just few sentences.]
+The user interface was designed for the purpose of running the tests mentioned in the introduction. There was one button to start the training trials, and a second one to start the testing trials. The user interface has not yet been specifically designed for the user.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The experiment}
 One of the aims of our experiment was to investigate how fast users were able to locate and navigate to a single sound source using our 3-D audio engine compared to a cosine panner based on~\cite{AndyFarnell2010} and 2/d distance calculation which served as a baseline performance. Therefore the time needed from the beginning of a trial until the sound source was found was measured. 
 
-Additionally we assessed a qualitative analysis of how intuitive it was for subjects to locate the sound as well as investigating whether the sound seemed to be embedded in the real scenery. These results were again compared to the cosine panner model~\cite{AndyFarnell2010}. The data was obtained with a 10 point lickertscale questionnaire going from ``don't agree at all" to `completely agree".
+Additionally we assessed a qualitative analysis of how intuitive it was for subjects to locate the sound as well as investigating whether the sound seemed to be embedded in the real scenery. These results were again compared to the cosine panner model~\cite{AndyFarnell2010}. The data was obtained with a 10 point likertscale questionnaire going from ''don't agree at all'' to ''completely agree''.
 
-(Here we can write a one paragraph preview of our results.)
+Results showed no statistically significant results between both models, neither for the quantitative nor qualitative analyses.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Materials and methods}
 \subsubsection{Participants}
-One participant had to be discarded because of 
 Qualitative data were collected from 11 participants (3 women and 8 men; mean age: 25, ranging from 22 to 30 years). For the quantitative data 6 more participants were measured summing up to in total 17 participants (4 women and 13 men; mean age: 25, ranging from 22 to 30 years). All participants were students coming from different backgrounds.\footnote{However, 14 subjects were master students in Sound and Music Computing at Aalborg University Copenhagen.} Six students were already familiar with 3-D audio sound and four of them had experience in audio navigation before conduction of the experiment. The other participants were naive. All participants reported normal or corrected to normal vision and no hearing deficits. Participants received no form of compensation other than gratitude. 
 
 \subsubsection{Apparatus and stimuli}
 The experiment took place in a free field (grass) in "Valby Parken" in Copenhagen, Denmark (Coordinates: 55$^\circ$38'22.3"N, 12$^\circ$31'27.4"E). The mobile device used was a Motorolla Moto G running with Android version 5.0.2. The device was connected to Sony MDR ZX600 stereo headphones. Only one person at a time was tested. 
 
-\begin{figure}[h!]
-  \centering
-    \includegraphics[scale=0.18]{graphics/experiment_AYL}
-  \caption{Testing the application in Valby Parken, Copenhagen}
-  \label{fig:testing}
-\end{figure}
-
-
-To create the auditory stimulus, digital vocal recordings of a male voice (age: 38) were collected using a AudioTechnica AT4040 condenser microphone and Apogee Duet II® digital audio interface. Recordings were done with 24 bits of resolution for amplitude at a sampling rate of 44100  kHz. Auditory stimuli have been compressed and equalized using a Maag Eq4 parametric equalizer, Teletronik LA-2A and Vertigo VSC-2 Quad Discrete Compressor plugins. They finally have been normalized in peak amplitude using the Izotope Ozone Maximizer (settings: IRC III algorithm, threshold: -7.0 dB, ceiling: -0.2 dB) so that at the minimal distance to the sound source (7 meter) using the maximal level of volume on the mobile device, the sound level of each sound source was at -4.5 dB SPL. 
+To create the auditory stimulus, digital vocal recordings of a male voice (age: ...) were collected using a ... . Recordings were done with ... bits of resolution for amplitude at a sampling rate of ...  kHz. Auditory stimuli were normalized in peak amplitude so that at the minimal distance to the sound source (7 meter) using the maximal level of volume on the mobile device, the sound level of each sound source was at ... dB. 
 
 \subsubsection{Design}
 The experiment comprised one within subject factor at 2 levels (sound engine). The two levels of the sound engine were our 3-D audio engine (3-D) and a cosine panner~\cite{AndyFarnell2010} and distance amplitude modulation (panning).
@@ -649,7 +629,7 @@ Participants were instructed to find the sound source as fast as possible. No in
 \subsubsection{Analyses}
 For the quantitative analysis 26 trials were excluded because either analyses of GPS data for those trials revealed very poor precision (sudden jumps or no changes in the GPS signal for a period of time) or the orientation sensor got stuck which either increased the time needed to find the sound source to a great extent or made it even impossible for the subjects to locate the sound source within 5 minutes. One subject had to be discarded completely from the analyses because there was no single trial with reliable GPS for the panning engine. The other 16 subjects performed at least one trial in each condition. The remaining trials to be analyzed summed up to 41 trials in the 3-D condition and 42 trials in the panning condition.
 
-The reasons for choosing a 10 point likertscale instead of the often referenced 5 or 7 point scales~\cite{} were that a greater number of responses should equalize the distances between the possible answer possibilities supporting treating likertscale data also as interval data~\cite{}. This gives us the grounds to use paired samples t-test for the qualitative analysis which is more powerful than the Wilcoxon signed rank test enabling us to detect smaller differences in ratings~\cite{}. Since we only had few questions, having so many answer possibilities should not have fatigued the subject too much so that accuracy of the responses should not have suffered due to too many answer possibilities~\cite{}. Though, it has to be noted that subject were outside when filling out the questionnaire which due to cold temperatures might have driven the subjects to respond in a fast pace leading to less accurate responses.
+For the qualitative analysis the questionaires from 11 participants were evaluated using parametric  methods as there are arguments in favor \cite{Norman2010, Carifio2007} and against \cite{Kuzon1996} treating likert-scale data as ordinal and/or interval data. 
 
 The threshold chosen to correctly reject the null-hypothesis was always 5\% ($\alpha$ = .05).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -665,7 +645,7 @@ We computed a paired samples t-test to compare the results for both sound engine
 The Shapiro-Wilk test showed that the data was normally distributed both for the 3D model (Z = 0.933, p = 0.44) and the Panning model (Z = 0.95, p = 0.67). 
 
 %Statistical tests applied to each question of the questionnaire do not show significant difference between both sound engines either.
-Evaluation of the questionnaires, Table \ref{table:questionnairetable}, showed that the mean and median values for questions 1, 2, 3 and 4 for the 3D model were only numerically different from the panning. Neither the paired samples t-test nor the Wilcoxon signed rank test showed significant results comparing the two conditions (3-D vs. panning). However, performing a one sample t-test on means of the four questions for each model comparing it with a neutral response (5.5) showed that users rated the connection between their position and what was presented via the headphones better than neutral for the 3-D sound engine (t(10) = 4.32, p =.002; Z =2.74 , p = .006) but not for the panning (t(10) = 1.07, p = .31; Z = .90, p=.367). For all other questions there were no significant differences.\footnote{It is worth noting that choosing mean and median as 5 instead of 5.5, showed that also for question two, a one sample t-test and the wilcoxon signed rank test were significant for the 3-D (t(10) = 2.52 , p = .03 ; Z = 2.19, p =.028) but not for the panning sound engine (t(10) = 1.19, p = .26 ; Z = 1.2, p =.23).}
+Evaluation of the questionnaires, Table \ref{table:questionnairetable}, showed that the mean and median values for questions 1, 2, 3 and 4 for the 3D model were only numerically different from the panning. Neither the paired samples t-test nor the Wilcoxon signed rank test or the sign test showed significant results comparing the two conditions (3-D vs. panning). However, performing a one sample t-test on means of the four questions for each model comparing it with a neutral response (5.5) showed that users rated the connection between their position and what was presented via the headphones better than neutral for the 3-D sound engine (t(10) = 4.32, p =.002; Z =2.74 , p = .006) but not for the panning (t(10) = 1.07, p = .31; Z = .90, p=.367). For all other questions there were no significant differences.\footnote{It is worth noting that choosing mean and median as 5 instead of 5.5, showed that also for question two, a one sample t-test and the wilcoxon signed rank test were significant for the 3-D (t(10) = 2.52 , p = .03 ; Z = 2.19, p =.028) but not for the panning sound engine (t(10) = 1.19, p = .26 ; Z = 1.2, p =.23).}
 
 \begin{table}[h]
 \scalebox{0.85}{
