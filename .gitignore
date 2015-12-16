@@ -1,5 +1,6 @@
 .DS_store
 report/main.aux
+report/main.blg
 report/main.bbl
 report/main.lof
 report/main.log
