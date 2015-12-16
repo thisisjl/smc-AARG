@@ -478,7 +478,7 @@ H\left( z,\theta\right) = \frac{2\alpha (\theta)+T\beta+z^{-1}(-2\alpha(\theta)+
 
 Hence, the filter coefficients $a_0 = 2\alpha (\theta)+T\beta$ and $a_1 = -2\alpha(\theta)+T\beta$ as well as $b_0 = 2+T\beta$ and $b_1 = -2+T\beta$ are given. 
 % Since we could not use the filter function in Matlab which has as input values the filter coefficientes we had 
-It was necessary to isolate the output $Y(z)$ in Equation~\ref{eq:filterparam} as well as going from the frequency to the time domain. The result is given in Equation~\ref{eq:out}\footnote{For the derivation of Equation~\ref{eq:out} see appendix B}:
+It was necessary to isolate the output $Y(z)$ in Equation~\ref{eq:filterparam} as well as going from the frequency to the time domain. The result is given in Equation~\ref{eq:out}\footnote{For the derivation of Equation~\ref{eq:out} see appendix A}:
 \begin{equation}\label{eq:out}
 Y[n] =\frac{a_0X[n]+a_1X[n-1]-b_1Y[n-1]}{b_0}
 \end{equation} 
@@ -525,7 +525,7 @@ k & $\rho$  & $A_{k}$ & $B_{k}$  & $D_{k}$   \\ \hline
 \subsubsection{The room model}
 In ~\cite{Brown1997}, they imply a very simple room model consisting of only one delay with variable delay time and level according to the distance. An attempt to make a similar model was made by setting the delay time to the difference between the direct path from the object to the listener and a path that bounces on the ground half way between the object and the listener. Finally a more complex model was used due to the poor experienced effect and the large alteration (comb filtering) of the sound quality.
 
-The chosen model is based on the reverb algorithm \textit{rev2~} implemented in PD. Compared to the original model the amount of early reflections were reduced and spread more out. Through this a very large but little reflective room was simulated, with a subtle tail, resembling the characteristics of an outdoor environment. The amount of reverb was diminished according to the distance between the user and the virtual sound source. This happens significantly slower than the $2/d$ of the direct sound, namely $8/(15+d)$. In this way the ratio between the direct and the reflected signal changes even though the total level go down. This model approximate the test data in ~\cite{begault19943}. The \textit{rev2~} has a direct through signal incorporated, but this was removed in order to easier control this dry/wet relation. As showed in the model (Figure \ref{fig:workflow}), the room model was added in parallel with the Head model and added to the output of the pinna model. 
+The chosen model is based on the reverb algorithm \textit{rev2~} implemented in PD. Compared to the original model the amount of early reflections were reduced and spread more out. Through this a very large but little reflective room was simulated, with a subtle tail, resembling the characteristics of an outdoor environment. The amount of reverb was diminished according to the distance between the user and the virtual sound source. This happens significantly slower than the $1/d$ of the direct sound, namely $4/(15+d)$. In this way the ratio between the direct and the reflected signal changes even though the total level go down. This model approximate the test data in ~\cite{begault19943}. The \textit{rev2~} has a direct through signal incorporated, but this was removed in order to easier control this dry/wet relation. As showed in the model (Figure \ref{fig:workflow}), the room model was added in parallel with the Head model and added to the output of the pinna model. 
 
 A further improvement could implement variable early reflections delay-times. And separate control over reverb tail and early reflections level.
 
@@ -854,10 +854,11 @@ It could be that the error in the GPS affected the HRTF model more than the pan 
 %
 %\end{thebibliography}
 
+
 \pagebreak
-\listoffigures
-\listoftables
-\pagebreak
+%\listoffigures
+%\listoftables
+%\pagebreak
 \begin{appendices}
 \section{Derivations}
 
@@ -874,7 +875,7 @@ Applying the substitution in equation~\ref{eq:bilin} to equation~\ref{eq:analog}
 H\left( z,\theta\right) = \frac{\alpha (\theta)(\frac{2}{T} \frac{z-1}{z+1})+\beta}{(\frac{2}{T} \frac{z-1}{z+1})+\beta}
 \end{equation}
 
-The derivations followed to get it can be seen as follows
+The derivations followed to get equation ~\ref{eq:filterparam} can be seen as follows
 
 \begin{equation*}\label{eq:DerivationFilterCoeff}
 \begin{split}
@@ -891,7 +892,7 @@ H\left( z,\theta\right) &=\frac{\alpha (\theta)(\frac{2}{T} \frac{z-1}{z+1})+\be
 \end{equation*} 
 
 
-\section{Derivations}
+
 \begin{equation*}\label{eq:DerivationC++}
 \begin{split}
 H(z, \theta) &= \frac{Y(z)}{X(z)} = \frac{a_0+a_1z^{-1}}{b_0+b_1z^{-1}}\\
@@ -902,29 +903,30 @@ H(z, \theta) &= \frac{Y(z)}{X(z)} = \frac{a_0+a_1z^{-1}}{b_0+b_1z^{-1}}\\
 \end{split}
 \end{equation*} 
 
+\pagebreak
 
 \section{openFrameworks}
-OpenFrameworks\footnote{http://openframeworks.cc/\label{refOF}} has been choosen as development framework rather than Android Studio\footnote{http://developer.android.com/sdk/index.html}. This choice is due to cross-platform reasons. Even though this first application runs only on Android, future improvements will also inlcude iOS development.
+OpenFrameworks\footnote{http://openframeworks.cc/\label{refOF}} has been chosen as development framework rather than Android Studio\footnote{http://developer.android.com/sdk/index.html}. This choice is due to cross-platform reasons. Even though the prototype application runs only on Android, future improvements will also inlcude iOS development.
 % It works using C++ language, which implies that the code is compiled directly into assembly language and hence works very fast~\cite{} and does not need to be interpreted by a virtual machine as it is the case for a java-built environment such as Android Studio~\cite{AndSTD}. 
-Discussing all the steps involved in the building process is beyond the scope of this paper, but a short explanation of what is openFrameworks and the main operations used to achieve this application will be given. \\
+Discussing all the steps involved in the building process is beyond the scope of this paper, but a short explanation of openFrameworks and the main operations used to achieve the application will be given. \\
 \subsubsection{Description}~\\
-OpenFrameworks, by definition given on its website, is:
+OpenFrameworks, is according to their website:
 \begin{center}
-{\footnotesize{\textit{an open source C++ toolkit for creative coding}}\footref{refOF}.}
+{\footnotesize{\textit{an open source C++ toolkit for creative coding}}~\cite{OpenFrameworks}.}
 \end{center}
-Since it is entirely written in C++, distributed under MIT license and actually runs on five operative systems and four IDEs, it is massively cross-compatible. It gives the opportunity to deal with code designed to be minimal and easy to grasp\footref{refOF}. 
+Since it is entirely written in C++, distributed under MIT license and actually runs on five operative systems and four IDEs, it is massively cross-compatible. It gives the opportunity to deal with code designed to be minimal and easy to grasp~\cite{OpenFrameworks}. 
 %In that case, both OS X and Windows platform, and Xcode and Visual Studio as integrated development environment. 
-That \textit{simple and intuitive framework for experimentation}\footref{refOF} is designed to work as a general purpose glue and wraps together several commonly used libraries, such as \emph{OpenGl, OpenCv, PortAudio} and many more. Nowadays, this is a popular platform for experiments in generative and sound art and creating interactive installations and audiovisual performances\footref{refOF}. The current operative version is \emph{0.9.0}.
+That \textit{simple and intuitive framework for experimentation}~\cite{OpenFrameworks} is designed to work as a general purpose glue and wraps together several commonly used libraries, such as \emph{OpenGl, OpenCv, PortAudio} and many more. Recently this has become a popular platform for experiments and creation of generative art, sound art, interactive installations and audiovisual performances~\cite{OpenFrameworks}. The current operative version is \emph{0.9.0}.
 
 \subsubsection{Addons}~\\
-its design philosophy claims for a collaborative environment. It thrives on the contributions of many people, and collaborate mainly on addons and projects. An \emph{addons} is made of several snippets of code put together in order to extend openFrameworks functionality, bring some external framework and allow it to be integrated into openFrameworks project or make specific and complicated tasks easier and reusable in other project~\cite{}{\footnotesize{\textit{ask Mattia where to find this reference}}} . It also generally contains the library itself in a form that is ready to be linked to project binaries.
-Several \textit{third-party} addons has been used such as \emph{ofxGui, ofxXmlSettings, ofxAndroid, ofxGeo, ofxMaps, ofxTween, ofxPd}. Additionally, it has been implemented a specific addons called \emph{ofxOrientation}, which accesses sensors data regarding orientation. This step was necessary in order to retrieve the required angle between the sound location and the user orientation, which is then use by the HRTF model.
+Its design philosophy aims for a collaborative environment. It thrives from the contributions of many people, that collaborate mainly on addons and projects. An \emph{addon} is made of several snippets of code put together in order to extend the functionality of openFrameworks,  allow for external framworks to be integrated into openFrameworks project or make specific and complicated tasks easier and reusable in other projects~\cite{}{\footnotesize{\textit{ask Mattia where to find this reference}}}.
+In this app, several \textit{third-party} addons has been used such as \emph{ofxGui, ofxXmlSettings, ofxAndroid, ofxGeo, ofxMaps, ofxTween, ofxPd}. Additionally, there has been implemented a specific addon called \emph{ofxOrientation}, which accesses sensory data regarding orientation. This step was necessary in order to retrieve the required angle between the sound location and the user orientation, which is then use by the HRTF model.
 
 \subsubsection{The openFrameworks project}~\\
-All openFrameworks project have a similar structure of folders and files. The most important folder among them is for sure the \emph{src} folder. It contains all the source codes and consists at least of \texttt{main.cpp} (containing the \texttt{main( )} function to let the operating system start the application), \texttt{ofApp.h} (containing declaration of the specific class) and \texttt{ofApp.cpp}, which contains definition of all functions declared in the previous file. All the methods in that class are \emph{event-handling} methods, hence they are triggered in response to events that happens inside the application such as mouse scrolling and program quitting.% \note{}.  MATTIA what does that mean? 
+All openFrameworks project have a similar structure of folders and files. The most important folder among them is the \emph{src} folder. It contains all the source codes and consists at least of \texttt{main.cpp} (containing the \texttt{main( )} function to let the operating system start the application), \texttt{ofApp.h} (containing declaration of the specific class) and \texttt{ofApp.cpp}, which contains definition of all functions declared in the previous file. All the methods in that class are \emph{event-handling} methods, hence they are triggered in response to events that happens inside the application such as mouse scrolling and program quitting.% \note{}.  MATTIA what does that mean? 
 To create a new project, the Project Generator wizard has been used which is located in the same directory and directly provided by the environment. Such a way is simple and it is especially useful when dealing with several addons, which are automatically linked. 
 % Once we got the structure, we could access every source file in the \emph{src} folder. 
-At its simplest, working with an openFrameworks project is adding new code to the appropriate method, or just create a new one and declare it in the \texttt{ofApp.cpp}. In\footref{refOF} a further explanation of the main methods and their workflow is provided.
+At its simplest, working with an openFrameworks project is adding new code to the appropriate method, or just create a new one and declare it in the \texttt{ofApp.cpp}. In~\cite{OpenFrameworks} a further explanation of the main methods and their workflow is provided.
 
 
 
@@ -936,7 +938,6 @@ At its simplest, working with an openFrameworks project is adding new code to th
 
 
 \end{appendices}
-
 \pagebreak
 % Style and bibliography.
 % The bibtex filename
