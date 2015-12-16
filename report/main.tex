@@ -353,9 +353,6 @@ Theoretically, audio augmented reality has to be distinguished from the traditio
 
 COMMENT:LARS [We have to reformulate this one once the citatio is put in ;)]According to this definition, audio augmented reality should be within the boundaries of 1) a perfect augmentation of the listener's auditory environment and is achieved when the listener is unable to predict whether a sound source is part of the real or the virtual audio environment and 2) a set of artificial sounds that are not possible in the real world superimposed and fitted to the visual perceived world like in described in FirstAuthorName et al \cite{}. Any combination of these two fall within the boundaries of AAR.\\
 
-\emph{Audio Aura} \cite{mynatt1997} was one of the first projects to deal exclusively with audio in augmented reality systems. It basically consisted in providing auditory information to users as they traveled through their workspace. These information was triggered as soon as the subjects entered particular locations in the workspace. The auditory cues used in \emph{Audio Aura} were particularly interesting because most of them were associated to sounds from nature rather then recorded vocal, speech or synthetic sounds. Similar in approach to \emph{Audio Aura} was the \emph{Automated Tour Guide} \cite{bederson1995} COMMENT:LARS[ add something more about that automated tour guide like: ... in which subjecta had to do ...]. In both cases, triggers are readily identifiable, still and rarely changing. The sounds were assigned to pre-determined locations in space and there was no need to determine the precise location of an individual except for knowing when the individual entered the area of interest. COMMENT:LARS[How did they know when to play the sound??? ]\\
-
-A successive work, \emph{Hear\&There} was able to determine the location and head position of the user using the information from GPS and a digital compass~\cite{rozier2000}. A user could listen to these `audio imprints`COMMENT:LARS[is this a direct citation?] by walking into the area that a specific imprint occupied, which then was triggered. The essential premise of  \emph{Hear\&There} was that a physical environment has been augmented with audio. All the sounds and the data were gathered inside that system. Since a `Field Use` has been developed, in which the user wear a hardware portable system, \emph{Hear\&There} has undoubtedly contributed to an improved definition of mobile augmented reality environment. COMMENT:LARS[I am not sure if it contributed to the definition, rather then just falling into the definition?]\\
 
 \subsubsection*{Human sound localization}~\\
 The auditory system allows sound sources localization in the horizontal plane and this process takes places in the brain~\cite{everest2009master}. It is even possible to guess the size of the source~\cite{}. When a sound event occurs, waves travel in all directions and when  they  reach the auditory system,  our  brain  compares  the signals  received  by  the  left  and  right  ears  in order to determine the sound source position.  The signal spectrum reaching both ear is different, since the amplitude and phase information differs~\cite{everest2009master}. These binaural cues are  called  \emph{interaural  intensity  difference}  (IID)  and  \emph{interaural time  difference}  (ITD). However, these cues are not enough to localize accurately the source since with this information the listener can not determine if the sound is in front, above or behind. This region where all sounds yield the same ITD and IID is called \textit{cone of confusion}~\cite{blauert1997spatial}.
@@ -375,6 +372,12 @@ Externalization is related to the perception of auditory distance such that ther
 Localization error refers to the deviation of the reported position of a sound source from a measured `target` location, i.e. the listener fails in matching the correct location of the sound. Localization errors can be divided in \emph{azimuth} (deviations along the horizontal plane) and \emph{elevation} errors (deviation from eye-level elevation)~\cite{}. Dynamic cues related to head turning and other movements of either a listener or a sound source should be taken into consideration~\cite{}. These errors might come from some location accuracy. Determining the accurate position of the user is one of the most important task in an AR system owing to that system always produces output to the used based on his or her location in space~\cite{}. That said, any location inaccuracy should be avoided using GPS receiver with high sensitivity and reliability. Here, the implementation design takes a crucial role as noted in~\cite{}.
 \paragraph{Reversal errors}
 Sometimes called front-back or back-front `confusion`, that error refers to the judgment of a sound source as located on the opposite side of the interaural axis than the target position~\cite{} due to the cone of confusion. An informal proposal has been made, which tries to help the user in front-back discrimination on the basis of the familiarity of the effects on timbre cues, e.g. unique patterns in \emph{early reflections} depending on the virtual sound location. Indeed, this has not yet been verified experimentally. Informal proposal has suggested to use difference in \emph{early reflections} to help judge where the sound origins. However in application where the listener can change its angle to the source, the front and back will soon be obvious through the movement of the sound. (MG: insert references for previuos sentences).\\
+
+\textbf{MG: we should add some more examples of other applications. Lluis will do it.}
+\textbf{MG: reformulate the conclusion} \emph{Audio Aura} \cite{mynatt1997} was one of the first projects to deal exclusively with audio in augmented reality systems. It basically consisted in providing auditory information to users as they traveled through their workspace. These information was triggered as soon as the subjects entered particular locations in the workspace. The auditory cues used in \emph{Audio Aura} were particularly interesting because most of them were associated to sounds from nature rather then recorded vocal, speech or synthetic sounds. Similar in approach to \emph{Audio Aura} was the \emph{Automated Tour Guide} \cite{bederson1995} COMMENT:LARS[ add something more about that automated tour guide like: ... in which subjecta had to do ...]. In both cases, triggers are readily identifiable, still and rarely changing. The sounds were assigned to pre-determined locations in space and there was no need to determine the precise location of an individual except for knowing when the individual entered the area of interest. COMMENT:LARS[How did they know when to play the sound??? ]\\
+
+A successive work, \emph{Hear\&There} was able to determine the location and head position of the user using the information from GPS and a digital compass~\cite{rozier2000}. A user could listen to these `audio imprints`COMMENT:LARS[is this a direct citation?] by walking into the area that a specific imprint occupied, which then was triggered. The essential premise of  \emph{Hear\&There} was that a physical environment has been augmented with audio. All the sounds and the data were gathered inside that system. Since a `Field Use` has been developed, in which the user wear a hardware portable system, \emph{Hear\&There} has undoubtedly contributed to an improved definition of mobile augmented reality environment. COMMENT:LARS[I am not sure if it contributed to the definition, rather then just falling into the definition?]\\
+
 
 \subsubsection*{Conclusion}~\\
 Although it is a recent field of research, several works and experiments in the context of audio augmented reality has been made so far. Most of research has been done mainly on the use of visual information with very little attention paid to the audio aspects. In an augmented reality environment, using audio cues is a relevant concern and an audio environment involves many issues and challenges~\cite{}. For instance, providing a suitable way for the user to orient himself or herself in an only-audio virtual space is even more complicated than providing visual cues. Contrary to visual images, audio is unstable and thus need to be continuously repeated or be infinite in order to work as a directional cue~\cite{} (MG: I think this is not so well explained).   
@@ -397,86 +400,22 @@ At a later stage these two applications have been tested on users and the time r
 
 
 
-\subsection{Sensor data retrieving}
-The implemented mobile application required two kind of sensors data: \emph{GPS} and \emph{orientation}. 
-\begin{itemize}  
-\item GPS is a way of determining location that has become common with the increasing of portable technologies. Any device that receives a GPS signal is 	called a GPS \emph{receiver}. As explained in~\cite{} {\footnotesize{\textit{ask Mattia where to find this reference}}} the receiver calculates its position by precisely timing the signals sent by the GPS satellites.
-The GPS user position is needed to calculate the distance to the sounds that were placed on fixed locations in the real environment. 
-\item Orientation is computed using the orientation sensor. It is a software-based sensors which derives its data from the accelerometer and the geomagnetic field sensor.
-\\
-{\footnotesize{\textit{cannot add \\ http://developer.android.com/guide/topics/sensors/sensors\_position.html}}}. 
-\\
-Therefore, it is possible to determine a device's position relative to the magnetic North Pole.
-\end{itemize}
 
-To access the GPS data \emph{ofxMaps}\footnote{https://github.com/bakercp/ofxMaps} and \emph{ofxGeo}\footnote{https://github.com/bakercp/ofxGeo} addons has been used. The GPS position on an Android platform requires a listening mechanism, which has been implemented in openFrameworks by calling the \texttt{ofRegisterGPSEvent()} in the \texttt{setup()} method of the source code. In the \texttt{ofApp.h} a method has been added in order to handle the updates from the Android OS system calls. It is named \texttt{locationChanged()} and adds an event handler for the dispatched event~\cite{} {\footnotesize{\textit{ask Mattia where to find this reference}}}. Moreover, the \texttt{startGPS()} method is called at the beginning and \texttt{stopPGS()} should call when quitting the application to avoid an overconsumption of phone battery. 
 
-% Due to unstable GPS and Orientation signals filters implementation has been necessary. Therefore two median filters has been applied in order to smooth the dataflow.
-% \\ 
-% {\footnotesize{\textit{add how we implemented our filter and the formula too, if any}}}
-% \\
-
-% **************************************************************************************************************************
-% **************************************************************************************************************************
-% Mattia's Version
-% Since we are dealing with filtering depending on the sound sources position (e.g. the sound could appear in front of the user as well as behind), it is necessary to take into consideration the user's orientation. That is basically the angle created between the heading of the user and the geographic north pole. Initially, it has been assumed that the user always faced the north, i.e. the angle between the user and the geographic north pole is equal to 0. Discarding the deviation of the user's orientation, it is possible to define the angle between the user and the sound source as the \emph{true bearing \footnote{It is possible refer to it simply as \emph{bearing}.}}. This is, by definition
-% \begin{quote}
-% {\footnotesize{\textit{the angle measured in degrees in a clockwise direction \footnote{All bearings are measured in a horizontal plane.} from the north line~\cite{} == ask Mattia where did he find this definition == .}}}
-% \end{quote}
-% Assuming a sound source as a point that radiates in every directions, the bearing of the user from the sound source can be calculated, as shown in (add figure)
-% {\footnotesize{\textit{Ask Mattia which figure to add}}}.
-% The bearing could be accessed via the \emph{ofxGeo} addon, which contains a specific method called \emph{GeoUtils::bearingHaversine} that uses the \textit{`haversine'} formula:
-
-% \begin{equation*}\label{eq:haversine}
-% \begin{split}
-% 	\theta = & atan2(sin (\delta \gamma)cos(\varphi_2)) cos(\phi_1)sin(\varphi_2)\\
-% 	&-sin(\varphi_1)cos(\varphi_2)cos(\delta \gamma)) \\
-% \end{split}
-% \end{equation*}
-% where $\varphi$ is the \emph{latitude}, $\delta$ is the \emph{longitude}.
-% Once the bearing is determined, it can be assumed that the angle between the heading of the user and the sound source should be the sum of the bearing and the direction the user is facing. Doing so, using a compass it can be retrieved. In order to access the compass orientation a specific addon has been implemented which accesses the `SENSOR TYPE ORIENTATION' provided by the Android API. Having this information four cases has to be differentiated: 
-% \\
-% {\footnotesize{(some images and explanation about how we calculated the angle between our heading orientation and the sound.)}}
-% \\
-% In order to smooth the sensor data (especially for the orientation) we filtered the sensory information by computing the median of a chunk of mediansize instances of the sensor output. 
-% **************************************************************************************************************************
-% **************************************************************************************************************************
-
-To retrieve compass orientation a specific addon called \emph{ofxOrientation} has been implemented. It accesses the `TYPE\_ORIENTATION' provided by the Android API and it measures degrees of rotation that a device makes around all three physical axes (x, y, z). In this case, only the z-axis is needed. Having the device's position relative to the magnetic North Pole and the sound location, \textit{theta} can be computed.
-
-\subsection{Computing theta and distance}
-To compute the distance between two point, in this case the sound location and the user location, the \textit{Haversine} formula\footnote{http://www.movable-type.co.uk/scripts/latlong.html} is taken into consideration.
-\begin{equation}\label{eq:distancehaversine1}
-\begin{split}
-  a = {\sin}^{2}(\Delta\varphi / 2) + \cos \varphi _1 + \cos \varphi _2 + \sin^2(\Delta\lambda / 2)
-\end{split}
-\end{equation}
-\begin{equation}\label{eq:distancehaversine2}
-\begin{split}
-  c = 2 * atan2(\sqrt{a},\sqrt{(1-a)}) 
-\end{split}
-\end{equation}
-\begin{equation}\label{eq:distancehaversine3}
-\begin{split}
-  d = R * c
-\end{split}
-\end{equation}
-where $\varphi$ is the \emph{latitude}, $\lambda$ is the \emph{longitude}, \emph{R} is earth's radius (mean radius = 6,371 km). \\
-Therefore, the distance is computed by calling the \emph{GeoUtils::distanceHaversine} method, which in then used to simulate the sound pressure in a free field. First of all, to calculate the angle \textit{theta} required by the HRTF model the angle \textit{beta} must be computed. The angle \textit{beta} is defined as the angle between the positive y-axis and the sound location. Hence, the angle \textit{theta} is then obtained and fed to the HRTF model.
 
 \subsection{Audio engine}
 The audio engine is the core part of the mobile application. As shortly mentioned in the introduction, a filter based on a HRTF model has been implemented, which is claimed to be both efficient and of reasonable quality~\cite{Brown1997} in order to achieve a satisfying user experience and an efficient real time application. The workflow given in~\cite{Brown1997} was followed, which is depicted in Figure \ref{fig:workflow}. 
 
 \begin{figure}[h!]
-	\centering
-		\includegraphics[scale=0.55]{graphics/graphic.jpg}
-	\caption{Components of the model provided on a theoretical basis in~\cite{Brown1997}}
-	\label{fig:workflow}
+  \centering
+    \includegraphics[scale=0.55]{graphics/graphic.jpg}
+  \caption{Components of the model provided on a theoretical basis in~\cite{Brown1997}}
+  \label{fig:workflow}
 \end{figure}
 
 First, the monoaural sound which has been processed to add a range effect, goes to a head model and a room model. The binaural output of the former is then processed by the pinna model, and finally each one is added to the output of the room model to provide an externalization effect. In the following formulas, the angles are measured in radians in the interaural-polar system, where $\theta$ is the azimuth angle and $\phi$ is the elevation angle. However, in the mobile application the latter is no considered since all the sound sources are placed in the horizontal plane without elevation. \\
 
-To implement the HRTF model~\cite{Brown1997} the audio programming language PureData has been used. Additionally, in order to embed this model in the Android platform, \textit{libpd}\footnote{http://libpd.cc/} has been taken into consideration. Each single part of the HRTF model has been implemented using PureData and an       external called \textit{headShadow} has been implemented and written in C. 
+To implement the HRTF model~\cite{Brown1997} the audio programming language PureData was used. Additionally, in order to embed this model in the Android platform \textit{libpd}\footnote{http://libpd.cc/} has been taken into consideration. Each single part of the HRTF model has been implemented using PureData and an       external called \textit{headShadow} has been implemented and written in C. 
 
 \begin{figure}[h!]
   \centering
@@ -586,8 +525,78 @@ In ~\cite{Brown1997}, they imply a very simple room model consisting of only one
 The chosen model is based on the reverb algorithm \textit{rev2~} implemented in PD. Compared to the original model the amount of early reflections were reduced and spread more out. Through this a very large but little reflective room was simulated, with a subtle tail, resembling the characteristics of an outdoor environment. The amount of reverb was diminished according to the distance between the user and the virtual sound source. This happens significantly slower than the $2/d$ of the direct sound, namely $8/(15+d)$. In this way the ratio between the direct and the reflected signal changes even though the total level go down. This model approximate the test data in ~\cite{begault19943}. The \textit{rev2~} has a direct through signal incorporated, but this was removed in order to easier control this dry/wet relation. As showed in the model (Figure \ref{fig:workflow}), the room model was added in parallel with the Head model and added to the output of the pinna model. 
 
 A further improvement could implement variable early reflections delay-times. And separate control over reverb tail and early reflections level.
-%\subsection{User interface}
-%include pictures of user interface etc.
+
+
+
+\subsection{Sensor data retrieving}
+The implemented mobile application required two kind of sensors data: \emph{GPS} and \emph{orientation}. 
+\begin{itemize}  
+\item GPS is a way of determining location that has become common with the increasing of portable technologies. Any device that receives a GPS signal is  called a GPS \emph{receiver}. As explained in~\cite{} {\footnotesize{\textit{ask Mattia where to find this reference}}} the receiver calculates its position by precisely timing the signals sent by the GPS satellites.
+The GPS user position is needed to calculate the distance to the sounds that were placed on fixed locations in the real environment. 
+\item Orientation is computed using the orientation sensor. It is a software-based sensors which derives its data from the accelerometer and the geomagnetic field sensor.
+\\
+{\footnotesize{\textit{cannot add \\ http://developer.android.com/guide/topics/sensors/sensors\_position.html}}}. 
+\\
+Therefore, it is possible to determine a device's position relative to the magnetic North Pole.
+\end{itemize}
+
+To access the GPS data \emph{ofxMaps}\footnote{https://github.com/bakercp/ofxMaps} and \emph{ofxGeo}\footnote{https://github.com/bakercp/ofxGeo} addons has been used. The GPS position on an Android platform requires a listening mechanism, which has been implemented in openFrameworks by calling the \texttt{ofRegisterGPSEvent()} in the \texttt{setup()} method of the source code. In the \texttt{ofApp.h} a method has been added in order to handle the updates from the Android OS system calls. It is named \texttt{locationChanged()} and adds an event handler for the dispatched event~\cite{} {\footnotesize{\textit{ask Mattia where to find this reference}}}. Moreover, the \texttt{startGPS()} method is called at the beginning and \texttt{stopPGS()} should call when quitting the application to avoid an overconsumption of phone battery. 
+
+% Due to unstable GPS and Orientation signals filters implementation has been necessary. Therefore two median filters has been applied in order to smooth the dataflow.
+% \\ 
+% {\footnotesize{\textit{add how we implemented our filter and the formula too, if any}}}
+% \\
+
+% **************************************************************************************************************************
+% **************************************************************************************************************************
+% Mattia's Version
+% Since we are dealing with filtering depending on the sound sources position (e.g. the sound could appear in front of the user as well as behind), it is necessary to take into consideration the user's orientation. That is basically the angle created between the heading of the user and the geographic north pole. Initially, it has been assumed that the user always faced the north, i.e. the angle between the user and the geographic north pole is equal to 0. Discarding the deviation of the user's orientation, it is possible to define the angle between the user and the sound source as the \emph{true bearing \footnote{It is possible refer to it simply as \emph{bearing}.}}. This is, by definition
+% \begin{quote}
+% {\footnotesize{\textit{the angle measured in degrees in a clockwise direction \footnote{All bearings are measured in a horizontal plane.} from the north line~\cite{} == ask Mattia where did he find this definition == .}}}
+% \end{quote}
+% Assuming a sound source as a point that radiates in every directions, the bearing of the user from the sound source can be calculated, as shown in (add figure)
+% {\footnotesize{\textit{Ask Mattia which figure to add}}}.
+% The bearing could be accessed via the \emph{ofxGeo} addon, which contains a specific method called \emph{GeoUtils::bearingHaversine} that uses the \textit{`haversine'} formula:
+
+% \begin{equation*}\label{eq:haversine}
+% \begin{split}
+%   \theta = & atan2(sin (\delta \gamma)cos(\varphi_2)) cos(\phi_1)sin(\varphi_2)\\
+%   &-sin(\varphi_1)cos(\varphi_2)cos(\delta \gamma)) \\
+% \end{split}
+% \end{equation*}
+% where $\varphi$ is the \emph{latitude}, $\delta$ is the \emph{longitude}.
+% Once the bearing is determined, it can be assumed that the angle between the heading of the user and the sound source should be the sum of the bearing and the direction the user is facing. Doing so, using a compass it can be retrieved. In order to access the compass orientation a specific addon has been implemented which accesses the `SENSOR TYPE ORIENTATION' provided by the Android API. Having this information four cases has to be differentiated: 
+% \\
+% {\footnotesize{(some images and explanation about how we calculated the angle between our heading orientation and the sound.)}}
+% \\
+% In order to smooth the sensor data (especially for the orientation) we filtered the sensory information by computing the median of a chunk of mediansize instances of the sensor output. 
+% **************************************************************************************************************************
+% **************************************************************************************************************************
+
+To retrieve compass orientation a specific addon called \emph{ofxOrientation} has been implemented. It accesses the `TYPE\_ORIENTATION' provided by the Android API and it measures degrees of rotation that a device makes around all three physical axes (x, y, z). In this case, only the z-axis is needed. Having the device's position relative to the magnetic North Pole and the sound location, \textit{theta} can be computed.
+
+\subsection{Computing distance and azimuth}
+To compute the distance between two point, in this case sound and user location, the \textit{Haversine} formula\footnote{http://www.movable-type.co.uk/scripts/latlong.html} was used.
+\begin{equation}\label{eq:distancehaversine1}
+\begin{split}
+  a = {\sin}^{2}(\Delta\varphi / 2) + \cos \varphi _1 + \cos \varphi _2 + \sin^2(\Delta\lambda / 2)
+\end{split}
+\end{equation}
+\begin{equation}\label{eq:distancehaversine2}
+\begin{split}
+  c = 2 * atan2(\sqrt{a},\sqrt{(1-a)}) 
+\end{split}
+\end{equation}
+\begin{equation}\label{eq:distancehaversine3}
+\begin{split}
+  d = R * c
+\end{split}
+\end{equation}
+where $\varphi$ is the \emph{latitude}, $\lambda$ is the \emph{longitude}, \emph{R} is earth's radius (mean radius = 6,371 km). \\
+Therefore, the distance is computed by calling the \emph{GeoUtils::distanceHaversine} method, which is then employ to simulate sound pressure in free field. Second of all, to calculate the azimuth (theta) required by the HRTF model the angle \textit{beta} must be computed. The angle \textit{beta} is defined as the angle between the positive y-axis and the sound location. Hence, the angle \textit{theta} is then obtained and fed to the HRTF model.
+
+\subsection{User interface}
+[MG: Since Stefania said that we should include a screenshot of the application. I think we could add it here and briefly discuss it. Just few sentences.]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
