@@ -416,7 +416,7 @@ At a later stage these two applications have been tested on users and the time r
 
 
 \subsection{Audio engine}
-The audio engine is the core part of the mobile application. As shortly mentioned in the introduction, a filter based on a HRTF model has been implemented, which is claimed to be both efficient and of reasonable quality~\cite{Brown1997} in order to achieve a satisfying user experience and an efficient real time application. The workflow given in~\cite{Brown1997} was followed, which is depicted in Figure \ref{fig:workflow}. 
+The audio engine is the core part of the mobile application. As shortly mentioned in the introduction, a filter based on a HRTF model was implemented, which is claimed to be both efficient and of reasonable quality~\cite{Brown1997} in order to achieve a satisfying user experience and an efficient real time application. The workflow given in~\cite{Brown1997} was followed, which is depicted in Figure \ref{fig:workflow}. 
 
 \begin{figure}[h!]
   \centering
@@ -425,9 +425,8 @@ The audio engine is the core part of the mobile application. As shortly mentione
   \label{fig:workflow}
 \end{figure}
 
-First, the monoaural sound which has been processed to add a range effect, goes to a head model and a room model. The binaural output of the former is then processed by the pinna model, and finally each one is added to the output of the room model to provide an externalization effect. In the following formulas, the angles are measured in radians in the interaural-polar system, where $\theta$ is the azimuth angle and $\phi$ is the elevation angle. However, in the mobile application the latter is no considered since all the sound sources are placed in the horizontal plane without elevation. \\
-
-To implement the HRTF model~\cite{Brown1997} the audio programming language PureData was used. Additionally, in order to embed this model in the Android platform \textit{libpd}\footnote{http://libpd.cc/} has been taken into consideration. Each single part of the HRTF model has been implemented using PureData and an       external called \textit{headShadow} has been implemented and written in C. 
+First of all, the monoaural sound source processed by a distance effect~\cite{everest2009master} goes into the head model and into the room model. The binaural output is then processed by the pinna model and added to the output of the room model which provides an externalization effect. In the following formulas, the angles are measured in radians in the interaural-polar system, where $\theta$ is the azimuth angle and $\phi$ is the elevation angle. However, in the mobile application the latter is not considered since all the sound sources are placed in the horizontal plane without elevation. 
+\textbf{mg: I wrote the following passage, but please check it out! I am not completely sure if it is correct.} As previously mentioned, to implement the HRTF model~\cite{Brown1997} a Pure Data external called \emph{headShadow} was written in the programming language C. So as to go through this source code development, it was necessary to get the correct difference equation which would be carefully explained in \emph{The head model} section. To test the correctness of the equation, it was first implemented in MATLAB and then translate into C code. Except for the external, each single element of the HRTF model was implemented using PureData\footnote{http://puredata.info/}. Furthermore, libpd\footnote{http://libpd.cc/} was used to embed the whole model into an Android platform.
 
 \begin{figure}[h!]
   \centering
@@ -436,18 +435,25 @@ To implement the HRTF model~\cite{Brown1997} the audio programming language Pure
   \label{fig:augioengine}
 \end{figure}
 
-
-
 \subsubsection{The distance model}~\\
-In order to simulate the sound pressure in the free field the inverse distance law has been applied. Since sound intensity is proportional to the square of sound pressure, the inverse square law (for sound intensity) becomes the inverse distance law (for sound pressure)~\cite{everest2009master}. Therefore, sound pressure is inversely proportional to distance \textit{r}:
+In order to simulate the sound pressure in free field, the inverse distance law was applied. 
+
+\begin{quote}
+``Since sound intensity is proportional to the square of sound pressure, the inverse square law (for sound intensity) becomes the inverse distance law (for sound pressure). Therefore, sound pressure is inversely proportional to distance \textit{r}.~\cite{everest2009master}"
+\end{quote}
+
+Consequently:
 \begin{equation}\label{eq:soundpressure}
 P = \frac{k}{r}
 \end{equation}
-where \textit{P} is the sound pressure, \textit{k} is a constant and \textit{r} is the distance from source.
-Hence, for every doubling of distance \textit{r} from the sound source, sound pressure will be halved i.e. when the distance from the source is doubled, the sound-pressure level decreases by 6 dB~\cite{everest2009master}.
+
+where \textit{P} is the sound pressure, \textit{k} is a constant and \textit{r} is the distance from source.\\
+
+% mg: not sure if we should add the following sentence because there are too many citation from the same passage.
+% Hence, for every doubling of distance \textit{r} from the sound source, sound pressure will be halved; i.e. when the distance from the source is doubled, the sound-pressure level decreases by 6 dB~\cite{everest2009master}.
 
 \subsubsection{The head model}~\\
-The path length difference from the sound source to the two ears and the shadowing effect produced by the head at the far ear, lead to a delay and a intensity difference in the sound arriving at the left and right ears. In order to estimate the time delay, the Woodworth's formulas are used~\cite{Woodworth} :
+The path length difference from the sound source to the two ears and the shadowing effect produced by the head at the far ear, lead to a delay and a intensity difference in the sound arriving at the left and right ears. In order to estimate the time delay, the Woodworth's formulas was applyed~\cite{Woodworth} :
 
 \begin{equation}\label{eq:ITDfront}
 ITD = (a/c)[\theta + sin(\theta)]   \; [0 \leq \theta \leq \pi/2]
@@ -457,8 +463,7 @@ ITD = (a/c)[\theta + sin(\theta)]   \; [0 \leq \theta \leq \pi/2]
 ITD = (a/c)[\pi - \theta + sin(\theta)]  \; [\pi/2 \leq \theta \leq \pi]
 \end{equation}
 
-
-where \textit{a} is the approximated head radius, $\theta$ is the azimuth angle in radians and \textit{c} is the head radius. The time differences between the audio signal reaches the head and the ears are therefore
+where \textit{a} is the approximated head radius, $\theta$ is the azimuth angle in radians and \textit{c} is the head radius. The time differences of the audio signal reaching the head and the ears are therefore:
 
 \begin{equation}\label{eq:ITDL}
 T_{L} (\theta) = \frac{a+a\theta}{c}
@@ -468,7 +473,7 @@ T_{L} (\theta) = \frac{a+a\theta}{c}
 T_{R} (\theta) = \frac{a-a sin(\theta)}{c}
 \end{equation}
 
-These formulas refers to a source in front of the head and on the right, with azimuths $0 \leq \theta \leq \pi/2$. If the source is placed on the left ($- \pi/2 \leq \theta \leq 0$), the expressions are reversed.
+These formulas refer to a source placed in front of the head and on the right, with azimuths $0 \leq \theta \leq \pi/2$. If the source is placed on the left ($- \pi/2 \leq \theta \leq 0$), the expressions are reversed.
 
 
 % We therefore used the analog filter models provided in \cite{Brown1997} and further specified in \cite{Brown1997}.
@@ -487,13 +492,13 @@ H\left( z,\theta\right) = \frac{2\alpha (\theta)+T\beta+z^{-1}(-2\alpha(\theta)+
 
 Hence, the filter coefficients $a_0 = 2\alpha (\theta)+T\beta$ and $a_1 = -2\alpha(\theta)+T\beta$ as well as $b_0 = 2+T\beta$ and $b_1 = -2+T\beta$ are given. 
 % Since we could not use the filter function in Matlab which has as input values the filter coefficientes we had 
-It was necessary to isolate the output $Y(z)$ in Equation~\ref{eq:filterparam} as well as going from the frequency to the time domain. The result is given in Equation~\ref{eq:out}\footnote{For the derivation of Equation~\ref{eq:out} see appendix A}:
+It was necessary to isolate the output $Y(z)$ in Equation~\ref{eq:filterparam} as well as going from frequency domain to time domain. The result is given in Equation~\ref{eq:out}\footnote{For the derivation of Equation~\ref{eq:out} see appendix B}:
 \begin{equation}\label{eq:out}
 Y[n] =\frac{a_0X[n]+a_1X[n-1]-b_1Y[n-1]}{b_0}
 \end{equation} 
 
 \subsubsection{The pinna model}~\\
-High frequency components that arrive to the listener's ears are influenced by the pinna, which provides some azimuth information, although it has been studied mainly because of its contribution to the estimation of the elevation~\cite{Brown1997}.
+High frequency components reaching the listener's ears are affected by the pinna surface, which provides some azimuth information. However, it has been studied mainly for elevation cues~\cite{Brown1997}.
 
 The pinna model has the following form:
 
@@ -505,13 +510,13 @@ The pinna model has the following form:
 \end{figure}
 
 
-where the $\rho_{k}$ are the reflection coefficients and the $\tau_{k}$ are the time delays of the \textit{k}th event of a total of \textit{n}. Informal listening tests showed that 5 events were enough to represent the pinna response and that it was convenient to use constant values for the amplitudes $\rho_{k}$,  independent of azimuth, elevation and the subject ~\cite{Brown1997}. The time delays seem to be properly approximated by the following formula:
+where the $\rho_{k}$ are the reflection coefficients and the $\tau_{k}$ are the time delays of the \textit{k}th event of a total of \textit{n}. Informal listening tests showed that 5 events were enough to represent the pinna response and that it was convenient to use constant values for the amplitudes $\rho_{k}$,  independent of azimuth, elevation and the subject~\cite{Brown1997}. The time delays seem to be properly approximated by the following formula:
 
 \begin{equation}\label{eq:pinna}
 \tau_{k}(\theta,\phi) = A_{k}cos(\theta/2)sin(D_{k}(90\degree-\phi)) + B_{k}
 \end{equation} 
 
-In this equation, dependent on the azimuth and elevation, the $A_{k}$ is an amplitude, $B_{k}$ an offset and $D_{k}$ is a scaling factor that should be adapted to the individual listener. 
+In this equation, dependent on the azimuth and elevation, the $A_{k}$ is an amplitude, $B_{k}$ an offset and $D_{k}$ is a scaling factor that should be adapted to individual listener. 
 In the following table one can see the values for the parameters used in the pinna model. Only one set of values for $D_{k}$ in the application have been used.
 
 \begin{table}[h]
@@ -534,11 +539,9 @@ k & $\rho$  & $A_{k}$ & $B_{k}$  & $D_{k}$   \\ \hline
 \subsubsection{The room model}
 In ~\cite{Brown1997}, they imply a very simple room model consisting of only one delay with variable delay time and level according to the distance. An attempt to make a similar model was made by setting the delay time to the difference between the direct path from the object to the listener and a path that bounces on the ground half way between the object and the listener. Finally a more complex model was used due to the poor experienced effect and the large alteration (comb filtering) of the sound quality.
 
-The chosen model is based on the reverb algorithm \textit{rev2~} implemented in PD. Compared to the original model the amount of early reflections were reduced and spread more out. Through this a very large but little reflective room was simulated, with a subtle tail, resembling the characteristics of an outdoor environment. The amount of reverb was diminished according to the distance between the user and the virtual sound source. This happens significantly slower than the $1/d$ of the direct sound, namely $4/(15+d)$. In this way the ratio between the direct and the reflected signal changes even though the total level go down. This model approximate the test data in ~\cite{begault19943}. The \textit{rev2~} has a direct through signal incorporated, but this was removed in order to easier control this dry/wet relation. As showed in the model (Figure \ref{fig:workflow}), the room model was added in parallel with the Head model and added to the output of the pinna model. 
+The chosen model is based on the reverb algorithm \textit{rev2~} implemented in PD. Compared to the original model the amount of early reflections were reduced and spread more out. Through this a very large but little reflective room was simulated, with a subtle tail, resembling the characteristics of an outdoor environment. The amount of reverb was diminished according to the distance between the user and the virtual sound source. This happens significantly slower than the $2/d$ of the direct sound, namely $8/(15+d)$. In this way the ratio between the direct and the reflected signal changes even though the total level go down. This model approximate the test data in ~\cite{begault19943}. The \textit{rev2~} has a direct through signal incorporated, but this was removed in order to easier control this dry/wet relation. As showed in the model (Figure \ref{fig:workflow}), the room model was added in parallel with the Head model and added to the output of the pinna model. 
 
 A further improvement could implement variable early reflections delay-times. And separate control over reverb tail and early reflections level.
-
-
 
 \subsection{Sensor data retrieving}
 The implemented mobile application required two kind of sensors data: \emph{GPS} and \emph{orientation}. 
