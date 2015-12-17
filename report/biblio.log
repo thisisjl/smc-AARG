@@ -1,11 +1,15 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdftex 2014.7.19)  17 DEC 2015 10:33
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdftex 2014.7.19)  17 DEC 2015 16:42
 entering extended mode
 **C:/Users/Lars/Desktop/Uni/Copenhagen/1.*Semester/Project/Git/smc-AARG/report/
 biblio.bib
 
 ("C:/Users/Lars/Desktop/Uni/Copenhagen/1. Semester/Project/Git/smc-AARG/report/
 biblio.bib"
-Overfull \hbox (27.46616pt too wide) in paragraph at lines 147--156
+Missing character: There is no ï in font cmr10!
+Missing character: There is no ¿ in font cmr10!
+Missing character: There is no ½ in font cmr10!
+ [1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Overfull \hbox (27.46616pt too wide) in paragraph at lines 168--177
 \tenrm AP Pro-fes-sional, Ti-tle = 3-D Sound for Vir-tual Re-al-ity and Mul-ti-
 me-dia, Url = https://books.google.dk/books?id=--|
 
@@ -18,7 +22,7 @@ me-dia, Url = https://books.google.dk/books?id=--|
 .etc.
 
 
-Overfull \hbox (5.79015pt too wide) in paragraph at lines 157--167
+Overfull \hbox (5.79015pt too wide) in paragraph at lines 178--188
 \tenrm Pro-cess-ing to Au-dio and Acous-tics, 1997. 1997 IEEE ASSP Work-shop on
 , Doi = 10.1109/AS-PAA.1997.625596,|
 
@@ -33,7 +37,7 @@ Overfull \hbox (5.79015pt too wide) in paragraph at lines 157--167
 .etc.
 
 
-Overfull \hbox (25.24379pt too wide) in paragraph at lines 157--167
+Overfull \hbox (25.24379pt too wide) in paragraph at lines 178--188
 \tenrm tions;3D sound;HRTF model;binaural sound syn-the-sis;externalization ef-
 fects;horizontal ef-fects;listening tests;model|
 
@@ -46,7 +50,7 @@ fects;horizontal ef-fects;listening tests;model|
 .etc.
 
 
-Overfull \hbox (73.05177pt too wide) in paragraph at lines 157--167
+Overfull \hbox (73.05177pt too wide) in paragraph at lines 178--188
 \tenrm fects;Acoustic diffrac-tion;Auditory dis-plays;Azimuth;Computer dis-play
 s;Ear;Educational in-sti-tu-tions;Humans;Psychoacoustic|
 
@@ -58,8 +62,8 @@ s;Ear;Educational in-sti-tu-tions;Humans;Psychoacoustic|
 .\tenrm s
 .etc.
 
-[1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Overfull \hbox (10.85591pt too wide) in paragraph at lines 168--176
+
+Overfull \hbox (10.85591pt too wide) in paragraph at lines 189--197
 \tenrm Ti-tle = Ef-fi-cient HRTF Com-pu-ta-tion Us-ing Adap-tive Rect-an-gu-lar
  De-com-po-si-tion, Url = http://www.aes.org/e-|
 
@@ -73,7 +77,7 @@ Overfull \hbox (10.85591pt too wide) in paragraph at lines 168--176
 .etc.
 
 
-Overfull \hbox (76.0796pt too wide) in paragraph at lines 191--203
+Overfull \hbox (76.0796pt too wide) in paragraph at lines 212--224
 []\tenrm @articleWoodworth, Au-thor = Aaron-son, Neil L. and Hart-mann, William
  M., Doi = http://dx.doi.org/10.1121/1.4861243,|
 
@@ -86,7 +90,7 @@ Overfull \hbox (76.0796pt too wide) in paragraph at lines 191--203
 .etc.
 
 
-Overfull \hbox (227.2466pt too wide) in paragraph at lines 191--203
+Overfull \hbox (227.2466pt too wide) in paragraph at lines 212--224
 \tenrm cor-rect-ing, and ex-tend-ing the Wood-worth model for in-ter-au-ral tim
 e dif-fer-ence, Url = http://scitation.aip.org/content/asa/journal/jasa/135/2/1
 0.1121/1.4861243,|
@@ -101,7 +105,7 @@ e dif-fer-ence, Url = http://scitation.aip.org/content/asa/journal/jasa/135/2/1
 .etc.
 
 
-Overfull \hbox (46.71848pt too wide) in paragraph at lines 191--203
+Overfull \hbox (46.71848pt too wide) in paragraph at lines 212--224
 \tenrm Vol-ume = 135, Year = 2014, Bdsk-Url-1 = http://scitation.aip.org/conten
 t/asa/journal/jasa/135/2/10.1121/1.4861243,|
 
@@ -115,7 +119,7 @@ t/asa/journal/jasa/135/2/10.1121/1.4861243,|
 .etc.
 
 
-Overfull \hbox (12.94048pt too wide) in paragraph at lines 204--216
+Overfull \hbox (12.94048pt too wide) in paragraph at lines 225--237
 []\tenrm @miscAnalysingLop, Au-thor = P.M. Del-gado, Note = https://pmdelgado.w
 ordpress.com/2015/09/17/first-|
 
@@ -128,7 +132,7 @@ ordpress.com/2015/09/17/first-|
 .etc.
 
 
-Overfull \hbox (2.05145pt too wide) in paragraph at lines 204--216
+Overfull \hbox (2.05145pt too wide) in paragraph at lines 225--237
 \tenrm steps-on-pure-datas-approach-to-real-time-audio-processing-compiling-ext
 ernals-analysing-lop/, Ti-tle = First|
 
@@ -141,7 +145,7 @@ ernals-analysing-lop/, Ti-tle = First|
 .etc.
 
 
-Overfull \hbox (7.91264pt too wide) in paragraph at lines 235--252
+Overfull \hbox (7.91264pt too wide) in paragraph at lines 256--273
 \tenrm = 15493652, jour-nal = Jour-nal of So-cial Sci-ences, key-words = Lik-er
 t,formats,measurement,psychological,scales,|
 
@@ -154,7 +158,7 @@ t,formats,measurement,psychological,scales,|
 .etc.
 
 
-Overfull \hbox (110.024pt too wide) in paragraph at lines 235--252
+Overfull \hbox (110.024pt too wide) in paragraph at lines 256--273
 \tenrm about Lik-ert Scales and Lik-ert Re-sponse For-mats and their An-ti-dote
 s, url = http://thescipub.com/abstract/10.3844/jssp.2007.106.116,|
 
@@ -167,7 +171,7 @@ s, url = http://thescipub.com/abstract/10.3844/jssp.2007.106.116,|
 .etc.
 
 [2]
-Overfull \hbox (67.28784pt too wide) in paragraph at lines 276--284
+Overfull \hbox (67.28784pt too wide) in paragraph at lines 297--305
 \tenrm = McGraw-Hill Ed-u-ca-tion, Ti-tle = Mas-ter Hand-book of Acous-tics, Ur
 l = https://books.google.dk/books?id=6tiJ1cwnwxoC,|
 
