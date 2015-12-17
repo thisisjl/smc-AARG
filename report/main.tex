@@ -11,53 +11,6 @@
 
 
 
-% Some very useful LaTeX packages include:
-% (uncomment the ones you want to load)
-
-
-% *** MISC UTILITY PACKAGES ***
-%
-%\usepackage{ifpdf}
-% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
-% compilation based on whether the output is pdf or dvi.
-% usage:
-% \ifpdf
-%   % pdf code
-% \else
-%   % dvi code
-% \fi
-% The latest version of ifpdf.sty can be obtained from:
-% http://www.ctan.org/pkg/ifpdf
-% Also, note that IEEEtran.cls V1.7 and later provides a builtin
-% \ifCLASSINFOpdf conditional that works the same way.
-% When switching from latex to pdflatex and vice-versa, the compiler may
-% have to be run twice to clear warning/error fsages.
-
-
-
-
-
-
-% *** CITATION PACKAGES ***
-%
-%\usepackage{cite}
-
-% cite.sty was written by Donald Arseneau
-% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
-% \cite{} output to follow that of the IEEE. Loading the cite package will
-% result in citation numbers being automatically sorted and properly
-% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
-% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
-% \cite will automatically add leading space, if needed. Use cite.sty's
-% noadjust option (cite.sty V3.8 and later) if you want to turn this off
-% such as if a citation ever needs to be enclosed in parenthesis.
-% cite.sty is already installed on most LaTeX systems. Be sure and use
-% version 5.0 (2009-03-20) and later if using hyperref.sty.
-% The latest version can be obtained at:
-% http://www.ctan.org/pkg/cite
-% The documentation is contained in the cite.sty file itself.
-
-
 
 
 
@@ -117,94 +70,7 @@
 %\usepackage{breqn}
 
 
-% *** SPECIALIZED LIST PACKAGES ***
-%
-%\usepackage{algorithmic}
 
-
-
-
-% *** ALIGNMENT PACKAGES ***
-%
-%\usepackage{array}
-
-
-% *** SUBFIGURE PACKAGES ***
-%\ifCLASSOPTIONcompsoc
-%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
-%\else
-%  \usepackage[caption=false,font=footnotesize]{subfig}
-%\fi
-% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
-% for subfigure.sty, the latter of which is no longer maintained and is
-% incompatible with some LaTeX packages including fixltx2e. However,
-% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
-% which will override IEEEtran.cls' handling of captions and this will result
-% in non-IEEE style figure/table captions. To prevent this problem, be sure
-% and invoke subfig.sty's "caption=false" package option (available since
-% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
-% handling of captions.
-% Note that the Computer Society format requires a larger sans serif font
-% than the serif footnote size font used in traditional IEEE formatting
-% and thus the need to invoke different subfig.sty package options depending
-% on whether compsoc mode has been enabled.
-%
-% The latest version and documentation of subfig.sty can be obtained at:
-% http://www.ctan.org/pkg/subfig
-
-
-
-
-% *** FLOAT PACKAGES ***
-%
-%\usepackage{fixltx2e}
-% fixltx2e, the successor to the earlier fix2col.sty, was written by
-% Frank Mittelbach and David Carlisle. This package corrects a few problems
-% in the LaTeX2e kernel, the most notable of which is that in current
-% LaTeX2e releases, the ordering of single and double column floats is not
-% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
-% single column figure to be placed prior to an earlier double column
-% figure.
-% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
-% corrections already built into the system in which case a warning will
-% be issued if an attempt is made to load fixltx2e.sty as it is no longer
-% needed.
-% The latest version and documentation can be found at:
-% http://www.ctan.org/pkg/fixltx2e
-
-
-%\usepackage{stfloats}
-% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
-% the ability to do double column floats at the bottom of the page as well
-% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
-% LaTeX2e). It also provides a command:
-%\fnbelowfloat
-% to enable the placement of footnotes below bottom floats (the standard
-% LaTeX2e kernel puts them above bottom floats). This is an invasive package
-% which rewrites many portions of the LaTeX2e float routines. It may not work
-% with other packages that modify the LaTeX2e float routines. The latest
-% version and documentation can be obtained at:
-% http://www.ctan.org/pkg/stfloats
-% Do not use the stfloats baselinefloat ability as the IEEE does not allow
-% \baselineskip to stretch. Authors submitting work to the IEEE should note
-% that the IEEE rarely uses double column equations and that authors should try
-% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
-% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
-% such ways.
-% Do not attempt to use stfloats with fixltx2e as they are incompatible.
-% Instead, use Morten Hogholm'a dblfloatfix which combines the features
-% of both fixltx2e and stfloats:
-%
-% \usepackage{dblfloatfix}
-% The latest version can be found at:
-% http://www.ctan.org/pkg/dblfloatfix
-
-% \usepackage[backend=biber]{biblatex}      %backend=biber: si dice a biblatex che si intende usare biber come motore bibliografico
-
-
-
-% *** PDF, URL AND HYPERLINK PACKAGES ***
-%
 
 \usepackage[hyphens]{url}
 % url.sty was written by Donald Arseneau. It provides better support for
@@ -216,10 +82,6 @@
 
 
 
-
-
-% correct bad hyphenation here
-\hyphenation{op-tical net-works semi-conduc-tor}
 
 
 \begin{document}
@@ -533,9 +395,9 @@ The chosen model is based on the reverb algorithm \textit{rev2~} implemented in 
 A further improvement could implement variable early reflections delay-times. And separate control over reverb tail and early reflections level.
 
 \subsection{Sensor data retrieval}
-The implemented mobile application required two kind of input variables to encode the specific location of the soundsource in the real world, namely the distance between the soundsource and the user as well as the direction from which the sound source was coming from. This information could be obtained by accessing the GPS\footnote{GPS is a way of determining location and most of the mobile devices nowadays include a GPS receiver. As explained in~\cite{noble2009} COMMENT:[ask Mattia where to find this reference] the GPS receiver calculates its position by precisely timing the signals sent by the GPS satellites.} and orientation sensors of the mobile device. 
+The implemented mobile application required two kind of input variables to encode the specific location of the sound source in the real world, namely the distance between the sound source and the user, as well as the direction from which the sound source was coming from. This information could be obtained by accessing the GPS\footnote{GPS is a navigation system which provides location information and most of the mobile devices nowadays include a GPS receiver. As explained in~\cite{noble2009} \textbf{COMMENT:[ask Mattia where to find this reference]} the GPS receiver calculates its position by precisely timing the signals sent by the GPS satellites.} and orientation sensors of the mobile device. 
 
-To access the GPS data \emph{ofxMaps}\footnote{https://github.com/bakercp/ofxMaps} and \emph{ofxGeo}\footnote{https://github.com/bakercp/ofxGeo} addons has been used.\footnote{The GPS position on an Android platform requires a listening mechanism, which has been implemented in openFrameworks by calling the \texttt{ofRegisterGPSEvent()} in the \texttt{setup()} method of the source code. In the \texttt{ofApp.h} a method has been added in order to handle the updates from the Android OS system calls. It is named \texttt{locationChanged()} and adds an event handler for the dispatched event~\cite{noble2009}. Moreover, the \texttt{startGPS()} method is called at the beginning and \texttt{stopPGS()} should call when quitting the application to avoid an overconsumption of phone battery.} With the GPS position of the user it was possible to compute the distance between the user and the soundsource which was done using the \textit{Haversine} formula\footnote{http://www.movable-type.co.uk/scripts/latlong.html}. which expected as input arguments the GPS location of the user (provided by the GPS data of the phone) and the soundsource.
+To access the GPS data \emph{ofxMaps}\footnote{https://github.com/bakercp/ofxMaps} and \emph{ofxGeo}\footnote{https://github.com/bakercp/ofxGeo} addons were used.\footnote{The GPS position on an Android platform requires a listening mechanism, which has been implemented in openFrameworks by calling the \texttt{ofRegisterGPSEvent()} in the \texttt{setup()} method of the source code. In the \texttt{ofApp.h} a method was added in order to handle the updates from the Android OS system calls. It is named \texttt{locationChanged()} and adds an event handler for the dispatched event~\cite{noble2009}. Moreover, the \texttt{startGPS()} method is called at the beginning and \texttt{stopPGS()} should be called when quitting the application to avoid an over consumption of phone battery.} With the GPS position of the user it was possible to estimate the distance between the user and the sound source. This computation was done using the \textit{Haversine} formula\footnote{http://www.movable-type.co.uk/scripts/latlong.html}, which expected as input arguments the GPS location of the user (provided by the GPS data of the phone) and the sound source:
 
 \begin{equation}\label{eq:distancehaversine1}
 \begin{split}
@@ -554,11 +416,11 @@ To access the GPS data \emph{ofxMaps}\footnote{https://github.com/bakercp/ofxMap
 \end{equation}
 where $\varphi$ is the \emph{latitude}, $\lambda$ is the \emph{longitude}, \emph{R} is earth's radius (mean radius = 6,371 km).
 
-In order to compute the azimuth, which is the angle from which the soundsource should appear to come from, first, the orientation of the mobile device to the magnetic north pole was extracted.\footnote{For that, the Android API provides access to the TYPE\_ORIENTATION sensor which, apart from other things, returns the orientation of the mobile device to the magnetic North Pole~\cite{AndroidOrientation}.} 
+In order to compute the azimuth, which is the angle from which the sound source should appear to come from, first, the orientation of the mobile device to the magnetic north pole was extracted.\footnote{For that, the Android API provides access to the TYPE\_ORIENTATION sensor which, apart from other things, returns the orientation of the mobile device to the magnetic North Pole~\cite{AndroidOrientation}.} 
 
-Having the device's position relative to the magnetic North Pole and the sound location the azimuth can be computed using the following method \textbf{COMMENT:LARS} [Here please explain the method how we calculate the formula]. 
+Having the device's position relative to the magnetic North Pole and the sound location the azimuth can be computed using the following method \textbf{COMMENT:LARS} [Here please explain the method how we calculate the formula].
 
-As a last step before sending the data to the audio engine simple mean filters were applied to smoothen the changes in the raw data. For the distance a buffersize of 49 values and for the azimuth averaging over 7 values have proven to result in the most satisfying tradeoff between delay of feedback to the users actions and not having sudden jumps in distance or orientation (see appendix or figure). \textbf{COMMENT:LARS}[We have to include figures of this smoothing here or refer to them in the appendix]. Additionally an outlier filter was applied to the raw GPS data. In case there was a jump in the GPS data resulting in a difference of two consecutive distance values of more than 30 meters, that outlier was ignored and the last known GPS location was used.
+As a last step before sending the data to the audio engine simple mean filters were applied to smooth the changes in the raw data. A buffer size of 49 values for the distance and averaging over 7 values for the azimuth seemed to result in the most satisfying trade-off between delay of feedback to the users actions, and not having sudden jumps in distance or orientation (see appendix or figure). \textbf{COMMENT:LARS}[We have to include figures of this smoothing here or refer to them in the appendix]. Additionally, an outlier filter was applied to the raw GPS data. In case there was a jump in the GPS data resulting in a difference of two consecutive distance values of more than 30 meters, that outlier was ignored and the last known GPS location was used.
 
 
 % **************************************************************************************************************************
@@ -589,7 +451,10 @@ As a last step before sending the data to the audio engine simple mean filters w
 
 
 \subsection{User interface}
-The user interface was designed for the purpose of running the tests mentioned in the introduction. There was one button to start the training trials, and a second one to start the testing trials. The user interface has not yet been specifically designed for the user.
+The user interface was designed for the purpose of running the tests mentioned in the introduction. There was one button to start the training trials, and a second one to start the testing trials. 
+
+Since the interface was built only for testing purposes and the listener didn't need to interact with it, the interface was not developed in a user-friendly way. The user interface has not yet been specifically designed for the user.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
