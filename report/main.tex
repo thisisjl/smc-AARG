@@ -928,6 +928,61 @@ To create a new project, the Project Generator wizard has been used which is loc
 At its simplest, working with an openFrameworks project is adding new code to the appropriate method, or just create a new one and declare it in the \texttt{ofApp.cpp}. In~\cite{OpenFrameworks} a further explanation of the main methods and their workflow is provided.
 
 
+\section{Discarded data}
+
+Due to unreliability of the GPS and orientation sensors, some data was discarded. The process of deciding which trial data was not useful consisted, first, in identifying outliers in the time durations of each audio model, for each participant. And, second in evaluating if distance or orientation data of these trials was constant in a part of the trial. The following figures show the discarded trials and the reason for doing it.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[scale=0.5]{graphics/subject000htrftrial2.png}
+%  \caption{Distance plot of the subject number 000 using the HRTF model in the trial number 2, which had a duration of 340.89 seconds. Vertical line indicates the time when the subject found the sound.}
+   \caption{Distance (related to the GPS sensor) remains constant the first 164 seconds. Vertical line indicates the time when the subject found the sound.}
+  \label{fig:plt1}
+\end{figure}
+
+\setlength{\abovecaptionskip}{15pt plus 3pt minus 2pt} % Chosen fairly arbitrarily
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[scale=0.5]{graphics/subject003htrftrial3.png}
+  \caption{Orientation is unreliable from 10 to 30 seconds}
+  \label{fig:plt2}
+\end{figure}
+
+\setlength{\abovecaptionskip}{15pt plus 3pt minus 2pt} % Chosen fairly arbitrarily
+
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[scale=0.5]{graphics/subject008htrftrial2.png}
+  \caption{Distance is constant for 30 seconds starting at mark 135 second}
+  \label{fig:plt3}
+\end{figure}
+
+\setlength{\abovecaptionskip}{15pt plus 3pt minus 2pt} % Chosen fairly arbitrarily
+
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[scale=0.5]{graphics/subject008panningtrial1.png}
+  \caption{Distance is constant for 30 seconds starting at mark 190 second}
+  \label{fig:plt4}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[scale=0.5]{graphics/subject011panningtrial2.png}
+  \caption{Distance is constant for 30 seconds starting at mark 131 second}
+  \label{fig:plt15}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[scale=0.5]{graphics/subject012panningtrial2.png}
+  \caption{Orientation is not reliable from 20 to 75 seconds}
+  \label{fig:plt6}
+\end{figure}
+
 
 
 
