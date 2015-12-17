@@ -760,8 +760,17 @@ It could be that the error in the GPS affected the HRTF model more than the pan 
  - Data should be tested for discontinuity on basis of raw gps data.
  \textbf{COMMENT:Mattia[?]} 
  
-\subsection{Future improvements}
 
+\subsection{Future improvements}
+Undoubtedly, much refinement and improvement should be made to improve both the quality and the performance of our application. As a prototype, we concentrated mainly on the core, that is to say the programming and sound processing aspects. However, we are conscious that developing a clear and compact GUI is as much important in terms of accessibility to users. In this section several possible improvements will be given. \\
+%Multiple sounds
+First of all, using multiple sound sources could allow for more interesting and immersive environments. We all are familiar to surroundings made of several items, whose combinations are almost endless. Let's take a crowded place as example. In such similar situation, the user would be given a bunch of different sounds placed in different locations. This is also a crucial point in developing applications such as \emph{Events in the City} and \emph{Audio Tour Guide}. \\
+%add front/back discrimination
+As said in previous sections, in some experimental situation listeners could make \emph{front-back} discrimination errors. Literature has already dealt with it and has provided numerous suggestions to solve that problem, as depicted in~\cite{blum2012}and~\cite{wightman1999}.\\
+%adaptive reverb (maybe a little discussion about pro-cons of convolution)
+Use and choice of the right reverb is another crucial point. Even though its choice could be mostly affected by ease of implementation and computational cost, we would aim for an adaptive one, which could be capable of give back a more realistic environment model. Indeed, the choice of a convolution reverb would be the most appropriate since any kind of space could be precisely modelled using its frequency response. On the other hand, it has a huge computational cost, which maybe not all mobile devices couldn't afford. That said, an alternative model of this application should be thought, which all the computing part is shifted on a specific machine. Doing so, the mobile application could be fed directly on externalized sounds.\\
+%GUI development and code refinement
+Finally, an improvement in graphics is encouraged in to let the application be more appealing and \emph{user-friendly} as well as a code refinement operation to eliminate any superfluous tasks, let all the application be lighter and take advantage of the new technologies structure introducing multithreading.
 
 % discussion
 %quantitative:
