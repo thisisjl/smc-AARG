@@ -1,4 +1,4 @@
-\documentclass[journal]{IEEEtran}
+T\documentclass[journal]{IEEEtran}
 \usepackage{tablefootnote}
 % Some Computer Society conferences also require the compsoc mode option,
 % but others use the standard conference format.
@@ -412,9 +412,9 @@ k & $\rho$  & $A_{k}$ & $B_{k}$  & $D_{k}$   \\ \hline
 \subsubsection{The room model}
 In ~\cite{Brown1997}, it is implied a very simple room model consisting of only one delay with variable delay time and level according to the distance. An attempt to make a similar model was made by setting the delay time to the difference between the direct path from the object to the listener and a path that bounces on the ground half way between the object and the listener. Finally a more complex model was used due to the poor experienced effect and the large alteration (comb filtering) of the sound quality.
 
-The chosen model is based on the reverb algorithm \textit{rev2~} implemented in Pd. Compared to the original model the amount of early reflections were reduced and spread more out. Through this a very large but little reflective room was simulated, with a subtle tail, resembling the characteristics of an outdoor environment. The amount of reverb was diminished according to the distance between the user and the virtual sound source. This happens significantly slower than the $2/d$ of the direct sound, namely $8/(15+d)$. In this way the ratio between the direct and the reflected signal changes even though the total level go down. This model approximates the test data in ~\cite{begault19943}. The \textit{rev2~} has a direct through signal incorporated, but this was removed in order for an easier control this dry/wet relation.
+The chosen model is based on the reverb algorithm \textit{rev2~} implemented in Pd. Compared to the original model, the amount of early reflections were reduced and spread more out. Through this, a very large but little reflective room was simulated, with a subtle tail, resembling the characteristics of an outdoor environment. \textbf{COMMENT:Llu’s does not understand the following two sentences, could you write them in another way? and use an alternative to "the 2/d"?} The amount of reverb was diminished according to the distance between the user and the virtual sound source. This happens significantly slower than the $2/d$ of the direct sound, namely $8/(15+d)$. In this way the ratio between the direct and the reflected signal changes even though the total level goes down. This model approximates the test data in ~\cite{begault19943}. The \textit{rev2~} has a direct through signal incorporated, but this was removed in order for an easier control for the dry and wet signal relation.
 
-A further improvement could implement variable early reflections delay-times. And separate control over reverb tail and early reflections level.
+\textbf{COMMENT: could this be in the section future improvements?} A further improvement could implement variable early reflections delay-times. And separate control over reverb tail and early reflections level.
 
 
 \subsection{Sensor data retrieval}
