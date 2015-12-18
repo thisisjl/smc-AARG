@@ -265,10 +265,10 @@ More recent works in this field use mobile devices to render soundscapes and let
 % 2012
 
 \section{Design, Implementation and Mobile Application}
-\subsection{Introduction}
+
 Given the high computational and memory costs that using a spatial audio model based on a traditional HRTF implies, the existing mobile applications employ different approaches to localize the sound. In the development of ISAS,  Blum and Bouchard discarded the usage of the Pure Data Extended object [earplug$\sim$]\footnote{https://puredata.info/downloads/earplug}, which is a real-time binaural filter based on KEMAR impulse measurement, due to its high CPU usage. Instead and as said before, they used simple panning techniques combined with ITD and filtering effects. For this work, [earplug$\sim$] was also considered, but it showed low accuracy. Hence, it was not been tested on a mobile device.
 
-One of the aims of this project was to implement the HRTF model introduced by Brown and Duda in ~\cite{Brown1997} on a mobile application. This model allows an efficient processing of multiple sounds in real time and it has been implemented  in Pure Data and C. A more detailed description of the implementation follows.
+One of the aims of this project was to implement the HRTF model introduced by Brown and Duda in ~\cite{Brown1997} on a mobile application. This model allows an efficient processing of multiple sounds in real time and it has been implemented  in Pure Data and C.The model was chosen over a more complex one as a starting point to investigate whether this model could prove reasonably high quality while maintaining low computational costs. A more detailed description of the implementation follows.
 
 Some of the challenges that this implementation has presented are: 1) Does an HRTF model improves the navigation in comparison to a simpler model? 2) How many sounds can be rendered using it?
 
@@ -667,17 +667,22 @@ Another issue that should be addressed is the adequacy of the questionnaire used
 
 In light of all these considerations the attention should not be drawn away from the fact that the 3-D audio engine is far from being perfect. More thorough evaluation of reverberation levels and distance models can be considered to improve the user experience. Additionally more sophisticated and accurate sensors to track the position of the user relative to the virtual soundsource could enhance the responsiveness of the audio engine. Thereby attention should be payed to the tradeoff between the quality and accuracy of the audio engine itself and the sensors i.e. which level of accuracy of the sensors is needed to meet up with the accuracy of the 3-D audio engine. 
  
+
 \subsection{Future improvements}
-Undoubtedly, much refinement and improvement should be made to improve both the quality and the performance of our application. As a prototype, we concentrated mainly on the core, that is to say the programming and sound processing aspects. However, we are conscious that developing a clear and compact GUI is as much important in terms of accessibility to users. In this section several possible improvements will be given. \\
+Undoubtedly, much refinement and improvement should be made to improve both the quality and the performance of our application. As a prototype, we concentrated mainly on the core, that is to say the programming and sound processing aspects. \\
+
+
 %Multiple sounds
-First of all, using multiple sound sources could allow for more interesting and immersive environments. We all are familiar to surroundings made of several items, whose combinations are almost endless. Let's take a crowded place as example. In such similar situation, the user would be given a bunch of different sounds placed in different locations. This is also a crucial point in developing applications such as \emph{Events in the City} and \emph{Audio Tour Guide}. \\
+Using multiple sound sources could allow for more interesting and immersive environments. Humans are familiar to surroundings made of several items, and the combinations are endless. In EG. a crowded place the user would be given a bunch of different sounds placed in different locations. Implementing multiple sounds would be crucial point in developing applications for audio navigation in populated areas, audio tour guides etc.\\
 %add front/back discrimination
 As said in previous sections, in some experimental situation listeners could make \emph{front-back} discrimination errors. Literature has already dealt with it and has provided numerous suggestions to solve that problem, as depicted in~\cite{blum2012}and~\cite{wightman1999}.\\
 %adaptive reverb (maybe a little discussion about pro-cons of convolution)
-Use and choice of the right reverb is another crucial point. Even though its choice could be mostly affected by ease of implementation and computational cost, we would aim for an adaptive one, which could be capable of give back a more realistic environment model. Indeed, the choice of a convolution reverb would be the most appropriate since any kind of space could be precisely modelled using its frequency response. On the other hand, it has a huge computational cost, which maybe not all mobile devices couldn't afford. That said, an alternative model of this application should be thought, which all the computing part is shifted on a specific machine. Doing so, the mobile application could be fed directly on externalized sounds.\\
+Use and choice of the right room model is another crucial point. The model should be extended to a more adoptive model where early reflection delays could be altered according to the distance to the object. A convolution reverb could be used as long as we know the specif place of use, since any kind of space could be precisely modeled using its frequency response. However for a model working in any surrounding on mobile devices a more flexible and less computational heavy model is preferred. Anyway field impulse response recordings should be an offset for further research in externalizations in different environments.\\
 %GUI development and code refinement
-Finally, an improvement in graphics is encouraged in to let the application be more appealing and \emph{user-friendly} as well as a code refinement operation to eliminate any superfluous tasks, let all the application be lighter and take advantage of the new technologies structure introducing multithreading.
+Finally, an improvement in the graphical user interface is should be made in order to let the application be more appealing and \emph{user-friendly}. Also some code refinement is needed to eliminate any superfluous tasks, let all the application be lighter and take advantage of the new technologies structure introducing multithreading.
 
+\subsection{Applications}
+Several mobile device applications could be imagined since the engine presented in this paper. Simple navigation systems for either...\\
 % discussion
 %quantitative:
 %- prediction: with more trials maybe there is a learning curve, but not many trials. -> compare mean of subjects to superusers. testing from training could be promising.
