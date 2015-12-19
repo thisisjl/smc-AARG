@@ -1,13 +1,14 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdftex 2014.6.17)  18 DEC 2015 12:03
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdftex 2014.7.19)  19 DEC 2015 21:41
 entering extended mode
-**C:/Users/Andrea/Documents/SMC/1st*semester/Project/smc-AARG/report/biblio.bib
+**C:/Users/Lars/Desktop/Uni/Copenhagen/1.*Semester/Project/Git/smc-AARG/report/
+biblio.bib
 
-("C:/Users/Andrea/Documents/SMC/1st semester/Project/smc-AARG/report/biblio.bib
-"
+("C:/Users/Lars/Desktop/Uni/Copenhagen/1. Semester/Project/Git/smc-AARG/report/
+biblio.bib"
 Missing character: There is no ï in font cmr10!
 Missing character: There is no ¿ in font cmr10!
 Missing character: There is no ½ in font cmr10!
- [1{C:/Users/Andrea/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+ [1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 Overfull \hbox (27.46616pt too wide) in paragraph at lines 169--178
 \tenrm AP Pro-fes-sional, Ti-tle = 3-D Sound for Vir-tual Re-al-ity and Mul-ti-
 me-dia, Url = https://books.google.dk/books?id=--|
@@ -185,7 +186,7 @@ l = https://books.google.dk/books?id=6tiJ1cwnwxoC,|
 )
 *
 ! Emergency stop.
-<*> ...semester/Project/smc-AARG/report/biblio.bib
+<*> ...ster/Project/Git/smc-AARG/report/biblio.bib
                                                   
 End of file on the terminal!
 
