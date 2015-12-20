@@ -784,10 +784,12 @@ We would like to thank Dr. Stefania Serafin and Mr. Smilen Dimitrov for their su
 %\listoffigures
 %\listoftables
 %\pagebreak
+
+
+
 \begin{appendices}
+
 \section{Derivations}
-
-
 The analog transfer function has to be derived to the digital version by applying a bilinear transform:
 
 \begin{equation}\label{eq:bilin}
@@ -795,7 +797,7 @@ s = \frac{2}{T} \frac{z-1}{z+1},\: where\:T\:is\:the\:sampling\:interval\:in\:se
 \end{equation}
 
 
-Applying the substitution in equation~\ref{eq:bilin} to equation~\ref{eq:analog}, following filter function in the digital domain is obtained:
+Applying the substitution in equation~\ref{eq:bilin} to equation~\ref{eq:analog}, the following filter transfer function in the digital domain is obtained:
 \begin{equation}\label{eq:filter}
 H\left( z,\theta\right) = \frac{\alpha (\theta)(\frac{2}{T} \frac{z-1}{z+1})+\beta}{(\frac{2}{T} \frac{z-1}{z+1})+\beta}
 \end{equation}
@@ -856,63 +858,45 @@ At its simplest, working with an openFrameworks project is adding new code to th
 
 \section{Discarded data}
 
-Due to unreliability of the GPS and orientation sensors, some data was discarded. The process of deciding which trial data was not useful consisted, first, in identifying outliers in the time durations of each audio model, for each participant. And, second in evaluating if distance or orientation data of these trials was constant in a part of the trial. The following figures show the discarded trials and the reason for doing it.
+Due to unreliability of the GPS and orientation sensors, some data was discarded. The process of deciding which trial data was not useful consisted, first, in identifying outliers in the time durations of each audio model, for each participant. And, second in evaluating if distance or orientation data of these trials was constant in a part of the trial. Figures \ref{fig:plt1} to \ref{fig:plt6} show the discarded trials and the reason for doing it.
 
 \begin{figure}[h!]
   \centering
-    \includegraphics[scale=0.5]{graphics/subject000htrftrial2.png}
-%  \caption{Distance plot of the subject number 000 using the HRTF model in the trial number 2, which had a duration of 340.89 seconds. Vertical line indicates the time when the subject found the sound.}
+    \includegraphics[scale=0.45]{graphics/subject000htrftrial2.png}
    \caption{Distance (related to the GPS sensor) remains constant the first 164 seconds. Vertical line indicates the time when the subject found the sound.}
-  \label{fig:plt1}
-\end{figure}
-
-\setlength{\abovecaptionskip}{15pt plus 3pt minus 2pt} % Chosen fairly arbitrarily
-
-\begin{figure}[h!]
-  \centering
-    \includegraphics[scale=0.5]{graphics/subject003htrftrial3.png}
+     \label{fig:plt1}
+       \includegraphics[scale=0.45]{graphics/subject003htrftrial3.png}
   \caption{Orientation is unreliable from 10 to 30 seconds}
   \label{fig:plt2}
 \end{figure}
 
-\setlength{\abovecaptionskip}{15pt plus 3pt minus 2pt} % Chosen fairly arbitrarily
-
-
 \begin{figure}[h!]
   \centering
-    \includegraphics[scale=0.5]{graphics/subject008htrftrial2.png}
+    \includegraphics[scale=0.45]{graphics/subject008htrftrial2.png}
   \caption{Distance is constant for 30 seconds starting at mark 135 second}
-  \label{fig:plt3}
-\end{figure}
-
-\setlength{\abovecaptionskip}{15pt plus 3pt minus 2pt} % Chosen fairly arbitrarily
-
-
-\begin{figure}[h!]
-  \centering
-    \includegraphics[scale=0.5]{graphics/subject008panningtrial1.png}
+    \label{fig:plt3}
+      \includegraphics[scale=0.45]{graphics/subject008panningtrial1.png}
   \caption{Distance is constant for 30 seconds starting at mark 190 second}
-  \label{fig:plt4}
-\end{figure}
-
-\begin{figure}[h!]
-  \centering
-    \includegraphics[scale=0.5]{graphics/subject011panningtrial2.png}
+    \label{fig:plt4}
+      \includegraphics[scale=0.45]{graphics/subject011panningtrial2.png}
   \caption{Distance is constant for 30 seconds starting at mark 131 second}
-  \label{fig:plt15}
+  \label{fig:plt5}
 \end{figure}
 
 \begin{figure}[h!]
   \centering
-    \includegraphics[scale=0.5]{graphics/subject012panningtrial2.png}
+    \includegraphics[scale=0.45]{graphics/subject012panningtrial2.png}
   \caption{Orientation is not reliable from 20 to 75 seconds}
   \label{fig:plt6}
 \end{figure}
 
 \section{Stimulus content}
+
+The auditory stimulus which the subjects heard when participating in the experiment was a speech signal, with the following content:
 ``Hello, I am your test guide. If you can listen to my voice you are not far from me but you haven't found me yet. So, your task is to find where I am speaking as fast as you can. Please use your hearing and let you be guided through. Enjoy your search."
 
 \section{Computing the azimuth}
+This section contains the algorithm followed to compute the azimuth angle between the user and the sound source.
 \begin{algorithm}
 \KwData{C++ pseudo-code to compute the azimuth:}
 % computeAzimtuh(Geo::Coordinate soundGPScoord)\;
@@ -934,6 +918,8 @@ Due to unreliability of the GPS and orientation sensors, some data was discarded
     {beta = 90 - gamma\;}
   \ElseIf{if the sound is in the fourth quadrant}
     {beta = 180 - gamma\;}
+    \end{algorithm}
+\begin{algorithm}
   \ElseIf{if the sound is in the third quadrant}
     {beta = 270 - gamma\;}
   \ElseIf{if the sound is in the second quadrant}
@@ -953,45 +939,48 @@ Due to unreliability of the GPS and orientation sensors, some data was discarded
   azimuth = round((azimuth * (PI / 180)))\;
   return azimuth\;
   }
-
 \caption{algorithm that computes the azimuth}
 \end{algorithm}
 
+
 \section{Questionnaire answers}
-In this section, the frequency for the responses of the questionnaire are included.
+This section contains the frequency of the responses of the questionnaire.
 \begin{figure}[h!]
   \centering
-    \includegraphics[scale=0.7]{graphics/qq1.png}
+    \includegraphics[scale=0.6]{graphics/qq1.png}
    \caption{Distribution of the answers for the questionnaire question "It was easy and intuitive to find the sounds"}
-  \label{fig:plt1}
+  \label{fig:plt7}
 \end{figure}
 
 \begin{figure}[h!]
   \centering
-    \includegraphics[scale=0.7]{graphics/qq2.png}
+    \includegraphics[scale=0.6]{graphics/qq2.png}
    \caption{Distribution of the answers for the questionnaire question "The sounds appeared to be bound to a physical location in the area"}
-  \label{fig:plt1}
-\end{figure}
-
-\begin{figure}[h!]
-  \centering
-    \includegraphics[scale=0.7]{graphics/qq3.png}
+  \label{fig:plt8}
+      \includegraphics[scale=0.6]{graphics/qq3.png}
    \caption{Distribution of the answers for the questionnaire question "There was a strong connection between my position and what I heard in the headphones"}
-  \label{fig:plt1}
+  \label{fig:plt9}
 \end{figure}
 
 \begin{figure}[h!]
   \centering
-    \includegraphics[scale=0.7]{graphics/qq4.png}
+    \includegraphics[scale=0.6]{graphics/qq3.png}
+   \caption{Distribution of the answers for the questionnaire question "There was a strong connection between my position and what I heard in the headphones"}
+  \label{fig:plt9}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[scale=0.6]{graphics/qq4.png}
    \caption{Distribution of the answers for the questionnaire question "The soundscape was more inside my head than outside in the area"}
-  \label{fig:plt1}
+  \label{fig:plt10}
 \end{figure}
 
 \begin{figure}[h!]
   \centering
-    \includegraphics[scale=0.7]{graphics/qq5.png}
+    \includegraphics[scale=0.6]{graphics/qq5.png}
    \caption{Distribution of the answers for the questionnaire question "It was difficult to tell if a sound was in front of or behind me"}
-  \label{fig:plt1}
+  \label{fig:plt11}
 \end{figure}
 
 
